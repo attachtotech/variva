@@ -1596,6 +1596,99 @@ document.addEventListener('scroll', () => {
         </div>
     </div>
 </section>
+<style>
+    /* ===============================
+   MEDIA SECTION – MOBILE FIX
+================================ */
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+}
+
+/* MEDIA ITEM */
+.media-item {
+    width: 100%;
+}
+
+/* VIDEO CONTAINER */
+.media-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16; /* 🔥 CRITICAL FOR MOBILE */
+    overflow: hidden;
+    border-radius: 18px;
+    background: #000;
+}
+
+/* VIDEO ITSELF */
+.media-image video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Overlay play icon */
+.media-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.25);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+.media-item:hover .media-overlay {
+    opacity: 1;
+}
+
+/* ===============================
+   MOBILE LAYOUT
+================================ */
+@media (max-width: 768px) {
+
+    .media-grid {
+        grid-template-columns: 1fr;
+        gap: 1.6rem;
+    }
+
+    .media-image {
+        aspect-ratio: 4 / 5; /* better for mobile viewing */
+        max-height: 75vh;
+    }
+
+    .media-overlay {
+        opacity: 1; /* always visible on mobile */
+        background: linear-gradient(
+            to top,
+            rgba(0,0,0,0.45),
+            rgba(0,0,0,0.15)
+        );
+    }
+}
+
+</style>
+<script>
+/* MOBILE VIDEO VISIBILITY FIX */
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.media-image video').forEach(video => {
+        video.muted = true;
+        video.playsInline = true;
+
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+                // Silent fail – user interaction will trigger later
+            });
+        }
+    });
+});
+</script>
+
 
 <!-- Video Zoom Overlay -->
 <div id="videoZoom" style="
