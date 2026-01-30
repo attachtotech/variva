@@ -698,3 +698,4 @@ function initMediaHoverEffects() {
     `;
     document.head.appendChild(style);
 }
+

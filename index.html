@@ -612,209 +612,359 @@ document.addEventListener('DOMContentLoaded', () => {
         </div>
     </section>
 
-  <!-- The Experience Section -->
-<section class="experience-section experience-valentine bordered-experience">
-    <div class="experience-frame">
-        <div class="section-container">
-            <div class="poetry-container luxury-poetry">
 
-                <div class="poetry-line" data-delay="0">
-                    <span>Some nights feel light and playful.</span>
+
+<!-- XO EXPERIENCE – STORY STEPS -->
+<section class="xo-experience-steps">
+
+    <div class="xo-experience-bg"></div>
+
+    <div class="section-container">
+        <div class="xo-experience-wrapper">
+
+            <span class="xo-eyebrow">The Experience</span>
+
+            <h2 class="xo-experience-title">
+                Love, <span>Designed in Moments</span>
+            </h2>
+
+            <p class="xo-experience-sub">
+                Issued in Love isn’t rushed.  
+                It unfolds — intentionally — through moments that feel right.
+            </p>
+
+            <div class="xo-steps">
+
+                <!-- STEP 1 -->
+                <div class="xo-step step-anticipation">
+                    <div class="xo-step-visual"></div>
+                    <h4>Anticipation</h4>
+                    <p>Thoughtful plans that give you something to look forward to.</p>
                 </div>
 
-                <div class="poetry-divider"></div>
-
-                <div class="poetry-line" data-delay="400">
-                    <span>Some feel deep and slow.</span>
+                <!-- STEP 2 -->
+                <div class="xo-step step-spontaneity">
+                    <div class="xo-step-visual"></div>
+                    <h4>Spontaneity</h4>
+                    <p>Unplanned gestures that feel effortless and alive.</p>
                 </div>
 
-                <div class="poetry-divider"></div>
-
-                <div class="poetry-line highlight-line pulse-glow" data-delay="800">
-                    <span>Issued in Love meets you where you are.</span>
+                <!-- STEP 3 -->
+                <div class="xo-step step-connection">
+                    <div class="xo-step-visual"></div>
+                    <h4>Connection</h4>
+                    <p>Moments that quietly deepen what already exists.</p>
                 </div>
 
             </div>
+
         </div>
     </div>
-
-    <!-- Floating Valentine Particles -->
-    <div class="valentine-particles"></div>
 </section>
 
-<!-- Inline Styles -->
 <style>
-/* Section Frame & Separation */
-.bordered-experience {
+ /* ===============================
+   XO EXPERIENCE – BASE
+================================ */
+.xo-experience-steps {
     position: relative;
-    padding: 7rem 0;
-    background: linear-gradient(180deg, #fdf9f6, #ffffff);
+    padding: 8rem 2rem;
+    background: linear-gradient(
+        180deg,
+        #fdf9f6,
+        #f7f2ec
+    );
+    overflow: hidden;
 }
 
-.experience-frame {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 5rem 2rem;
-    border-top: 1px solid rgba(122,28,63,0.18);
-    border-bottom: 1px solid rgba(122,28,63,0.18);
-    position: relative;
-}
-
-/* Decorative Accent Lines */
-.experience-frame::before,
-.experience-frame::after {
-    content: '';
+/* Soft ambient background */
+.xo-experience-bg {
     position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60px;
-    height: 2px;
-    background: linear-gradient(to right, transparent, #d4c5a2, transparent);
+    inset: 0;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(122,28,63,0.08), transparent 60%),
+        radial-gradient(circle at 80% 70%, rgba(212,197,162,0.12), transparent 60%);
+    pointer-events: none;
 }
 
-.experience-frame::before {
-    top: 1.8rem;
-}
-
-.experience-frame::after {
-    bottom: 1.8rem;
-}
-
-/* Poetry Container */
-.luxury-poetry {
-    text-align: center;
-    max-width: 760px;
+/* Wrapper */
+.xo-experience-wrapper {
+    position: relative;
+    max-width: 960px;
     margin: 0 auto;
+    text-align: center;
 }
 
-/* Poetry Lines (REDUCED SPACING) */
-.luxury-poetry .poetry-line {
+/* Eyebrow */
+.xo-eyebrow {
+    letter-spacing: 3px;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #7a1c3f;
+    opacity: 0.6;
+}
+
+/* Title */
+.xo-experience-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 2.6rem;
-    line-height: 1.45;
-    margin: 2.2rem 0;
+    font-size: 3.2rem;
+    color: #7a1c3f;
+    margin: 1.2rem 0;
+}
+
+.xo-experience-title span {
+    color: #5c2b46;
+}
+
+/* Sub */
+.xo-experience-sub {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #555;
+    max-width: 620px;
+    margin: 0 auto 4.5rem;
+}
+
+/* ===============================
+   STEPS LAYOUT
+================================ */
+.xo-steps {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+}
+
+.xo-step {
+    position: relative;
+    padding: 3.2rem 2rem;
+    border-radius: 26px;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(6px);
+    box-shadow: 0 20px 60px rgba(122,28,63,0.12);
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateY(40px);
     transition: all 1s cubic-bezier(0.23,1,0.32,1);
 }
 
-.luxury-poetry .poetry-line.visible {
+.xo-step.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-/* Divider Between Lines */
-.poetry-divider {
-    width: 70px;
-    height: 1px;
-    margin: 0.8rem auto;
-    background: linear-gradient(
-        to right,
-        transparent,
-        rgba(122,28,63,0.4),
-        transparent
-    );
-}
-
-/* Highlight Line */
-.luxury-poetry .highlight-line {
+.xo-step h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
     color: #7a1c3f;
-    font-size: 3rem;
-    font-weight: 600;
-    margin-top: 2.8rem;
+    margin-bottom: 0.6rem;
 }
 
-/* Glow Pulse Animation */
-.pulse-glow {
-    animation: pulseLove 3s ease-in-out infinite;
+.xo-step p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: #666;
 }
 
-@keyframes pulseLove {
-    0%, 100% {
-        text-shadow: 0 0 0 rgba(122,28,63,0);
-    }
-    50% {
-        text-shadow: 0 0 35px rgba(122,28,63,0.35);
-    }
+/* ===============================
+   STEP VISUAL CORE
+================================ */
+.xo-step-visual {
+    width: 72px;
+    height: 72px;
+    margin: 0 auto 1.6rem;
+    position: relative;
 }
 
-/* Valentine Floating Particles */
-.valentine-particles {
+/* -------------------------------
+   STEP 1 – ANTICIPATION
+   (Line draw / reveal)
+-------------------------------- */
+.step-anticipation .xo-step-visual::before {
+    content: '';
     position: absolute;
     inset: 0;
-    pointer-events: none;
-    z-index: 0;
+    border-radius: 50%;
+    border: 2px dashed rgba(122,28,63,0.6);
+    animation: drawCircle 2.5s ease forwards;
 }
 
-.valentine-particles span {
+@keyframes drawCircle {
+    from { stroke-dasharray: 0 300; opacity: 0; }
+    to   { stroke-dasharray: 300 0; opacity: 1; }
+}
+
+/* -------------------------------
+   STEP 2 – SPONTANEITY
+   (Pulse / breath)
+-------------------------------- */
+.step-spontaneity .xo-step-visual {
+    background: radial-gradient(circle, rgba(122,28,63,0.35), transparent 65%);
+    border-radius: 50%;
+    animation: pulseSoft 3s ease-in-out infinite;
+}
+
+@keyframes pulseSoft {
+    0%,100% { transform: scale(0.9); opacity: 0.7; }
+    50%     { transform: scale(1.05); opacity: 1; }
+}
+
+/* -------------------------------
+   STEP 3 – CONNECTION
+   (Interlocking motion)
+-------------------------------- */
+.step-connection .xo-step-visual::before,
+.step-connection .xo-step-visual::after {
+    content: '';
     position: absolute;
-    font-size: 18px;
-    color: rgba(122,28,63,0.15);
-    animation: floatLove 16s linear infinite;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    border: 2px solid rgba(122,28,63,0.6);
+    top: 15px;
 }
 
-@keyframes floatLove {
-    from {
-        transform: translateY(100vh) rotate(0deg);
-        opacity: 0;
+.step-connection .xo-step-visual::before {
+    left: 0;
+    animation: linkLeft 2s ease forwards;
+}
+
+.step-connection .xo-step-visual::after {
+    right: 0;
+    animation: linkRight 2s ease forwards;
+}
+
+@keyframes linkLeft {
+    from { transform: translateX(-20px); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes linkRight {
+    from { transform: translateX(20px); opacity: 0; }
+    to   { transform: translateX(0); opacity: 1; }
+}
+
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 768px) {
+
+    .xo-experience-title {
+        font-size: 2.3rem;
     }
-    15% { opacity: 1; }
-    to {
-        transform: translateY(-10vh) rotate(360deg);
-        opacity: 0;
+
+    .xo-experience-sub {
+        font-size: 1rem;
+        margin-bottom: 3.5rem;
+    }
+
+    .xo-steps {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
     }
 }
+/* ===============================
+   SCROLL MOTION – EXPERIENCE
+================================ */
+
+/* Enable GPU acceleration */
+.xo-step,
+.xo-step-visual {
+    will-change: transform;
+}
+
+/* Subtle parallax base */
+.xo-step {
+    transition: transform 0.3s linear;
+}
+
+/* Background motion */
+.xo-experience-bg {
+    transition: transform 0.3s linear;
+}
+
+
 </style>
-
-<!-- Inline Script -->
 <script>
+    
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Reveal poetry lines
-    document.querySelectorAll('.poetry-line').forEach((line, i) => {
-        const delay = line.dataset.delay || i * 300;
-        setTimeout(() => {
-            line.classList.add('visible');
-        }, delay);
-    });
+    const section = document.querySelector('.xo-experience-steps');
+    const steps = section.querySelectorAll('.xo-step');
 
-    // Floating Valentine particles
-    const container = document.querySelector('.valentine-particles');
-    const symbols = ['❤', '♡', '❥', '✦'];
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
 
-    for (let i = 0; i < 18; i++) {
-        const el = document.createElement('span');
-        el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
-        el.style.left = Math.random() * 100 + '%';
-        el.style.animationDuration = 12 + Math.random() * 12 + 's';
-        el.style.animationDelay = Math.random() * 6 + 's';
-        el.style.fontSize = 14 + Math.random() * 20 + 'px';
-        container.appendChild(el);
-    }
+            steps.forEach((step, i) => {
+                setTimeout(() => {
+                    step.classList.add('visible');
+                }, i * 350);
+            });
+
+            observer.disconnect();
+        });
+    }, { threshold: 0.4 });
+
+    observer.observe(section);
 });
 </script>
 
-    <!-- Gifting Angle Section -->
-    <section class="gifting-section">
-        <div class="section-container">
-            <div class="gifting-content">
-                <div class="gifting-line" data-delay="0">
-                    <h2>A gift that doesn't expire.</h2>
-                </div>
-                <div class="gifting-line" data-delay="500">
-                    <h2>Or end up in a drawer.</h2>
-                </div>
-                <p class="gifting-subtext">Meaningful connection, beautifully packaged.</p>
-            </div>
-        </div>
-    </section>
+<script>
+/* =====================================
+   XO EXPERIENCE – SCROLL MOTION ENGINE
+===================================== */
+document.addEventListener('DOMContentLoaded', () => {
 
-   <!-- Product Essence Section -->
+    const section = document.querySelector('.xo-experience-steps');
+    if (!section) return;
+
+    const steps = section.querySelectorAll('.xo-step');
+    const bg = section.querySelector('.xo-experience-bg');
+
+    function onScroll() {
+        const rect = section.getBoundingClientRect();
+        const viewH = window.innerHeight;
+
+        /* Progress from 0 → 1 while section is in view */
+        const progress = Math.min(
+            Math.max((viewH - rect.top) / (viewH + rect.height), 0),
+            1
+        );
+
+        /* Background drift */
+        if (bg) {
+            bg.style.transform = `translateY(${progress * 30}px)`;
+        }
+
+        /* Step depth motion */
+        steps.forEach((step, index) => {
+            const depth = (index + 1) * 12;
+            const lift = (0.5 - progress) * depth;
+
+            step.style.transform = `
+                translateY(${lift}px)
+            `;
+
+            /* Visual micro-motion */
+            const visual = step.querySelector('.xo-step-visual');
+            if (visual) {
+                const rotate = (progress - 0.5) * (index % 2 === 0 ? 6 : -6);
+                visual.style.transform = `rotate(${rotate}deg)`;
+            }
+        });
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
+});
+</script>
+
+
+<!-- Product Essence Section -->
 <section class="essence-section">
     <div class="section-container">
         <div class="essence-content">
-            
-            <!-- Text Side (UNCHANGED) -->
+
+            <!-- Text Side -->
             <div class="essence-text">
                 <h2 class="essence-title">The Essence</h2>
                 <div class="essence-divider"></div>
@@ -825,7 +975,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 </p>
             </div>
 
-            <!-- Visual Side (IMAGES INSTEAD OF CARDS) -->
+            <!-- Visual Side -->
             <div class="essence-visual">
                 <div class="essence-image-stack">
 
@@ -860,8 +1010,11 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
 </section>
 
-<!-- Inline Styles (ESSENCE IMAGES) -->
+
 <style>
+    /* ===============================
+   ESSENCE IMAGE STACK – BASE (DESKTOP)
+================================ */
 .essence-image-stack {
     position: relative;
     width: 100%;
@@ -876,14 +1029,15 @@ document.addEventListener('DOMContentLoaded', () => {
     overflow: hidden;
     background: #000;
     box-shadow: 0 20px 50px rgba(122,28,63,0.18);
-    transition: transform 0.8s cubic-bezier(0.23,1,0.32,1),
-                box-shadow 0.8s cubic-bezier(0.23,1,0.32,1);
+    transition:
+        transform 0.8s cubic-bezier(0.23,1,0.32,1),
+        box-shadow 0.8s cubic-bezier(0.23,1,0.32,1);
 }
 
 .essence-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover; /* FIXED SIZE, PROFESSIONAL */
+    object-fit: cover;
     display: block;
 }
 
@@ -898,7 +1052,6 @@ document.addEventListener('DOMContentLoaded', () => {
 .image-caption h4 {
     font-family: 'Cormorant Garamond', serif;
     font-size: 1.4rem;
-    margin-bottom: 0.3rem;
 }
 
 .image-caption p {
@@ -906,57 +1059,33 @@ document.addEventListener('DOMContentLoaded', () => {
     opacity: 0.9;
 }
 
-/* Positioning (Luxury Overlap) */
-.image-1 {
-    top: 0;
-    left: 0;
-    transform: rotate(-6deg);
-    z-index: 1;
+/* Desktop positioning */
+.image-1 { top: 0; left: 0; transform: rotate(-6deg); z-index: 1; }
+.image-2 { top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(2deg); z-index: 2; }
+.image-3 { bottom: 0; right: 0; transform: rotate(6deg); z-index: 1; }
+
+/* Hover luxury (desktop only) */
+@media (hover: hover) {
+    .essence-image-stack:hover .image-2 {
+        transform: translate(-50%, -50%) scale(1.06);
+        box-shadow: 0 30px 70px rgba(122,28,63,0.28);
+    }
 }
 
-.image-2 {
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%) rotate(2deg);
-    z-index: 2;
-}
-
-.image-3 {
-    bottom: 0;
-    right: 0;
-    transform: rotate(6deg);
-    z-index: 1;
-}
-
-/* Hover Luxury Interaction */
-.essence-image-stack:hover .image-1 {
-    transform: rotate(-9deg) translateX(-10px);
-}
-
-.essence-image-stack:hover .image-2 {
-    transform: translate(-50%, -50%) rotate(0deg) scale(1.06);
-    box-shadow: 0 30px 70px rgba(122,28,63,0.28);
-}
-
-.essence-image-stack:hover .image-3 {
-    transform: rotate(9deg) translateX(10px);
-}
 /* ===============================
-   XO LUXURY IMAGE VIEWER
+   XO LIGHTBOX – DESKTOP
 ================================ */
-
 .xo-lightbox {
     position: fixed;
     inset: 0;
-    background: rgba(20, 10, 15, 0.95);
-    backdrop-filter: blur(8px);
+    background: rgba(20,10,15,0.95);
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: 3000;
     opacity: 0;
     pointer-events: none;
-    transition: opacity 0.6s ease;
+    transition: opacity 0.5s ease;
 }
 
 .xo-lightbox.active {
@@ -964,16 +1093,16 @@ document.addEventListener('DOMContentLoaded', () => {
     pointer-events: auto;
 }
 
-/* Image container */
 .xo-lightbox-frame {
     position: relative;
-    width: min(80vw, 520px);
+    width: min(90vw, 520px);
     aspect-ratio: 3 / 4;
     border-radius: 20px;
     overflow: hidden;
+    background: #000;
     box-shadow: 0 40px 100px rgba(122,28,63,0.45);
     transform: scale(0.9);
-    transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);
+    transition: transform 0.5s cubic-bezier(0.23,1,0.32,1);
 }
 
 .xo-lightbox.active .xo-lightbox-frame {
@@ -986,7 +1115,6 @@ document.addEventListener('DOMContentLoaded', () => {
     object-fit: cover;
 }
 
-/* Caption */
 .xo-lightbox-caption {
     position: absolute;
     bottom: 0;
@@ -996,139 +1124,152 @@ document.addEventListener('DOMContentLoaded', () => {
     color: #fff;
 }
 
-.xo-lightbox-caption h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    margin-bottom: 0.3rem;
-}
-
-.xo-lightbox-caption p {
-    font-size: 0.95rem;
-    opacity: 0.9;
-}
-
-/* Controls */
 .xo-lightbox-btn {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: rgba(255,255,255,0.08);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
     border: none;
     color: #fff;
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    cursor: pointer;
-    font-size: 1.3rem;
-    backdrop-filter: blur(6px);
-    transition: all 0.3s ease;
+    font-size: 1.2rem;
 }
 
-.xo-lightbox-btn:hover {
-    background: rgba(255,255,255,0.18);
-    transform: translateY(-50%) scale(1.1);
-}
+.xo-prev { left: 10px; }
+.xo-next { right: 10px; }
 
-.xo-prev { left: -70px; }
-.xo-next { right: -70px; }
-
-/* Close */
 .xo-lightbox-close {
     position: absolute;
-    top: -60px;
-    right: 0;
+    top: 10px;
+    right: 12px;
     background: none;
     border: none;
     color: #fff;
     font-size: 1.6rem;
-    cursor: pointer;
-    opacity: 0.8;
 }
 
-.xo-lightbox-close:hover {
-    opacity: 1;
+/* =====================================
+   MOBILE FIX — FULL IMAGE VISIBILITY
+===================================== */
+@media (max-width: 768px) {
+
+    /* Lightbox container */
+    .xo-lightbox {
+        padding: 0;
+    }
+
+    /* Frame becomes viewport-based */
+    .xo-lightbox-frame {
+        width: 100vw;
+        height: 100vh;
+        max-width: none;
+        max-height: none;
+        aspect-ratio: unset;
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: #000;
+        transform: scale(1);
+    }
+
+    /* IMAGE — ALWAYS FULLY VISIBLE */
+    .xo-lightbox-frame img {
+        width: 100%;
+        height: auto;
+        max-height: 72vh;   /* KEY FIX */
+        object-fit: contain;
+        background: #000;
+        margin: 0 auto;
+    }
+
+    /* Caption BELOW image (no overlay crop) */
+    .xo-lightbox-caption {
+        position: relative;
+        padding: 1rem 1.2rem 1.4rem;
+        background: rgba(0,0,0,0.85);
+        text-align: center;
+    }
+
+    .xo-lightbox-caption h4 {
+        font-size: 1.2rem;
+    }
+
+    .xo-lightbox-caption p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* Controls thumb-safe */
+    .xo-lightbox-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+        background: rgba(255,255,255,0.15);
+    }
+
+    .xo-prev { left: 8px; }
+    .xo-next { right: 8px; }
+
+    .xo-lightbox-close {
+        top: 10px;
+        right: 12px;
+        font-size: 1.4rem;
+    }
 }
 
 </style>
+
 <script>
-/* XO Luxury Image Viewer – Essence Section */
 document.addEventListener('DOMContentLoaded', () => {
 
     const images = document.querySelectorAll('.essence-image');
-    if (!images.length) return;
+    let current = 0;
 
-    let currentIndex = 0;
-
-    /* Create lightbox */
     const lightbox = document.createElement('div');
     lightbox.className = 'xo-lightbox';
-
     lightbox.innerHTML = `
         <div class="xo-lightbox-frame">
             <button class="xo-lightbox-close">&times;</button>
-            <img src="" alt="">
-            <div class="xo-lightbox-caption">
-                <h4></h4>
-                <p></p>
-            </div>
+            <img>
+            <div class="xo-lightbox-caption"><h4></h4><p></p></div>
             <button class="xo-lightbox-btn xo-prev">&#10094;</button>
             <button class="xo-lightbox-btn xo-next">&#10095;</button>
         </div>
     `;
-
     document.body.appendChild(lightbox);
 
-    const imgEl = lightbox.querySelector('img');
-    const titleEl = lightbox.querySelector('h4');
-    const descEl = lightbox.querySelector('p');
+    const img = lightbox.querySelector('img');
+    const title = lightbox.querySelector('h4');
+    const desc = lightbox.querySelector('p');
 
-    function openLightbox(index) {
-        const img = images[index];
-        const src = img.querySelector('img').src;
-        const title = img.querySelector('h4').innerText;
-        const desc = img.querySelector('p').innerText;
-
-        imgEl.src = src;
-        titleEl.innerText = title;
-        descEl.innerText = desc;
-
-        currentIndex = index;
+    function open(i) {
+        current = i;
+        const el = images[i];
+        img.src = el.querySelector('img').src;
+        title.textContent = el.querySelector('h4').textContent;
+        desc.textContent = el.querySelector('p').textContent;
         lightbox.classList.add('active');
         document.body.style.overflow = 'hidden';
     }
 
-    function closeLightbox() {
+    function close() {
         lightbox.classList.remove('active');
         document.body.style.overflow = '';
     }
 
-    function showNext() {
-        openLightbox((currentIndex + 1) % images.length);
-    }
-
-    function showPrev() {
-        openLightbox((currentIndex - 1 + images.length) % images.length);
-    }
-
-    images.forEach((img, index) => {
-        img.style.cursor = 'zoom-in';
-        img.addEventListener('click', () => openLightbox(index));
+    images.forEach((el, i) => {
+        el.style.cursor = 'zoom-in';
+        el.onclick = () => open(i);
     });
 
-    lightbox.querySelector('.xo-next').onclick = showNext;
-    lightbox.querySelector('.xo-prev').onclick = showPrev;
-    lightbox.querySelector('.xo-lightbox-close').onclick = closeLightbox;
+    lightbox.querySelector('.xo-next').onclick = () => open((current+1)%images.length);
+    lightbox.querySelector('.xo-prev').onclick = () => open((current-1+images.length)%images.length);
+    lightbox.querySelector('.xo-lightbox-close').onclick = close;
+    lightbox.onclick = e => e.target === lightbox && close();
 
-    lightbox.addEventListener('click', e => {
-        if (e.target === lightbox) closeLightbox();
-    });
-
-    document.addEventListener('keydown', e => {
-        if (!lightbox.classList.contains('active')) return;
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowRight') showNext();
-        if (e.key === 'ArrowLeft') showPrev();
-    });
 });
 </script>
 
