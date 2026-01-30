@@ -1,0 +1,1373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XO, Variva | Issued in Love</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Luxury Toolbar -->
+    <header class="luxury-toolbar">
+        <div class="toolbar-container">
+            <div class="logo">XO, <span class="logo-variva">Variva</span></div>
+            <nav class="nav-menu">
+                <button class="menu-icon" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <button class="cart-icon" id="cartToggle">
+                    <i class="fas fa-shopping-bag"></i>
+                    <span class="cart-count">0</span>
+                </button>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Floating Menu -->
+    <div class="floating-menu" id="floatingMenu">
+        <button class="close-menu" id="closeMenu">
+            <i class="fas fa-times"></i>
+        </button>
+        <nav class="menu-items">
+            <a href="#" class="menu-item">The Experience</a>
+            <a href="#" class="menu-item">The Gift</a>
+            <a href="#" class="menu-item">Valentine's Edit</a>
+            <a href="#" class="menu-item">Journal</a>
+            <a href="#" class="menu-item">About</a>
+        </nav>
+    </div>
+
+    <!-- Luxury Cart Panel -->
+    <div class="cart-panel" id="cartPanel">
+        <div class="cart-header">
+            <h3>Your Selection</h3>
+            <button class="close-cart" id="closeCart">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="cart-content">
+            <div class="cart-item">
+                <div class="cart-item-image">
+                    <img src="main.jpg" alt="Issued in Love">
+                </div>
+                <div class="cart-item-details">
+                    <h4>Issued in Love</h4>
+                    <p>The couples game for intentional romance</p>
+                    <div class="cart-item-controls">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn minus">-</button>
+                            <span class="quantity">1</span>
+                            <button class="quantity-btn plus">+</button>
+                        </div>
+                        <span class="item-price">$68</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span class="total-price">$68</span>
+            </div>
+            <button class="whatsapp-cta" id="whatsappCheckout">
+                <i class="fab fa-whatsapp"></i>
+                Buy on WhatsApp
+            </button>
+            <p class="cart-note">You'll be redirected to WhatsApp to complete your purchase</p>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="product-title-container">
+                <h1 class="product-title">Issued in Love</h1>
+                <div class="title-line"></div>
+                <p class="product-tagline">A couples game designed for intentional romance.</p>
+                <p class="product-description">Thoughtfully curated prompts that help couples plan, surprise, and reconnect—naturally.</p>
+            </div>
+            
+            <div class="product-visual xo-hero-product">
+    <div class="xo-frame">
+        <img src="85920.jpg" alt="Issued in Love" class="xo-product-image">
+        <div class="xo-heart-glow"></div>
+        <div class="xo-pixel-border"></div>
+    </div>
+
+    <div class="xo-cta-block">
+        <h3 class="xo-title">Issued in Love</h3>
+        <button class="hero-cta xo-cta" id="heroCta">
+            Own the experience
+            <span class="cta-arrow">→</span>
+        </button>
+    </div>
+</div>
+
+
+        <!-- Animated Hearts Background -->
+        <div class="hearts-container" id="heartsContainer"></div>
+        
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>Explore</span>
+        </div>
+    </section>
+
+<style>
+/* XO HERO PRODUCT STYLE */
+.xo-hero-product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+/* Frame inspired by physical product */
+.xo-frame {
+    position: relative;
+    width: 300px;
+    aspect-ratio: 1 / 1;
+    background: linear-gradient(135deg, #7a1c3f, #9a3459);
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: 0 30px 80px rgba(122,28,63,0.35);
+    animation: xoFloat 6s ease-in-out infinite;
+    transform-style: preserve-3d;
+}
+
+/* Image fixed perfectly */
+.xo-product-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 12px;
+    z-index: 2;
+    position: relative;
+}
+
+/* Pixel-heart inspired border */
+.xo-pixel-border {
+    position: absolute;
+    inset: -14px;
+    border-radius: 22px;
+    border: 3px solid rgba(255,255,255,0.15);
+    clip-path: polygon(
+        20% 0%, 80% 0%, 100% 20%, 100% 80%,
+        80% 100%, 20% 100%, 0% 80%, 0% 20%
+    );
+    animation: xoRotate 18s linear infinite;
+}
+
+/* Warm heart glow */
+.xo-heart-glow {
+    position: absolute;
+    inset: -35%;
+    background: radial-gradient(circle, rgba(255,80,120,0.35), transparent 65%);
+    opacity: 0.7;
+    z-index: 0;
+    animation: glowPulse 5s ease-in-out infinite;
+}
+
+/* Title + CTA below */
+.xo-title {
+    font-family: var(--font-serif);
+    font-size: 1.6rem;
+    color: var(--deep-maroon);
+    letter-spacing: 1px;
+    text-align: center;
+}
+
+/* Refined CTA */
+.xo-cta {
+    padding: 1rem 2.4rem;
+    border-radius: 50px;
+    font-size: 1rem;
+    background: var(--deep-maroon);
+    box-shadow: 0 15px 35px rgba(122,28,63,0.35);
+}
+
+/* Animations */
+@keyframes xoFloat {
+    0%,100% { transform: translateY(0) rotateX(0deg); }
+    50% { transform: translateY(-14px) rotateX(6deg); }
+}
+
+@keyframes xoRotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+@keyframes glowPulse {
+    0%,100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+}
+
+</style>
+<script>
+/* XO Interactive Tilt */
+const xoFrame = document.querySelector('.xo-frame');
+
+document.addEventListener('mousemove', (e) => {
+    if (!xoFrame) return;
+
+    const x = (e.clientX / window.innerWidth - 0.5) * 14;
+    const y = (e.clientY / window.innerHeight - 0.5) * 10;
+
+    xoFrame.style.transform = `
+        rotateY(${x}deg)
+        rotateX(${-y}deg)
+        translateY(-8px)
+    `;
+});
+
+document.addEventListener('mouseleave', () => {
+    if (xoFrame) {
+        xoFrame.style.transform = 'rotateX(0) rotateY(0)';
+    }
+});
+</script>
+
+
+
+
+    <!-- What Makes It Different Section -->
+    <section class="different-section">
+        <div class="section-container">
+            <div class="section-header">
+                <h2 class="section-title">What Makes It Different</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <h3>Designed for Modern Couples</h3>
+                    <p>Created with contemporary relationships in mind—adaptable, honest, and real.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3>Intention Meets Spontaneity</h3>
+                    <p>Balances planned connection with organic moments that arise naturally.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3>For All Chapters of Love</h3>
+                    <p>Works beautifully for new beginnings and deepening long-term connections.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+  <!-- The Experience Section -->
+<section class="experience-section experience-valentine bordered-experience">
+    <div class="experience-frame">
+        <div class="section-container">
+            <div class="poetry-container luxury-poetry">
+
+                <div class="poetry-line" data-delay="0">
+                    <span>Some nights feel light and playful.</span>
+                </div>
+
+                <div class="poetry-divider"></div>
+
+                <div class="poetry-line" data-delay="400">
+                    <span>Some feel deep and slow.</span>
+                </div>
+
+                <div class="poetry-divider"></div>
+
+                <div class="poetry-line highlight-line pulse-glow" data-delay="800">
+                    <span>Issued in Love meets you where you are.</span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Valentine Particles -->
+    <div class="valentine-particles"></div>
+</section>
+
+<!-- Inline Styles -->
+<style>
+/* Section Frame & Separation */
+.bordered-experience {
+    position: relative;
+    padding: 7rem 0;
+    background: linear-gradient(180deg, #fdf9f6, #ffffff);
+}
+
+.experience-frame {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 5rem 2rem;
+    border-top: 1px solid rgba(122,28,63,0.18);
+    border-bottom: 1px solid rgba(122,28,63,0.18);
+    position: relative;
+}
+
+/* Decorative Accent Lines */
+.experience-frame::before,
+.experience-frame::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #d4c5a2, transparent);
+}
+
+.experience-frame::before {
+    top: 1.8rem;
+}
+
+.experience-frame::after {
+    bottom: 1.8rem;
+}
+
+/* Poetry Container */
+.luxury-poetry {
+    text-align: center;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+/* Poetry Lines (REDUCED SPACING) */
+.luxury-poetry .poetry-line {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.6rem;
+    line-height: 1.45;
+    margin: 2.2rem 0;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.23,1,0.32,1);
+}
+
+.luxury-poetry .poetry-line.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Divider Between Lines */
+.poetry-divider {
+    width: 70px;
+    height: 1px;
+    margin: 0.8rem auto;
+    background: linear-gradient(
+        to right,
+        transparent,
+        rgba(122,28,63,0.4),
+        transparent
+    );
+}
+
+/* Highlight Line */
+.luxury-poetry .highlight-line {
+    color: #7a1c3f;
+    font-size: 3rem;
+    font-weight: 600;
+    margin-top: 2.8rem;
+}
+
+/* Glow Pulse Animation */
+.pulse-glow {
+    animation: pulseLove 3s ease-in-out infinite;
+}
+
+@keyframes pulseLove {
+    0%, 100% {
+        text-shadow: 0 0 0 rgba(122,28,63,0);
+    }
+    50% {
+        text-shadow: 0 0 35px rgba(122,28,63,0.35);
+    }
+}
+
+/* Valentine Floating Particles */
+.valentine-particles {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 0;
+}
+
+.valentine-particles span {
+    position: absolute;
+    font-size: 18px;
+    color: rgba(122,28,63,0.15);
+    animation: floatLove 16s linear infinite;
+}
+
+@keyframes floatLove {
+    from {
+        transform: translateY(100vh) rotate(0deg);
+        opacity: 0;
+    }
+    15% { opacity: 1; }
+    to {
+        transform: translateY(-10vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+
+<!-- Inline Script -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Reveal poetry lines
+    document.querySelectorAll('.poetry-line').forEach((line, i) => {
+        const delay = line.dataset.delay || i * 300;
+        setTimeout(() => {
+            line.classList.add('visible');
+        }, delay);
+    });
+
+    // Floating Valentine particles
+    const container = document.querySelector('.valentine-particles');
+    const symbols = ['❤', '♡', '❥', '✦'];
+
+    for (let i = 0; i < 18; i++) {
+        const el = document.createElement('span');
+        el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        el.style.left = Math.random() * 100 + '%';
+        el.style.animationDuration = 12 + Math.random() * 12 + 's';
+        el.style.animationDelay = Math.random() * 6 + 's';
+        el.style.fontSize = 14 + Math.random() * 20 + 'px';
+        container.appendChild(el);
+    }
+});
+</script>
+
+    <!-- Gifting Angle Section -->
+    <section class="gifting-section">
+        <div class="section-container">
+            <div class="gifting-content">
+                <div class="gifting-line" data-delay="0">
+                    <h2>A gift that doesn't expire.</h2>
+                </div>
+                <div class="gifting-line" data-delay="500">
+                    <h2>Or end up in a drawer.</h2>
+                </div>
+                <p class="gifting-subtext">Meaningful connection, beautifully packaged.</p>
+            </div>
+        </div>
+    </section>
+
+   <!-- Product Essence Section -->
+<section class="essence-section">
+    <div class="section-container">
+        <div class="essence-content">
+            
+            <!-- Text Side (UNCHANGED) -->
+            <div class="essence-text">
+                <h2 class="essence-title">The Essence</h2>
+                <div class="essence-divider"></div>
+                <p class="essence-description">
+                    Issued in Love is built around 24 thoughtfully designed coupons, split into big and small moments.
+                    Some invite intention and planning. Others keep things light, spontaneous, and playful.
+                    Together, they create a rhythm of connection that fits naturally into modern relationships.
+                </p>
+            </div>
+
+            <!-- Visual Side (IMAGES INSTEAD OF CARDS) -->
+            <div class="essence-visual">
+                <div class="essence-image-stack">
+
+                    <div class="essence-image image-1">
+                        <img src="85058 (1).jpg" alt="Plan & Anticipate">
+                        <div class="image-caption">
+                            <h4>Plan & Anticipate</h4>
+                            <p>Thoughtful dates to look forward to</p>
+                        </div>
+                    </div>
+
+                    <div class="essence-image image-2">
+                        <img src="85920.jpg" alt="Spontaneous Joy">
+                        <div class="image-caption">
+                            <h4>Spontaneous Joy</h4>
+                            <p>Light moments for everyday connection</p>
+                        </div>
+                    </div>
+
+                    <div class="essence-image image-3">
+                        <img src="85923.jpg" alt="Deepen & Reconnect">
+                        <div class="image-caption">
+                            <h4>Deepen & Reconnect</h4>
+                            <p>Meaningful exchanges to strengthen bonds</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Inline Styles (ESSENCE IMAGES) -->
+<style>
+.essence-image-stack {
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+
+.essence-image {
+    position: absolute;
+    width: 280px;
+    height: 360px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 20px 50px rgba(122,28,63,0.18);
+    transition: transform 0.8s cubic-bezier(0.23,1,0.32,1),
+                box-shadow 0.8s cubic-bezier(0.23,1,0.32,1);
+}
+
+.essence-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* FIXED SIZE, PROFESSIONAL */
+    display: block;
+}
+
+.image-caption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 1.2rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
+    color: #fff;
+}
+
+.image-caption h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.3rem;
+}
+
+.image-caption p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Positioning (Luxury Overlap) */
+.image-1 {
+    top: 0;
+    left: 0;
+    transform: rotate(-6deg);
+    z-index: 1;
+}
+
+.image-2 {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(2deg);
+    z-index: 2;
+}
+
+.image-3 {
+    bottom: 0;
+    right: 0;
+    transform: rotate(6deg);
+    z-index: 1;
+}
+
+/* Hover Luxury Interaction */
+.essence-image-stack:hover .image-1 {
+    transform: rotate(-9deg) translateX(-10px);
+}
+
+.essence-image-stack:hover .image-2 {
+    transform: translate(-50%, -50%) rotate(0deg) scale(1.06);
+    box-shadow: 0 30px 70px rgba(122,28,63,0.28);
+}
+
+.essence-image-stack:hover .image-3 {
+    transform: rotate(9deg) translateX(10px);
+}
+/* ===============================
+   XO LUXURY IMAGE VIEWER
+================================ */
+
+.xo-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(20, 10, 15, 0.95);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.6s ease;
+}
+
+.xo-lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Image container */
+.xo-lightbox-frame {
+    position: relative;
+    width: min(80vw, 520px);
+    aspect-ratio: 3 / 4;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 40px 100px rgba(122,28,63,0.45);
+    transform: scale(0.9);
+    transition: transform 0.6s cubic-bezier(0.23,1,0.32,1);
+}
+
+.xo-lightbox.active .xo-lightbox-frame {
+    transform: scale(1);
+}
+
+.xo-lightbox-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Caption */
+.xo-lightbox-caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1.4rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+    color: #fff;
+}
+
+.xo-lightbox-caption h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    margin-bottom: 0.3rem;
+}
+
+.xo-lightbox-caption p {
+    font-size: 0.95rem;
+    opacity: 0.9;
+}
+
+/* Controls */
+.xo-lightbox-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(255,255,255,0.08);
+    border: none;
+    color: #fff;
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.3rem;
+    backdrop-filter: blur(6px);
+    transition: all 0.3s ease;
+}
+
+.xo-lightbox-btn:hover {
+    background: rgba(255,255,255,0.18);
+    transform: translateY(-50%) scale(1.1);
+}
+
+.xo-prev { left: -70px; }
+.xo-next { right: -70px; }
+
+/* Close */
+.xo-lightbox-close {
+    position: absolute;
+    top: -60px;
+    right: 0;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.6rem;
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.xo-lightbox-close:hover {
+    opacity: 1;
+}
+
+</style>
+<script>
+/* XO Luxury Image Viewer – Essence Section */
+document.addEventListener('DOMContentLoaded', () => {
+
+    const images = document.querySelectorAll('.essence-image');
+    if (!images.length) return;
+
+    let currentIndex = 0;
+
+    /* Create lightbox */
+    const lightbox = document.createElement('div');
+    lightbox.className = 'xo-lightbox';
+
+    lightbox.innerHTML = `
+        <div class="xo-lightbox-frame">
+            <button class="xo-lightbox-close">&times;</button>
+            <img src="" alt="">
+            <div class="xo-lightbox-caption">
+                <h4></h4>
+                <p></p>
+            </div>
+            <button class="xo-lightbox-btn xo-prev">&#10094;</button>
+            <button class="xo-lightbox-btn xo-next">&#10095;</button>
+        </div>
+    `;
+
+    document.body.appendChild(lightbox);
+
+    const imgEl = lightbox.querySelector('img');
+    const titleEl = lightbox.querySelector('h4');
+    const descEl = lightbox.querySelector('p');
+
+    function openLightbox(index) {
+        const img = images[index];
+        const src = img.querySelector('img').src;
+        const title = img.querySelector('h4').innerText;
+        const desc = img.querySelector('p').innerText;
+
+        imgEl.src = src;
+        titleEl.innerText = title;
+        descEl.innerText = desc;
+
+        currentIndex = index;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    function showNext() {
+        openLightbox((currentIndex + 1) % images.length);
+    }
+
+    function showPrev() {
+        openLightbox((currentIndex - 1 + images.length) % images.length);
+    }
+
+    images.forEach((img, index) => {
+        img.style.cursor = 'zoom-in';
+        img.addEventListener('click', () => openLightbox(index));
+    });
+
+    lightbox.querySelector('.xo-next').onclick = showNext;
+    lightbox.querySelector('.xo-prev').onclick = showPrev;
+    lightbox.querySelector('.xo-lightbox-close').onclick = closeLightbox;
+
+    lightbox.addEventListener('click', e => {
+        if (e.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener('keydown', e => {
+        if (!lightbox.classList.contains('active')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowRight') showNext();
+        if (e.key === 'ArrowLeft') showPrev();
+    });
+});
+</script>
+
+
+   <!-- Valentine's Edit Section -->
+<section class="valentine-section xo-valentine">
+    <div class="valentine-border"></div>
+
+    <div class="section-container">
+        <div class="valentine-core">
+
+            <div class="valentine-label">
+                <span>Valentine’s Edit</span>
+                <div class="label-divider"></div>
+            </div>
+
+            <h2 class="valentine-title">
+                Issued in Love <span>remains the hero</span>
+            </h2>
+
+            <p class="valentine-description">
+                This Valentine’s, give more than flowers or chocolates.
+                <br>
+                <strong>Give intentional connection</strong> that lasts beyond a single day.
+            </p>
+
+            <!-- Floating hearts -->
+            <div class="valentine-hearts"></div>
+
+        </div>
+    </div>
+</section>
+<style>/* ===============================
+   XO VALENTINE SIGNATURE SECTION
+================================ */
+
+.xo-valentine {
+    position: relative;
+    background: radial-gradient(
+        circle at top,
+        rgba(122,28,63,0.08),
+        #f5f1e8 70%
+    );
+    padding: 7rem 2rem;
+    overflow: hidden;
+}
+
+/* Section border frame */
+.valentine-border {
+    position: absolute;
+    inset: 20px;
+    border-radius: 26px;
+    border: 1px solid rgba(122,28,63,0.15);
+    pointer-events: none;
+}
+
+/* Core content */
+.valentine-core {
+    position: relative;
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+/* Label */
+.valentine-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+}
+
+.valentine-label.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Title */
+.valentine-title {
+    font-family: var(--font-serif);
+    font-size: 3rem;
+    color: var(--deep-maroon);
+    margin-bottom: 1.5rem;
+    opacity: 0;
+    transform: scale(0.95);
+    transition: all 1s cubic-bezier(0.23,1,0.32,1);
+}
+
+.valentine-title span {
+    display: block;
+    font-size: 2.2rem;
+    color: #5c2b46;
+    margin-top: 0.5rem;
+}
+
+/* Description */
+.valentine-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: #555;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 1s cubic-bezier(0.23,1,0.32,1) 0.4s;
+}
+
+/* Reveal states */
+.valentine-title.visible,
+.valentine-description.visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* Floating heart particles */
+.valentine-hearts {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.valentine-heart {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background: var(--deep-maroon);
+    clip-path: polygon(
+        50% 0%, 100% 35%, 80% 100%,
+        50% 75%, 20% 100%, 0% 35%
+    );
+    opacity: 0.25;
+    animation: heartFloat 6s ease-in-out infinite;
+}
+
+@keyframes heartFloat {
+    0%,100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-40px) scale(1.2); }
+}
+</style>
+
+<script>
+/* XO Valentine Reveal + Floating Hearts */
+document.addEventListener('DOMContentLoaded', () => {
+
+    const section = document.querySelector('.xo-valentine');
+    const label = section.querySelector('.valentine-label');
+    const title = section.querySelector('.valentine-title');
+    const desc  = section.querySelector('.valentine-description');
+    const heartsContainer = section.querySelector('.valentine-hearts');
+
+    /* Reveal observer */
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                label.classList.add('visible');
+                setTimeout(() => title.classList.add('visible'), 300);
+                setTimeout(() => desc.classList.add('visible'), 600);
+            }
+        });
+    }, { threshold: 0.4 });
+
+    observer.observe(section);
+
+    /* Create floating hearts */
+    for (let i = 0; i < 14; i++) {
+        const heart = document.createElement('div');
+        heart.className = 'valentine-heart';
+
+        heart.style.left = Math.random() * 100 + '%';
+        heart.style.top = Math.random() * 100 + '%';
+        heart.style.animationDelay = Math.random() * 5 + 's';
+        heart.style.opacity = Math.random() * 0.3 + 0.1;
+
+        heartsContainer.appendChild(heart);
+    }
+});
+</script>
+
+    <!-- Media Reels Section -->
+<section class="media-section">
+    <div class="section-container">
+        <div class="media-header">
+            <h2 class="media-title">Moments of Connection</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <!-- Media Grid (VIDEOS ONLY) -->
+        <div class="media-grid">
+            <div class="media-item" onclick="openVideoZoom(this)">
+                <div class="media-image">
+                    <video src="video1.mp4" muted loop playsinline></video>
+                    <div class="media-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="media-item" onclick="openVideoZoom(this)">
+                <div class="media-image">
+                    <video src="video2.mp4" muted loop playsinline></video>
+                    <div class="media-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="media-item" onclick="openVideoZoom(this)">
+                <div class="media-image">
+                    <video src="video3.mp4" muted loop playsinline></video>
+                    <div class="media-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Video Zoom Overlay -->
+<div id="videoZoom" style="
+    position: fixed;
+    inset: 0;
+    background: rgba(122,28,63,0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+">
+    <div id="videoZoomBox" style="
+        position: relative;
+        width: 85%;
+        max-width: 1000px;
+        aspect-ratio: 16 / 9;
+        background: #000;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 50px 140px rgba(0,0,0,0.7);
+        transform: scale(0.9);
+        transition: transform 0.5s ease;
+    ">
+        <video id="videoZoomPlayer" controls autoplay playsinline
+            style="
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                background: #000;
+            ">
+        </video>
+
+        <button onclick="closeVideoZoom()" style="
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        ">✕</button>
+    </div>
+</div>
+
+<script>
+/* Auto play preview videos */
+document.querySelectorAll('.media-image video').forEach(video => {
+    video.play().catch(() => {});
+});
+
+/* Open zoom */
+function openVideoZoom(element) {
+    const sourceVideo = element.querySelector('video');
+    const zoom = document.getElementById('videoZoom');
+    const zoomBox = document.getElementById('videoZoomBox');
+    const zoomPlayer = document.getElementById('videoZoomPlayer');
+
+    zoomPlayer.src = sourceVideo.src;
+    zoomPlayer.currentTime = 0;
+
+    zoom.style.opacity = '1';
+    zoom.style.pointerEvents = 'auto';
+    zoomBox.style.transform = 'scale(1)';
+    document.body.style.overflow = 'hidden';
+
+    zoomPlayer.play();
+}
+
+/* Close zoom */
+function closeVideoZoom() {
+    const zoom = document.getElementById('videoZoom');
+    const zoomBox = document.getElementById('videoZoomBox');
+    const zoomPlayer = document.getElementById('videoZoomPlayer');
+
+    zoomPlayer.pause();
+    zoomPlayer.src = '';
+
+    zoom.style.opacity = '0';
+    zoom.style.pointerEvents = 'none';
+    zoomBox.style.transform = 'scale(0.9)';
+    document.body.style.overflow = '';
+}
+</script>
+
+
+    <!-- Purchase Section -->
+    <section class="purchase-section">
+        <div class="section-container">
+            <div class="purchase-content">
+                <div class="purchase-image">
+                    <img src="main.jpg" alt="Issued in Love">
+                </div>
+                <div class="purchase-details">
+                    <h2 class="purchase-title">Issued in Love</h2>
+                    <p class="purchase-price">$68</p>
+                    <p class="purchase-description">
+                        A beautifully crafted experience for couples seeking intentional connection. 
+                        24 thoughtfully designed coupons, premium packaging, and a guide to deepening your relationship.
+                    </p>
+                    
+                    <div class="purchase-features">
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>24 curated connection prompts</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Premium matte finish cards</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Luxury gift packaging</span>
+                        </div>
+                        <div class="feature">
+                            <i class="fas fa-check"></i>
+                            <span>Digital guide included</span>
+                        </div>
+                    </div>
+                    
+                    <div class="quantity-selector purchase-qty">
+                        <span>Quantity:</span>
+                        <div class="qty-controls">
+                            <button class="qty-btn minus">-</button>
+                            <span class="qty-value">1</span>
+                            <button class="qty-btn plus">+</button>
+                        </div>
+                    </div>
+                    
+                    <button class="purchase-cta" id="purchaseCta">
+                        <i class="fab fa-whatsapp"></i>
+                        Buy on WhatsApp
+                    </button>
+                    
+                    <p class="purchase-note">
+                        You'll be redirected to WhatsApp to complete your purchase with personalized assistance.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <style>
+        /* ===============================
+   PURCHASE – COMMITMENT MOMENT
+================================ */
+
+.purchase-section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* Image: intentional lock-in motion */
+.purchase-image {
+    transform: scale(0.9) rotate(-2deg);
+    opacity: 0;
+    transition: all 1.2s cubic-bezier(0.23,1,0.32,1);
+}
+
+.purchase-image.revealed {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+}
+
+/* Subtle aura behind image */
+.purchase-image::after {
+    content: '';
+    position: absolute;
+    inset: -30%;
+    background: radial-gradient(
+        circle,
+        rgba(122,28,63,0.25),
+        transparent 65%
+    );
+    opacity: 0;
+    transition: opacity 1.2s ease;
+    z-index: -1;
+}
+
+.purchase-image.revealed::after {
+    opacity: 1;
+}
+
+/* Title enters with gravity */
+.purchase-title {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 1s cubic-bezier(0.23,1,0.32,1);
+}
+
+.purchase-title.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Price breathing animation */
+.purchase-price {
+    opacity: 0;
+    transform: scale(0.9);
+}
+
+.purchase-price.revealed {
+    opacity: 1;
+    transform: scale(1);
+    animation: priceBreath 3s ease-in-out infinite;
+}
+
+@keyframes priceBreath {
+    0%,100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
+
+/* Description soft fade */
+.purchase-description {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.9s ease 0.3s;
+}
+
+.purchase-description.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Features = vow-style reveal */
+.purchase-features .feature {
+    opacity: 0;
+    transform: translateX(-20px);
+    transition: all 0.7s cubic-bezier(0.23,1,0.32,1);
+}
+
+.purchase-features .feature.revealed {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Quantity fades in calmly */
+.purchase-qty {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: all 0.8s ease 0.5s;
+}
+
+.purchase-qty.revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* CTA = final invitation */
+.purchase-cta {
+    opacity: 0;
+    transform: translateY(25px) scale(0.95);
+    transition: all 1s cubic-bezier(0.23,1,0.32,1);
+}
+
+.purchase-cta.revealed {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    animation: ctaPulseSoft 2.8s ease-in-out infinite;
+}
+
+@keyframes ctaPulseSoft {
+    0%,100% {
+        box-shadow: 0 15px 35px rgba(122,28,63,0.25);
+    }
+    50% {
+        box-shadow: 0 25px 60px rgba(122,28,63,0.45);
+    }
+}
+
+    </style>
+<script>
+/* PURCHASE SECTION – COMMITMENT SEQUENCE */
+document.addEventListener('DOMContentLoaded', () => {
+
+    const section = document.querySelector('.purchase-section');
+    if (!section) return;
+
+    const image = section.querySelector('.purchase-image');
+    const title = section.querySelector('.purchase-title');
+    const price = section.querySelector('.purchase-price');
+    const desc  = section.querySelector('.purchase-description');
+    const features = section.querySelectorAll('.purchase-features .feature');
+    const qty = section.querySelector('.purchase-qty');
+    const cta = section.querySelector('.purchase-cta');
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+
+            image.classList.add('revealed');
+
+            setTimeout(() => title.classList.add('revealed'), 200);
+            setTimeout(() => price.classList.add('revealed'), 350);
+            setTimeout(() => desc.classList.add('revealed'), 550);
+
+            features.forEach((feature, i) => {
+                setTimeout(() => {
+                    feature.classList.add('revealed');
+                }, 700 + i * 180);
+            });
+
+            setTimeout(() => qty.classList.add('revealed'), 1400);
+            setTimeout(() => cta.classList.add('revealed'), 1650);
+
+            observer.disconnect();
+        });
+    }, { threshold: 0.45 });
+
+    observer.observe(section);
+});
+</script>
+
+
+    <!-- Footer -->
+    <footer class="luxury-footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <div class="footer-logo">XO, <span class="logo-variva">Variva</span></div>
+                <p class="footer-tagline">Intentional connections, beautifully crafted.</p>
+            </div>
+            <div class="footer-links">
+                <a href="#" class="footer-link">Contact</a>
+                <a href="#" class="footer-link">FAQ</a>
+                <a href="#" class="footer-link">Shipping</a>
+                <a href="#" class="footer-link">Privacy</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-link">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="fab fa-pinterest"></i>
+                </a>
+                <a href="#" class="social-link">
+                    <i class="far fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 XO, Variva. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Sticky Mobile CTA -->
+    <div class="sticky-mobile-cta" id="stickyCta">
+        <button class="mobile-whatsapp-btn" id="mobileWhatsapp">
+            <i class="fab fa-whatsapp"></i>
+            Buy on WhatsApp
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+    <script src="js/cart.js"></script>
+    <script src="js/animations.js"></script>
+</body>
+</html>
