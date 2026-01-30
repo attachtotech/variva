@@ -10,6 +10,231 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+    /* =========================================
+   XO VARIVA — MOBILE LUXURY REFINEMENT
+========================================= */
+
+@media (max-width: 768px) {
+
+    /* ---------- GLOBAL ---------- */
+    body {
+        overflow-x: hidden;
+    }
+
+    section {
+        padding: 4.5rem 1.4rem;
+    }
+
+    .section-container {
+        padding: 0;
+    }
+
+    /* ---------- HERO SECTION ---------- */
+    .hero-content {
+        grid-template-columns: 1fr;
+        gap: 3.2rem;
+        text-align: center;
+    }
+
+    .product-title {
+        font-size: 2.4rem;
+        line-height: 1.2;
+    }
+
+    .product-tagline {
+        font-size: 1.05rem;
+    }
+
+    .product-description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+        max-width: 90%;
+        margin: 0 auto;
+    }
+
+    .xo-frame {
+        width: 240px;
+        padding: 14px;
+        animation: none; /* reduce motion overload */
+    }
+
+    .xo-title {
+        font-size: 1.3rem;
+    }
+
+    .hero-cta {
+        width: 100%;
+        max-width: 260px;
+        margin: 0 auto;
+    }
+
+    /* ---------- EXPERIENCE / POETRY ---------- */
+    .luxury-poetry .poetry-line {
+        font-size: 1.8rem;
+        margin: 1.6rem 0;
+    }
+
+    .luxury-poetry .highlight-line {
+        font-size: 2rem;
+        margin-top: 2rem;
+    }
+
+    .experience-frame {
+        padding: 3.5rem 1.4rem;
+    }
+
+    /* ---------- ESSENCE IMAGE STACK ---------- */
+    .essence-content {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+    }
+
+    .essence-image-stack {
+        position: static;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+    }
+
+    .essence-image {
+        position: relative;
+        width: 100%;
+        height: 320px;
+        transform: none !important;
+    }
+
+    .image-caption h4 {
+        font-size: 1.2rem;
+    }
+
+    .image-caption p {
+        font-size: 0.85rem;
+    }
+
+    /* ---------- VALENTINE SECTION ---------- */
+    .xo-valentine {
+        padding: 5.5rem 1.4rem;
+    }
+
+    .valentine-border {
+        inset: 12px;
+    }
+
+    .valentine-title {
+        font-size: 2.2rem;
+    }
+
+    .valentine-title span {
+        font-size: 1.7rem;
+    }
+
+    .valentine-description {
+        font-size: 1.05rem;
+        line-height: 1.7;
+    }
+
+    /* ---------- MEDIA (VIDEO) ---------- */
+    .media-grid {
+        grid-template-columns: 1fr;
+        gap: 1.4rem;
+    }
+
+    .media-image video {
+        height: 240px;
+        object-fit: cover;
+    }
+
+    /* ---------- PURCHASE SECTION ---------- */
+    .purchase-content {
+        grid-template-columns: 1fr;
+        gap: 3.5rem;
+    }
+
+    .purchase-image {
+        max-width: 300px;
+        margin: 0 auto;
+    }
+
+    .purchase-title {
+        font-size: 2.1rem;
+    }
+
+    .purchase-price {
+        font-size: 1.8rem;
+    }
+
+    .purchase-description {
+        font-size: 0.95rem;
+        line-height: 1.6;
+    }
+
+    .purchase-features {
+        gap: 0.9rem;
+    }
+
+    .purchase-cta {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* ---------- CART & MENU ---------- */
+    .cart-panel,
+    .floating-menu {
+        width: 100%;
+    }
+
+    /* ---------- FOOTER ---------- */
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        text-align: center;
+    }
+
+    .footer-links {
+        align-items: center;
+    }
+
+    .footer-social {
+        justify-content: center;
+    }
+
+    /* ---------- PERFORMANCE SAFETY ---------- */
+    .floating-elements,
+    .morphing-shapes,
+    .valentine-hearts {
+        opacity: 0.12;
+    }
+}
+
+/* =========================================
+   SMALL PHONES (≤ 390px)
+========================================= */
+@media (max-width: 390px) {
+
+    .product-title {
+        font-size: 2.1rem;
+    }
+
+    .luxury-poetry .poetry-line {
+        font-size: 1.6rem;
+    }
+
+    .luxury-poetry .highlight-line {
+        font-size: 1.8rem;
+    }
+
+    .essence-image {
+        height: 280px;
+    }
+
+    .valentine-title {
+        font-size: 2rem;
+    }
+}
+
+</style>
 </head>
 <body>
     <!-- Luxury Toolbar -->
@@ -83,119 +308,150 @@
     </div>
 
     <!-- Hero Section -->
-    <section class="hero-section">
-        <div class="hero-content">
-            <div class="product-title-container">
-                <h1 class="product-title">Issued in Love</h1>
-                <div class="title-line"></div>
-                <p class="product-tagline">A couples game designed for intentional romance.</p>
-                <p class="product-description">Thoughtfully curated prompts that help couples plan, surprise, and reconnect—naturally.</p>
-            </div>
-            
-            <div class="product-visual xo-hero-product">
-    <div class="xo-frame">
-        <img src="85920.jpg" alt="Issued in Love" class="xo-product-image">
-        <div class="xo-heart-glow"></div>
-        <div class="xo-pixel-border"></div>
-    </div>
+<!-- Hero Section -->
+<section class="hero-section xo-hero-fixed">
+    <div class="hero-content">
 
-    <div class="xo-cta-block">
-        <h3 class="xo-title">Issued in Love</h3>
-        <button class="hero-cta xo-cta" id="heroCta">
-            Own the experience
-            <span class="cta-arrow">→</span>
-        </button>
-    </div>
-</div>
-
-
-        <!-- Animated Hearts Background -->
-        <div class="hearts-container" id="heartsContainer"></div>
-        
-        <!-- Scroll Indicator -->
-        <div class="scroll-indicator">
-            <div class="scroll-line"></div>
-            <span>Explore</span>
+        <!-- Text -->
+        <div class="product-title-container">
+            <h1 class="product-title">Issued in Love</h1>
+            <div class="title-line"></div>
+            <p class="product-tagline">
+                A couples game designed for intentional romance.
+            </p>
+            <p class="product-description">
+                Thoughtfully curated prompts that help couples plan, surprise,
+                and reconnect—naturally.
+            </p>
         </div>
-    </section>
+
+        <!-- Product Visual -->
+        <div class="product-visual xo-hero-product">
+            <div class="xo-frame">
+                <img src="85920.jpg" alt="Issued in Love" class="xo-product-image">
+                <div class="xo-heart-glow"></div>
+                <div class="xo-pixel-border"></div>
+            </div>
+
+            <!-- CTA BLOCK (FIXED VISIBILITY) -->
+            <div class="xo-cta-block">
+                <h3 class="xo-title">Issued in Love</h3>
+
+                <button class="hero-cta xo-cta xo-cta-visible" id="heroCta">
+                    Own the experience
+                    <span class="cta-arrow">→</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Background Hearts -->
+    <div class="hearts-container" id="heartsContainer"></div>
+
+    <!-- Scroll Indicator -->
+    <div class="scroll-indicator">
+        <div class="scroll-line"></div>
+        <span>Explore</span>
+    </div>
+</section>
+
 
 <style>
-/* XO HERO PRODUCT STYLE */
+/* ===============================
+   HERO – FIXED & RESPONSIVE
+================================ */
+
 .xo-hero-product {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.5rem;
+    gap: 1.6rem;
+    position: relative;
+    z-index: 2;
 }
 
-/* Frame inspired by physical product */
+/* Frame */
 .xo-frame {
     position: relative;
     width: 300px;
     aspect-ratio: 1 / 1;
     background: linear-gradient(135deg, #7a1c3f, #9a3459);
     border-radius: 18px;
-    padding: 18px;
+    padding: 16px;
     box-shadow: 0 30px 80px rgba(122,28,63,0.35);
     animation: xoFloat 6s ease-in-out infinite;
-    transform-style: preserve-3d;
 }
 
-/* Image fixed perfectly */
 .xo-product-image {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 12px;
-    z-index: 2;
     position: relative;
+    z-index: 2;
 }
 
-/* Pixel-heart inspired border */
-.xo-pixel-border {
-    position: absolute;
-    inset: -14px;
-    border-radius: 22px;
-    border: 3px solid rgba(255,255,255,0.15);
-    clip-path: polygon(
-        20% 0%, 80% 0%, 100% 20%, 100% 80%,
-        80% 100%, 20% 100%, 0% 80%, 0% 20%
-    );
-    animation: xoRotate 18s linear infinite;
-}
-
-/* Warm heart glow */
+/* Glow */
 .xo-heart-glow {
     position: absolute;
-    inset: -35%;
+    inset: -30%;
     background: radial-gradient(circle, rgba(255,80,120,0.35), transparent 65%);
-    opacity: 0.7;
     z-index: 0;
     animation: glowPulse 5s ease-in-out infinite;
 }
 
-/* Title + CTA below */
-.xo-title {
-    font-family: var(--font-serif);
-    font-size: 1.6rem;
-    color: var(--deep-maroon);
-    letter-spacing: 1px;
-    text-align: center;
+/* Border */
+.xo-pixel-border {
+    position: absolute;
+    inset: -12px;
+    border-radius: 22px;
+    border: 2px solid rgba(255,255,255,0.18);
+    animation: xoRotate 18s linear infinite;
 }
 
-/* Refined CTA */
+/* CTA BLOCK */
+.xo-cta-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: 0.5rem;
+}
+
+.xo-title {
+    font-family: var(--font-serif);
+    font-size: 1.4rem;
+    color: var(--deep-maroon);
+}
+
+/* CTA – ALWAYS VISIBLE */
+.xo-cta-visible {
+    opacity: 1 !important;
+    visibility: visible !important;
+    z-index: 5;
+}
+
+/* CTA STYLE */
 .xo-cta {
-    padding: 1rem 2.4rem;
-    border-radius: 50px;
+    padding: 1rem 2.6rem;
+    border-radius: 999px;
     font-size: 1rem;
     background: var(--deep-maroon);
-    box-shadow: 0 15px 35px rgba(122,28,63,0.35);
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 18px 40px rgba(122,28,63,0.45);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.xo-cta:active {
+    transform: scale(0.96);
 }
 
 /* Animations */
 @keyframes xoFloat {
-    0%,100% { transform: translateY(0) rotateX(0deg); }
-    50% { transform: translateY(-14px) rotateX(6deg); }
+    0%,100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
 }
 
 @keyframes xoRotate {
@@ -208,30 +464,117 @@
     50% { opacity: 0.8; }
 }
 
-</style>
-<script>
-/* XO Interactive Tilt */
-const xoFrame = document.querySelector('.xo-frame');
-
-document.addEventListener('mousemove', (e) => {
-    if (!xoFrame) return;
-
-    const x = (e.clientX / window.innerWidth - 0.5) * 14;
-    const y = (e.clientY / window.innerHeight - 0.5) * 10;
-
-    xoFrame.style.transform = `
-        rotateY(${x}deg)
-        rotateX(${-y}deg)
-        translateY(-8px)
-    `;
-});
-
-document.addEventListener('mouseleave', () => {
-    if (xoFrame) {
-        xoFrame.style.transform = 'rotateX(0) rotateY(0)';
+/* ===============================
+   MOBILE FIXES
+================================ */
+@media (max-width: 768px) {
+    .xo-frame {
+        width: 240px;
+        animation: none;
     }
+
+    .xo-title {
+        font-size: 1.2rem;
+    }
+
+    .xo-cta {
+        width: 100%;
+        max-width: 260px;
+        text-align: center;
+    }
+}
+/* ===============================
+   HERO MOBILE SPACING FIX
+================================ */
+@media (max-width: 768px) {
+
+    .hero-content {
+        gap: 1.8rem; /* was too large */
+    }
+
+    .product-title {
+        margin-bottom: 0.6rem;
+        line-height: 1.15;
+    }
+
+    .title-line {
+        margin: 0.8rem auto;
+    }
+
+    .product-tagline {
+        margin-top: 0.4rem;
+        margin-bottom: 0.6rem;
+        font-size: 1.1rem;
+    }
+
+    .product-description {
+        margin-bottom: 1.2rem;
+        font-size: 0.95rem;
+    }
+
+    .xo-hero-product {
+        margin-top: 0.6rem;
+        gap: 1.2rem;
+    }
+
+    .xo-cta-block {
+        margin-top: 0.3rem;
+    }
+}
+/* ===============================
+   HERO TITLE – LUXURY ANIMATION
+================================ */
+
+.product-title {
+    opacity: 0;
+    transform: translateY(14px);
+    animation: titleReveal 1.1s cubic-bezier(0.23,1,0.32,1) forwards;
+    animation-delay: 0.2s;
+}
+
+/* Mobile refinement */
+@media (max-width: 768px) {
+    .product-title {
+        animation-delay: 0.15s;
+    }
+}
+
+@keyframes titleReveal {
+    0% {
+        opacity: 0;
+        transform: translateY(14px);
+        letter-spacing: 0.02em;
+    }
+    60% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        letter-spacing: 0;
+    }
+}
+
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const heroCta = document.getElementById('heroCta');
+    const cartPanel = document.getElementById('cartPanel');
+    const overlay = document.querySelector('.overlay');
+
+    if (heroCta) {
+        heroCta.addEventListener('click', () => {
+            cartPanel.classList.add('active');
+            overlay?.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+    }
+
 });
 </script>
+
 
 
 
