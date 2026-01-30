@@ -1810,3 +1810,43 @@ button {
     transition: opacity 0.3s ease;
 }
 
+/* ===============================
+   GLOBAL SCROLL MOTION SYSTEM
+================================ */
+
+/* Prepare elements */
+.section-title,
+.xo-experience-title,
+.valentine-title,
+.feature-card,
+.xo-step,
+.valentine-core {
+    will-change: transform, opacity;
+}
+
+/* Initial hidden state */
+.scroll-reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: 
+        opacity 1s cubic-bezier(0.23,1,0.32,1),
+        transform 1s cubic-bezier(0.23,1,0.32,1);
+}
+
+/* Active state */
+.scroll-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Subtle depth variation */
+.depth-1 { transform: translateY(50px); }
+.depth-2 { transform: translateY(70px); }
+.depth-3 { transform: translateY(90px); }
+
+/* Visible overrides depth */
+.scroll-reveal.visible.depth-1,
+.scroll-reveal.visible.depth-2,
+.scroll-reveal.visible.depth-3 {
+    transform: translateY(0);
+}

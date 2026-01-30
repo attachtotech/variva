@@ -373,3 +373,40 @@ document.addEventListener('DOMContentLoaded', function() {
     // ... existing init calls
     initScrollProgress();
 });
+
+
+/* =====================================
+   XO LUXURY SCROLL REVEAL ENGINE
+===================================== */
+document.addEventListener('DOMContentLoaded', () => {
+
+    const revealItems = [
+        ...document.querySelectorAll('.section-title'),
+        ...document.querySelectorAll('.feature-card'),
+        ...document.querySelectorAll('.xo-experience-title'),
+        ...document.querySelectorAll('.xo-step'),
+        ...document.querySelectorAll('.valentine-core')
+    ];
+
+    revealItems.forEach((el, i) => {
+        el.classList.add('scroll-reveal');
+
+        /* Depth staggering */
+        if (i % 3 === 0) el.classList.add('depth-1');
+        if (i % 3 === 1) el.classList.add('depth-2');
+        if (i % 3 === 2) el.classList.add('depth-3');
+    });
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, {
+        threshold: 0.25,
+        rootMargin: '0px 0px -80px 0px'
+    });
+
+    revealItems.forEach(el => observer.observe(el));
+});

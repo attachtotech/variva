@@ -575,7 +575,348 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 </script>
 
+<!-- Product Essence Section -->
+<section class="essence-section">
+    <div class="section-container">
+        <div class="essence-content">
 
+            <!-- Text Side -->
+            <div class="essence-text">
+                <h2 class="essence-title">The Essence</h2>
+                <div class="essence-divider"></div>
+                <p class="essence-description">
+                    Issued in Love is built around 24 thoughtfully designed coupons, split into big and small moments.
+                    Some invite intention and planning. Others keep things light, spontaneous, and playful.
+                    Together, they create a rhythm of connection that fits naturally into modern relationships.
+                </p>
+            </div>
+
+            <!-- Visual Side -->
+            <div class="essence-visual">
+                <div class="essence-image-stack">
+
+                    <div class="essence-image image-1">
+                        <img src="85058 (1).jpg" alt="Plan & Anticipate">
+                        <div class="image-caption">
+                            <h4>Plan & Anticipate</h4>
+                            <p>Thoughtful dates to look forward to</p>
+                        </div>
+                    </div>
+
+                    <div class="essence-image image-2">
+                        <img src="85920.jpg" alt="Spontaneous Joy">
+                        <div class="image-caption">
+                            <h4>Spontaneous Joy</h4>
+                            <p>Light moments for everyday connection</p>
+                        </div>
+                    </div>
+
+                    <div class="essence-image image-3">
+                        <img src="85923.jpg" alt="Deepen & Reconnect">
+                        <div class="image-caption">
+                            <h4>Deepen & Reconnect</h4>
+                            <p>Meaningful exchanges to strengthen bonds</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+
+<style>
+    /* ===============================
+   ESSENCE IMAGE STACK – BASE (DESKTOP)
+================================ */
+.essence-image-stack {
+    position: relative;
+    width: 100%;
+    height: 500px;
+}
+
+.essence-image {
+    position: absolute;
+    width: 280px;
+    height: 360px;
+    border-radius: 16px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 20px 50px rgba(122,28,63,0.18);
+    transition:
+        transform 0.8s cubic-bezier(0.23,1,0.32,1),
+        box-shadow 0.8s cubic-bezier(0.23,1,0.32,1);
+}
+
+.essence-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.image-caption {
+    position: absolute;
+    inset: auto 0 0 0;
+    padding: 1.2rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
+    color: #fff;
+}
+
+.image-caption h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.4rem;
+}
+
+.image-caption p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+}
+
+/* Desktop positioning */
+.image-1 { top: 0; left: 0; transform: rotate(-6deg); z-index: 1; }
+.image-2 { top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(2deg); z-index: 2; }
+.image-3 { bottom: 0; right: 0; transform: rotate(6deg); z-index: 1; }
+
+/* Hover luxury (desktop only) */
+@media (hover: hover) {
+    .essence-image-stack:hover .image-2 {
+        transform: translate(-50%, -50%) scale(1.06);
+        box-shadow: 0 30px 70px rgba(122,28,63,0.28);
+    }
+}
+
+/* ===============================
+   XO LIGHTBOX – DESKTOP
+================================ */
+.xo-lightbox {
+    position: fixed;
+    inset: 0;
+    background: rgba(20,10,15,0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 3000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+}
+
+.xo-lightbox.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.xo-lightbox-frame {
+    position: relative;
+    width: min(90vw, 520px);
+    aspect-ratio: 3 / 4;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #000;
+    box-shadow: 0 40px 100px rgba(122,28,63,0.45);
+    transform: scale(0.9);
+    transition: transform 0.5s cubic-bezier(0.23,1,0.32,1);
+}
+
+.xo-lightbox.active .xo-lightbox-frame {
+    transform: scale(1);
+}
+
+.xo-lightbox-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.xo-lightbox-caption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    padding: 1.4rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
+    color: #fff;
+}
+
+.xo-lightbox-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    border: none;
+    color: #fff;
+    font-size: 1.2rem;
+}
+
+.xo-prev { left: 10px; }
+.xo-next { right: 10px; }
+
+.xo-lightbox-close {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+/* =====================================
+   MOBILE FIX — FULL IMAGE VISIBILITY
+===================================== */
+@media (max-width: 768px) {
+
+    /* Lightbox container */
+    .xo-lightbox {
+        padding: 0;
+    }
+
+    /* Frame becomes viewport-based */
+    .xo-lightbox-frame {
+        width: 100vw;
+        height: 100vh;
+        max-width: none;
+        max-height: none;
+        aspect-ratio: unset;
+        border-radius: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        background: #000;
+        transform: scale(1);
+    }
+
+    /* IMAGE — ALWAYS FULLY VISIBLE */
+    .xo-lightbox-frame img {
+        width: 100%;
+        height: auto;
+        max-height: 72vh;   /* KEY FIX */
+        object-fit: contain;
+        background: #000;
+        margin: 0 auto;
+    }
+
+    /* Caption BELOW image (no overlay crop) */
+    .xo-lightbox-caption {
+        position: relative;
+        padding: 1rem 1.2rem 1.4rem;
+        background: rgba(0,0,0,0.85);
+        text-align: center;
+    }
+
+    .xo-lightbox-caption h4 {
+        font-size: 1.2rem;
+    }
+
+    .xo-lightbox-caption p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* Controls thumb-safe */
+    .xo-lightbox-btn {
+        width: 44px;
+        height: 44px;
+        font-size: 1.1rem;
+        background: rgba(255,255,255,0.15);
+    }
+
+    .xo-prev { left: 8px; }
+    .xo-next { right: 8px; }
+
+    .xo-lightbox-close {
+        top: 10px;
+        right: 12px;
+        font-size: 1.4rem;
+    }
+}
+/* ===============================
+   MOBILE CLOSE BUTTON FIX
+================================ */
+@media (max-width: 768px) {
+
+    .xo-lightbox-close {
+        position: fixed;                 /* detach from frame */
+        top: 14px;
+        right: 14px;
+        width: 42px;
+        height: 42px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.18);
+        color: #fff;
+        font-size: 1.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 4001;                   /* ABOVE everything */
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        box-shadow: 0 8px 20px rgba(0,0,0,0.4);
+        cursor: pointer;
+    }
+
+    .xo-lightbox-close:hover {
+        background: rgba(255,255,255,0.28);
+    }
+}
+
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const images = document.querySelectorAll('.essence-image');
+    let current = 0;
+
+    const lightbox = document.createElement('div');
+    lightbox.className = 'xo-lightbox';
+    lightbox.innerHTML = `
+        <div class="xo-lightbox-frame">
+            <button class="xo-lightbox-close">&times;</button>
+            <img>
+            <div class="xo-lightbox-caption"><h4></h4><p></p></div>
+            <button class="xo-lightbox-btn xo-prev">&#10094;</button>
+            <button class="xo-lightbox-btn xo-next">&#10095;</button>
+        </div>
+    `;
+    document.body.appendChild(lightbox);
+
+    const img = lightbox.querySelector('img');
+    const title = lightbox.querySelector('h4');
+    const desc = lightbox.querySelector('p');
+
+    function open(i) {
+        current = i;
+        const el = images[i];
+        img.src = el.querySelector('img').src;
+        title.textContent = el.querySelector('h4').textContent;
+        desc.textContent = el.querySelector('p').textContent;
+        lightbox.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function close() {
+        lightbox.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    images.forEach((el, i) => {
+        el.style.cursor = 'zoom-in';
+        el.onclick = () => open(i);
+    });
+
+    lightbox.querySelector('.xo-next').onclick = () => open((current+1)%images.length);
+    lightbox.querySelector('.xo-prev').onclick = () => open((current-1+images.length)%images.length);
+    lightbox.querySelector('.xo-lightbox-close').onclick = close;
+    lightbox.onclick = e => e.target === lightbox && close();
+
+});
+</script>
 
 
 
@@ -881,8 +1222,65 @@ document.addEventListener('DOMContentLoaded', () => {
     transition: transform 0.3s linear;
 }
 
+/* ===============================
+   ESSENCE SCROLL MOTION
+================================ */
+
+/* Prepare reveal */
+.essence-text,
+.essence-image {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+        opacity 1s cubic-bezier(0.23,1,0.32,1),
+        transform 1s cubic-bezier(0.23,1,0.32,1);
+    will-change: transform, opacity;
+}
+
+/* Active reveal */
+.essence-visible .essence-text,
+.essence-visible .essence-image {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger depth for images */
+.essence-visible .image-1 { transition-delay: 0.15s; }
+.essence-visible .image-2 { transition-delay: 0.35s; }
+.essence-visible .image-3 { transition-delay: 0.55s; }
+
+/* Mobile safety (no extra movement) */
+@media (max-width: 768px) {
+    .essence-image {
+        transform: translateY(20px);
+    }
+}
 
 </style>
+<script>
+/* =====================================
+   ESSENCE SCROLL REVEAL ENGINE
+===================================== */
+document.addEventListener('DOMContentLoaded', () => {
+
+    const essenceSection = document.querySelector('.essence-section');
+    if (!essenceSection) return;
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                essenceSection.classList.add('essence-visible');
+                observer.disconnect();
+            }
+        });
+    }, {
+        threshold: 0.35
+    });
+
+    observer.observe(essenceSection);
+});
+</script>
+
 <script>
     
 document.addEventListener('DOMContentLoaded', () => {
@@ -959,319 +1357,7 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 
-<!-- Product Essence Section -->
-<section class="essence-section">
-    <div class="section-container">
-        <div class="essence-content">
 
-            <!-- Text Side -->
-            <div class="essence-text">
-                <h2 class="essence-title">The Essence</h2>
-                <div class="essence-divider"></div>
-                <p class="essence-description">
-                    Issued in Love is built around 24 thoughtfully designed coupons, split into big and small moments.
-                    Some invite intention and planning. Others keep things light, spontaneous, and playful.
-                    Together, they create a rhythm of connection that fits naturally into modern relationships.
-                </p>
-            </div>
-
-            <!-- Visual Side -->
-            <div class="essence-visual">
-                <div class="essence-image-stack">
-
-                    <div class="essence-image image-1">
-                        <img src="85058 (1).jpg" alt="Plan & Anticipate">
-                        <div class="image-caption">
-                            <h4>Plan & Anticipate</h4>
-                            <p>Thoughtful dates to look forward to</p>
-                        </div>
-                    </div>
-
-                    <div class="essence-image image-2">
-                        <img src="85920.jpg" alt="Spontaneous Joy">
-                        <div class="image-caption">
-                            <h4>Spontaneous Joy</h4>
-                            <p>Light moments for everyday connection</p>
-                        </div>
-                    </div>
-
-                    <div class="essence-image image-3">
-                        <img src="85923.jpg" alt="Deepen & Reconnect">
-                        <div class="image-caption">
-                            <h4>Deepen & Reconnect</h4>
-                            <p>Meaningful exchanges to strengthen bonds</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-
-<style>
-    /* ===============================
-   ESSENCE IMAGE STACK – BASE (DESKTOP)
-================================ */
-.essence-image-stack {
-    position: relative;
-    width: 100%;
-    height: 500px;
-}
-
-.essence-image {
-    position: absolute;
-    width: 280px;
-    height: 360px;
-    border-radius: 16px;
-    overflow: hidden;
-    background: #000;
-    box-shadow: 0 20px 50px rgba(122,28,63,0.18);
-    transition:
-        transform 0.8s cubic-bezier(0.23,1,0.32,1),
-        box-shadow 0.8s cubic-bezier(0.23,1,0.32,1);
-}
-
-.essence-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-}
-
-.image-caption {
-    position: absolute;
-    inset: auto 0 0 0;
-    padding: 1.2rem;
-    background: linear-gradient(to top, rgba(0,0,0,0.65), transparent);
-    color: #fff;
-}
-
-.image-caption h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.4rem;
-}
-
-.image-caption p {
-    font-size: 0.9rem;
-    opacity: 0.9;
-}
-
-/* Desktop positioning */
-.image-1 { top: 0; left: 0; transform: rotate(-6deg); z-index: 1; }
-.image-2 { top: 50%; left: 50%; transform: translate(-50%, -50%) rotate(2deg); z-index: 2; }
-.image-3 { bottom: 0; right: 0; transform: rotate(6deg); z-index: 1; }
-
-/* Hover luxury (desktop only) */
-@media (hover: hover) {
-    .essence-image-stack:hover .image-2 {
-        transform: translate(-50%, -50%) scale(1.06);
-        box-shadow: 0 30px 70px rgba(122,28,63,0.28);
-    }
-}
-
-/* ===============================
-   XO LIGHTBOX – DESKTOP
-================================ */
-.xo-lightbox {
-    position: fixed;
-    inset: 0;
-    background: rgba(20,10,15,0.95);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 3000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
-}
-
-.xo-lightbox.active {
-    opacity: 1;
-    pointer-events: auto;
-}
-
-.xo-lightbox-frame {
-    position: relative;
-    width: min(90vw, 520px);
-    aspect-ratio: 3 / 4;
-    border-radius: 20px;
-    overflow: hidden;
-    background: #000;
-    box-shadow: 0 40px 100px rgba(122,28,63,0.45);
-    transform: scale(0.9);
-    transition: transform 0.5s cubic-bezier(0.23,1,0.32,1);
-}
-
-.xo-lightbox.active .xo-lightbox-frame {
-    transform: scale(1);
-}
-
-.xo-lightbox-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.xo-lightbox-caption {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 1.4rem;
-    background: linear-gradient(to top, rgba(0,0,0,0.75), transparent);
-    color: #fff;
-}
-
-.xo-lightbox-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.12);
-    border: none;
-    color: #fff;
-    font-size: 1.2rem;
-}
-
-.xo-prev { left: 10px; }
-.xo-next { right: 10px; }
-
-.xo-lightbox-close {
-    position: absolute;
-    top: 10px;
-    right: 12px;
-    background: none;
-    border: none;
-    color: #fff;
-    font-size: 1.6rem;
-}
-
-/* =====================================
-   MOBILE FIX — FULL IMAGE VISIBILITY
-===================================== */
-@media (max-width: 768px) {
-
-    /* Lightbox container */
-    .xo-lightbox {
-        padding: 0;
-    }
-
-    /* Frame becomes viewport-based */
-    .xo-lightbox-frame {
-        width: 100vw;
-        height: 100vh;
-        max-width: none;
-        max-height: none;
-        aspect-ratio: unset;
-        border-radius: 0;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        background: #000;
-        transform: scale(1);
-    }
-
-    /* IMAGE — ALWAYS FULLY VISIBLE */
-    .xo-lightbox-frame img {
-        width: 100%;
-        height: auto;
-        max-height: 72vh;   /* KEY FIX */
-        object-fit: contain;
-        background: #000;
-        margin: 0 auto;
-    }
-
-    /* Caption BELOW image (no overlay crop) */
-    .xo-lightbox-caption {
-        position: relative;
-        padding: 1rem 1.2rem 1.4rem;
-        background: rgba(0,0,0,0.85);
-        text-align: center;
-    }
-
-    .xo-lightbox-caption h4 {
-        font-size: 1.2rem;
-    }
-
-    .xo-lightbox-caption p {
-        font-size: 0.9rem;
-        line-height: 1.5;
-    }
-
-    /* Controls thumb-safe */
-    .xo-lightbox-btn {
-        width: 44px;
-        height: 44px;
-        font-size: 1.1rem;
-        background: rgba(255,255,255,0.15);
-    }
-
-    .xo-prev { left: 8px; }
-    .xo-next { right: 8px; }
-
-    .xo-lightbox-close {
-        top: 10px;
-        right: 12px;
-        font-size: 1.4rem;
-    }
-}
-
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-
-    const images = document.querySelectorAll('.essence-image');
-    let current = 0;
-
-    const lightbox = document.createElement('div');
-    lightbox.className = 'xo-lightbox';
-    lightbox.innerHTML = `
-        <div class="xo-lightbox-frame">
-            <button class="xo-lightbox-close">&times;</button>
-            <img>
-            <div class="xo-lightbox-caption"><h4></h4><p></p></div>
-            <button class="xo-lightbox-btn xo-prev">&#10094;</button>
-            <button class="xo-lightbox-btn xo-next">&#10095;</button>
-        </div>
-    `;
-    document.body.appendChild(lightbox);
-
-    const img = lightbox.querySelector('img');
-    const title = lightbox.querySelector('h4');
-    const desc = lightbox.querySelector('p');
-
-    function open(i) {
-        current = i;
-        const el = images[i];
-        img.src = el.querySelector('img').src;
-        title.textContent = el.querySelector('h4').textContent;
-        desc.textContent = el.querySelector('p').textContent;
-        lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function close() {
-        lightbox.classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    images.forEach((el, i) => {
-        el.style.cursor = 'zoom-in';
-        el.onclick = () => open(i);
-    });
-
-    lightbox.querySelector('.xo-next').onclick = () => open((current+1)%images.length);
-    lightbox.querySelector('.xo-prev').onclick = () => open((current-1+images.length)%images.length);
-    lightbox.querySelector('.xo-lightbox-close').onclick = close;
-    lightbox.onclick = e => e.target === lightbox && close();
-
-});
-</script>
 
 
    <!-- Valentine's Edit Section -->
@@ -1449,6 +1535,26 @@ document.addEventListener('DOMContentLoaded', () => {
         heartsContainer.appendChild(heart);
     }
 });
+</script>
+<script>
+/* =====================================
+   MICRO SCROLL PARALLAX – CARDS
+===================================== */
+document.addEventListener('scroll', () => {
+
+    document.querySelectorAll('.feature-card, .xo-step').forEach((el, i) => {
+        const rect = el.getBoundingClientRect();
+        const viewH = window.innerHeight;
+
+        if (rect.top < viewH && rect.bottom > 0) {
+            const progress = (viewH - rect.top) / (viewH + rect.height);
+            const offset = (0.5 - progress) * (i % 2 === 0 ? 12 : -12);
+
+            el.style.transform = `translateY(${offset}px)`;
+        }
+    });
+
+}, { passive: true });
 </script>
 
     <!-- Media Reels Section -->
