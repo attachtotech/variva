@@ -11,6 +11,48 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
+    /* ===============================
+   NAVBAR LOGO
+================================ */
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    letter-spacing: 0.02em;
+    white-space: nowrap;
+}
+
+/* Logo Image */
+.logo-icon {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    image-rendering: -webkit-optimize-contrast;
+    image-rendering: crisp-edges;
+}
+
+/* Variva Highlight */
+.logo-variva {
+    color: var(--deep-maroon);
+}
+
+/* ===============================
+   MOBILE
+================================ */
+@media (max-width: 768px) {
+    .logo {
+        font-size: 1.05rem;
+        gap: 8px;
+    }
+
+    .logo-icon {
+        height: 26px;
+    }
+}
+
     /* =========================================
    XO VARIVA — MOBILE LUXURY REFINEMENT
 ========================================= */
@@ -240,8 +282,10 @@
     <!-- Luxury Toolbar -->
     <header class="luxury-toolbar">
         <div class="toolbar-container">
-            <div class="logo">XO, <span class="logo-variva">Variva</span></div>
-            <nav class="nav-menu">
+<div class="logo">
+    <img src="logo.png" alt="XO Variva Logo" class="logo-icon">
+    XO, <span class="logo-variva">Variva</span>
+</div>            <nav class="nav-menu">
                 <button class="menu-icon" id="menuToggle">
                     <i class="fas fa-bars"></i>
                 </button>
