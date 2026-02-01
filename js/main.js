@@ -410,3 +410,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
     revealItems.forEach(el => observer.observe(el));
 });
+
+
+
+
+(() => {
+  const section = document.querySelector('.love-editorial');
+  if (!section) return;
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        section.classList.add('active');
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.3 });
+
+  observer.observe(section);
+})();
