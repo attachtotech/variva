@@ -297,19 +297,54 @@
         </div>
     </header>
 
-    <!-- Floating Menu -->
-    <div class="floating-menu" id="floatingMenu">
-        <button class="close-menu" id="closeMenu">
-            <i class="fas fa-times"></i>
-        </button>
-        <nav class="menu-items">
-            <a href="#" class="menu-item">The Experience</a>
-            <a href="#" class="menu-item">The Gift</a>
-            <a href="#" class="menu-item">Valentine's Edit</a>
-            <a href="#" class="menu-item">Journal</a>
-            <a href="#" class="menu-item">About</a>
-        </nav>
-    </div>
+<!-- Floating Menu -->
+<div class="floating-menu" id="floatingMenu">
+    <button class="close-menu" id="closeMenu">
+        ✕
+    </button>
+    <nav class="menu-items">
+        <a href="#" class="menu-item">The Experience</a>
+        <a href="#" class="menu-item">The Gift</a>
+        <a href="#" class="menu-item">Valentine's Edit</a>
+        <a href="#" class="menu-item">Journal</a>
+        <a href="#" class="menu-item">About</a>
+    </nav>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const menuToggle = document.getElementById('menuToggle');
+    const floatingMenu = document.getElementById('floatingMenu');
+    const closeMenu = document.getElementById('closeMenu');
+
+    if (!menuToggle || !floatingMenu) return;
+
+    function openMenu() {
+        floatingMenu.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeMenuFn() {
+        floatingMenu.classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    menuToggle.addEventListener('click', openMenu);
+    closeMenu?.addEventListener('click', closeMenuFn);
+
+    // Close on link click
+    floatingMenu.querySelectorAll('.menu-item').forEach(link => {
+        link.addEventListener('click', closeMenuFn);
+    });
+
+    // ESC key support (desktop UX polish)
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeMenuFn();
+    });
+
+});
+</script>
 
     <!-- Luxury Cart Panel -->
     <div class="cart-panel" id="cartPanel">
