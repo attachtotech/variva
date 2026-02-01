@@ -289,7 +289,7 @@
 
         <!-- CENTER LOGO -->
         <div class="logo-center">
-            <img src="logo.png" alt="XO Variva Logo" class="logo-icon">
+            <a href="#"><img src="logo.png" alt="XO Variva Logo" class="logo-icon"></a>
         </div>
 
         <!-- MENU + CART (TOP RIGHT) -->
@@ -606,14 +606,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-
+<br><br><br>
 <section class="dm-hero">
     <div class="dm-wrap">
+        
+        <!-- "Issued in Love" Text Above Video -->
+        <div class="dm-header-text">
+            Issued in Love
+        </div>
 
         <div class="dm-video-card">
             <video class="dm-video" autoplay muted loop playsinline preload="auto">
                 <source src="hero.mp4" type="video/mp4">
             </video>
+            
+            <!-- Heart Animation Container -->
+            <div class="dm-heart-container">
+                <!-- Left Heart -->
+                <div class="dm-heart dm-heart-1">
+                    <svg class="dm-heart-svg" viewBox="0 0 200 200">
+                        <path class="dm-heart-path" d="M100,36.4C72.7-8.7,0,10.2,0,70.6c0,39.2,63.1,78.1,100,129.4C136.9,148.7,200,109.8,200,70.6C200,10.2,127.3-8.7,100,36.4z"/>
+                    </svg>
+                </div>
+                <!-- Middle Heart -->
+                <div class="dm-heart dm-heart-2">
+                    <svg class="dm-heart-svg" viewBox="0 0 200 200">
+                        <path class="dm-heart-path" d="M100,36.4C72.7-8.7,0,10.2,0,70.6c0,39.2,63.1,78.1,100,129.4C136.9,148.7,200,109.8,200,70.6C200,10.2,127.3-8.7,100,36.4z"/>
+                    </svg>
+                </div>
+                <!-- Right Heart -->
+                <div class="dm-heart dm-heart-3">
+                    <svg class="dm-heart-svg" viewBox="0 0 200 200">
+                        <path class="dm-heart-path" d="M100,36.4C72.7-8.7,0,10.2,0,70.6c0,39.2,63.1,78.1,100,129.4C136.9,148.7,200,109.8,200,70.6C200,10.2,127.3-8.7,100,36.4z"/>
+                    </svg>
+                </div>
+            </div>
 
             <!-- Full Width Search Bar -->
             <div class="dm-search">
@@ -628,18 +655,30 @@ document.addEventListener('DOMContentLoaded', () => {
         <p class="dm-caption">
             Intimate moments, intentionally designed
         </p>
+        
+        <!-- Post-Video Content -->
+        <div class="dm-post-video">
+            <div class="dm-edits-line">
+                <span class="dm-edits-text">The Valentine Edits</span>
+                <span class="dm-divider">—</span>
+                <span class="dm-by-text">by CO, Variva</span>
+            </div>
+        </div>
 
     </div>
 </section>
+
 <style>
-    :root {
+:root {
     --dm-maroon-ink: #1a040c;
     --dm-maroon-deep: #260610;
     --dm-maroon-core: #320916;
-
     --dm-beige: #f2e9dc;
     --dm-beige-soft: rgba(242, 233, 220, 0.96);
-
+    --dm-metallic-red: #9d1c38;
+    --dm-metallic-gold: #d4af37;
+    --dm-glow-red: rgba(157, 28, 56, 0.3);
+    --dm-gold-glow: rgba(212, 175, 55, 0.1);
     --dm-serif: 'DM Serif Display', serif;
     --dm-sans: 'Manrope', system-ui, sans-serif;
 }
@@ -655,6 +694,9 @@ document.addEventListener('DOMContentLoaded', () => {
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    overflow: hidden;
+    padding: 2rem 1rem;
 }
 
 /* WRAP */
@@ -662,13 +704,42 @@ document.addEventListener('DOMContentLoaded', () => {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2.4rem;
+    gap: 2.8rem;
+    position: relative;
+    z-index: 2;
+    max-width: 440px;
+    width: 100%;
+}
+
+/* Header Text - Above Video */
+.dm-header-text {
+    text-align: center;
+    font-family: var(--dm-serif);
+    font-size: 2.8rem;
+    letter-spacing: 0.02em;
+    color: var(--dm-beige);
+    line-height: 1.1;
+    font-weight: 300;
+    opacity: 0;
+    animation: fadeInUp 1s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s forwards;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 /* VIDEO CARD */
 .dm-video-card {
     position: relative;
-    width: 440px;
+    width: 100%;
+    max-width: 440px;
     aspect-ratio: 5 / 7;
     border-radius: 28px;
     overflow: hidden;
@@ -685,31 +756,150 @@ document.addEventListener('DOMContentLoaded', () => {
     filter: brightness(1.12) contrast(1.06);
 }
 
+/* Heart Animation Container */
+.dm-heart-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* Heart Styling */
+.dm-heart {
+    position: absolute;
+    width: 80px;
+    height: 80px;
+    opacity: 0;
+    filter: 
+        drop-shadow(0 0 15px var(--dm-glow-red))
+        drop-shadow(0 0 30px rgba(212, 175, 55, 0.08));
+}
+
+.dm-heart-svg {
+    width: 100%;
+    height: 100%;
+    animation: heartFloat 20s ease-in-out infinite;
+}
+
+.dm-heart-path {
+    fill: url(#metallic-gradient);
+    stroke: var(--dm-metallic-gold);
+    stroke-width: 0.8;
+    stroke-opacity: 0.2;
+    animation: heartPulse 4s ease-in-out infinite;
+}
+
+/* Heart Positions */
+.dm-heart-1 {
+    left: 15%;
+    top: 70%;
+    animation-delay: 0s;
+}
+
+.dm-heart-2 {
+    left: 50%;
+    top: 60%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 100px;
+    animation-delay: 1s;
+}
+
+.dm-heart-3 {
+    right: 15%;
+    top: 75%;
+    animation-delay: 2s;
+}
+
+/* Heart Floating Animation */
+@keyframes heartFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0.7;
+    }
+    25% {
+        transform: translateY(-30px) rotate(5deg);
+        opacity: 0.9;
+    }
+    50% {
+        transform: translateY(-60px) rotate(-3deg);
+        opacity: 0.8;
+    }
+    75% {
+        transform: translateY(-30px) rotate(3deg);
+        opacity: 0.9;
+    }
+}
+
+@keyframes heartPulse {
+    0%, 100% {
+        filter: brightness(1) drop-shadow(0 0 10px var(--dm-glow-red));
+    }
+    50% {
+        filter: brightness(1.3) drop-shadow(0 0 20px var(--dm-glow-red));
+    }
+}
+
+/* Fade in hearts */
+.dm-heart-1 {
+    animation: fadeInHeart 1s ease-out 0.8s forwards, heartFloat 20s ease-in-out infinite 1.8s;
+}
+
+.dm-heart-2 {
+    animation: fadeInHeart 1s ease-out 1s forwards, heartFloat 20s ease-in-out infinite 2s;
+}
+
+.dm-heart-3 {
+    animation: fadeInHeart 1s ease-out 1.2s forwards, heartFloat 20s ease-in-out infinite 2.2s;
+}
+
+@keyframes fadeInHeart {
+    to {
+        opacity: 0.7;
+    }
+}
+
 /* SEARCH BAR */
 .dm-search {
     position: absolute;
     left: 50%;
-    bottom: 50%;
-    transform: translate(-50%, 50%);
+    bottom: 28px;
+    transform: translateX(-50%);
     width: calc(100% - 3rem);
     height: 58px;
-
     background: linear-gradient(
         180deg,
-        rgba(26, 4, 12, 0.55),
-        rgba(26, 4, 12, 0.75)
+        rgba(26, 4, 12, 0.7),
+        rgba(26, 4, 12, 0.85)
     );
-    backdrop-filter: blur(16px);
-
+    backdrop-filter: blur(20px);
     border-radius: 14px;
     display: flex;
     align-items: center;
     gap: 14px;
     padding: 0 1.6rem;
-
     box-shadow:
         0 18px 45px rgba(0, 0, 0, 0.6),
         inset 0 0 0 1px rgba(242, 233, 220, 0.18);
+    z-index: 3;
+    opacity: 0;
+    animation: slideInUp 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 1.5s forwards;
+    border: 1px solid rgba(242, 233, 220, 0.05);
+}
+
+@keyframes slideInUp {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, 20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, 0);
+    }
 }
 
 /* SEARCH CONTENT */
@@ -718,6 +908,7 @@ document.addEventListener('DOMContentLoaded', () => {
     height: 20px;
     color: var(--dm-beige);
     opacity: 0.85;
+    flex-shrink: 0;
 }
 
 .dm-search-text {
@@ -726,6 +917,8 @@ document.addEventListener('DOMContentLoaded', () => {
     letter-spacing: 0.02em;
     color: var(--dm-beige);
     white-space: nowrap;
+    font-weight: 300;
+    opacity: 0.9;
 }
 
 /* CAPTION */
@@ -737,31 +930,115 @@ document.addEventListener('DOMContentLoaded', () => {
     color: var(--dm-beige);
     opacity: 0.7;
     text-align: center;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 2s forwards;
+    font-weight: 300;
+}
+
+@keyframes fadeIn {
+    to {
+        opacity: 0.7;
+    }
+}
+
+/* Post-Video Content */
+.dm-post-video {
+    margin-top: 0.5rem;
+    opacity: 0;
+    animation: fadeIn 1s ease-out 2.3s forwards;
+}
+
+.dm-edits-line {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-family: var(--dm-sans);
+    font-size: 0.9rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--dm-beige);
+    opacity: 0.9;
+}
+
+.dm-edits-text {
+    font-weight: 300;
+    letter-spacing: 0.15em;
+}
+
+.dm-divider {
+    opacity: 0.5;
+    font-weight: 100;
+}
+
+.dm-by-text {
+    font-weight: 400;
+    letter-spacing: 0.08em;
+    color: rgba(242, 233, 220, 0.8);
 }
 
 /* RESPONSIVE */
 @media (max-width: 480px) {
-    .dm-video-card {
-        width: 320px;
+    .dm-wrap {
+        gap: 2.5rem;
     }
-
+    
+    .dm-header-text {
+        font-size: 2.2rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .dm-video-card {
+        max-width: 320px;
+    }
+    
+    .dm-heart {
+        width: 60px;
+        height: 60px;
+    }
+    
+    .dm-heart-2 {
+        width: 75px;
+        height: 75px;
+    }
+    
     .dm-search {
         height: 52px;
         padding: 0 1.3rem;
+        width: calc(100% - 2rem);
     }
-
+    
     .dm-search-text {
         font-size: 0.95rem;
     }
-
+    
     .dm-caption {
         font-size: 0.9rem;
     }
+    
+    .dm-edits-line {
+        font-size: 0.8rem;
+        gap: 0.8rem;
+    }
+}
+
+/* Metallic gradient */
+svg:not(:root) {
+    overflow: visible;
 }
 
 </style>
 
-
+<svg style="display: none;">
+    <defs>
+        <linearGradient id="metallic-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#8a1532" />
+            <stop offset="25%" stop-color="#b82547" />
+            <stop offset="50%" stop-color="#d43a5e" />
+            <stop offset="75%" stop-color="#b82547" />
+            <stop offset="100%" stop-color="#8a1532" />
+        </linearGradient>
+    </defs>
+</svg>
 
 
 
@@ -998,232 +1275,192 @@ function closeVideoZoom() {
 </script>
 
 
-    <!-- Purchase Section -->
-    <section class="purchase-section">
-        <div class="section-container">
-            <div class="purchase-content">
+
+<!-- Purchase Section -->
+<section class="purchase-section">
+    <div class="section-container">
+        <div class="purchase-content">
+
+            <!-- IMAGE SIDE -->
+            <div class="purchase-image-wrap">
+                <!-- Main Image -->
                 <div class="purchase-image">
-                    <img src="main.jpg" alt="Issued in Love">
+                    <img id="mainPurchaseImage" src="main.jpg" alt="Issued in Love">
                 </div>
-                <div class="purchase-details">
-                    <h2 class="purchase-title">Issued in Love</h2>
-                    <p class="purchase-price">Rs.68</p>
-                    <p class="purchase-description">
-                        A beautifully crafted experience for couples seeking intentional connection. 
-                        24 thoughtfully designed coupons, premium packaging, and a guide to deepening your relationship.
-                    </p>
-                    
-                    <div class="purchase-features">
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>24 curated connection prompts</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Premium matte finish cards</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Luxury gift packaging</span>
-                        </div>
-                        <div class="feature">
-                            <i class="fas fa-check"></i>
-                            <span>Digital guide included</span>
-                        </div>
-                    </div>
-                    
-                    <div class="quantity-selector purchase-qty">
-                        <span>Quantity:</span>
-                        <div class="qty-controls">
-                            <button class="qty-btn minus">-</button>
-                            <span class="qty-value">1</span>
-                            <button class="qty-btn plus">+</button>
-                        </div>
-                    </div>
-                    
-                    <button class="purchase-cta" id="purchaseCta">
-                        <i class="fab fa-whatsapp"></i>
-                        Buy on WhatsApp
-                    </button>
-                    
-                    <p class="purchase-note">
-                        You'll be redirected to WhatsApp to complete your purchase with personalized assistance.
-                    </p>
-                </div>
+
+                <!-- Suggestions -->
+                <div class="purchase-thumbs" id="purchaseSuggestions"></div>
             </div>
+
+            <!-- DETAILS -->
+            <div class="purchase-details">
+                <h2 class="purchase-title">Issued in Love</h2>
+                <p class="purchase-price">Rs.68</p>
+
+                <p class="purchase-description">
+                    A beautifully crafted experience for couples seeking intentional connection. 
+                    24 thoughtfully designed coupons, premium packaging, and a guide to deepening your relationship.
+                </p>
+
+                <div class="purchase-features"></div>
+
+                <div class="quantity-selector purchase-qty">
+                    <span>Quantity:</span>
+                    <div class="qty-controls">
+                        <button class="qty-btn minus">-</button>
+                        <span class="qty-value">1</span>
+                        <button class="qty-btn plus">+</button>
+                    </div>
+                </div>
+
+                <button class="purchase-cta" id="purchaseCta">
+                    <i class="fab fa-whatsapp"></i>
+                    Buy on WhatsApp
+                </button>
+
+                <p class="purchase-note">
+                    You'll be redirected to WhatsApp to complete your purchase with personalized assistance.
+                </p>
+            </div>
+
         </div>
-    </section>
-
-    <style>
-        /* ===============================
-   PURCHASE – COMMITMENT MOMENT
-================================ */
-
-.purchase-section {
-    position: relative;
-    overflow: hidden;
+    </div>
+</section>
+<style>
+    .purchase-image-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
 }
 
-/* Image: intentional lock-in motion */
-.purchase-image {
-    transform: scale(0.9) rotate(-2deg);
-    opacity: 0;
-    transition: all 1.2s cubic-bezier(0.23,1,0.32,1);
+.purchase-thumbs {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
 }
 
-.purchase-image.revealed {
-    transform: scale(1) rotate(0deg);
-    opacity: 1;
+.purchase-thumbs img {
+    width: 70px;
+    height: 90px;
+    object-fit: cover;
+    border-radius: 8px;
+    cursor: pointer;
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(122,28,63,0.25);
 }
 
-/* Subtle aura behind image */
-.purchase-image::after {
-    content: '';
-    position: absolute;
-    inset: -30%;
-    background: radial-gradient(
-        circle,
-        rgba(122,28,63,0.25),
-        transparent 65%
-    );
-    opacity: 0;
-    transition: opacity 1.2s ease;
-    z-index: -1;
+.purchase-thumbs img:hover {
+    opacity: 0.9;
+    transform: scale(1.04);
 }
 
-.purchase-image.revealed::after {
-    opacity: 1;
-}
-
-/* Title enters with gravity */
-.purchase-title {
-    opacity: 0;
-    transform: translateY(30px);
-    transition: all 1s cubic-bezier(0.23,1,0.32,1);
-}
-
-.purchase-title.revealed {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Price breathing animation */
-.purchase-price {
-    opacity: 0;
-    transform: scale(0.9);
-}
-
-.purchase-price.revealed {
-    opacity: 1;
-    transform: scale(1);
-    animation: priceBreath 3s ease-in-out infinite;
-}
-
-@keyframes priceBreath {
-    0%,100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-}
-
-/* Description soft fade */
-.purchase-description {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.9s ease 0.3s;
-}
-
-.purchase-description.revealed {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Features = vow-style reveal */
-.purchase-features .feature {
-    opacity: 0;
-    transform: translateX(-20px);
-    transition: all 0.7s cubic-bezier(0.23,1,0.32,1);
-}
-
-.purchase-features .feature.revealed {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* Quantity fades in calmly */
-.purchase-qty {
-    opacity: 0;
-    transform: translateY(15px);
-    transition: all 0.8s ease 0.5s;
-}
-
-.purchase-qty.revealed {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* CTA = final invitation */
-.purchase-cta {
-    opacity: 0;
-    transform: translateY(25px) scale(0.95);
-    transition: all 1s cubic-bezier(0.23,1,0.32,1);
-}
-
-.purchase-cta.revealed {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-    animation: ctaPulseSoft 2.8s ease-in-out infinite;
-}
-
-@keyframes ctaPulseSoft {
-    0%,100% {
-        box-shadow: 0 15px 35px rgba(122,28,63,0.25);
-    }
-    50% {
-        box-shadow: 0 25px 60px rgba(122,28,63,0.45);
-    }
-}
-
-    </style>
+</style>
 <script>
-/* PURCHASE SECTION – COMMITMENT SEQUENCE */
+/* PURCHASE SECTION – SUGGESTION LOGIC */
 document.addEventListener('DOMContentLoaded', () => {
 
-    const section = document.querySelector('.purchase-section');
-    if (!section) return;
+    const products = [
+        {
+            img: '85931.jpg',
+            title: 'Issued in Love',
+            price: 'Rs.68',
+            desc: 'A beautifully crafted experience for couples seeking intentional connection. 24 thoughtfully designed coupons, premium packaging, and a guide to deepening your relationship.',
+            features: [
+                '24 curated connection prompts',
+                'Premium matte finish cards',
+                'Luxury gift packaging',
+                'Digital guide included'
+            ]
+        },
+        {
+            img: '85928.jpg',
+            title: 'Midnight Edition',
+            price: 'Rs.89',
+            desc: 'A deeper, bolder edition designed for couples who want intensity, mystery, and emotional depth.',
+            features: [
+                '30 bold intimacy prompts',
+                'Black matte luxury cards',
+                'Exclusive keepsake box',
+                'Digital ritual guide'
+            ]
+        },
+        {
+            img: '85923.jpg',
+            title: 'Anniversary Edit',
+            price: 'Rs.99',
+            desc: 'Created to celebrate milestones and memories with reflective prompts and romantic rituals.',
+            features: [
+                '28 memory-driven prompts',
+                'Gold-accent cards',
+                'Anniversary gift wrap',
+                'Couple reflection guide'
+            ]
+        },
+        {
+            img: '85920.jpg',
+            title: 'First Love Edition',
+            price: 'Rs.59',
+            desc: 'A lighter, playful edition for new couples beginning their journey together.',
+            features: [
+                '20 playful prompts',
+                'Soft-touch cards',
+                'Minimal gift sleeve',
+                'Beginner connection guide'
+            ]
+        }
+    ];
 
-    const image = section.querySelector('.purchase-image');
-    const title = section.querySelector('.purchase-title');
-    const price = section.querySelector('.purchase-price');
-    const desc  = section.querySelector('.purchase-description');
-    const features = section.querySelectorAll('.purchase-features .feature');
-    const qty = section.querySelector('.purchase-qty');
-    const cta = section.querySelector('.purchase-cta');
+    let activeIndex = 0;
 
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
+    const mainImage = document.getElementById('mainPurchaseImage');
+    const title = document.querySelector('.purchase-title');
+    const price = document.querySelector('.purchase-price');
+    const desc = document.querySelector('.purchase-description');
+    const featuresWrap = document.querySelector('.purchase-features');
+    const suggestionsWrap = document.getElementById('purchaseSuggestions');
 
-            image.classList.add('revealed');
+    function renderMain() {
+        const p = products[activeIndex];
+        mainImage.src = p.img;
+        title.textContent = p.title;
+        price.textContent = p.price;
+        desc.textContent = p.desc;
 
-            setTimeout(() => title.classList.add('revealed'), 200);
-            setTimeout(() => price.classList.add('revealed'), 350);
-            setTimeout(() => desc.classList.add('revealed'), 550);
+        featuresWrap.innerHTML = '';
+        p.features.forEach(f => {
+            const div = document.createElement('div');
+            div.className = 'feature revealed';
+            div.innerHTML = `<i class="fas fa-check"></i><span>${f}</span>`;
+            featuresWrap.appendChild(div);
+        });
+    }
 
-            features.forEach((feature, i) => {
-                setTimeout(() => {
-                    feature.classList.add('revealed');
-                }, 700 + i * 180);
+    function renderSuggestions() {
+        suggestionsWrap.innerHTML = '';
+
+        products.forEach((p, i) => {
+            if (i === activeIndex) return;
+
+            const img = document.createElement('img');
+            img.src = p.img;
+            img.alt = p.title;
+
+            img.addEventListener('click', () => {
+                activeIndex = i;
+                renderMain();
+                renderSuggestions();
             });
 
-            setTimeout(() => qty.classList.add('revealed'), 1400);
-            setTimeout(() => cta.classList.add('revealed'), 1650);
-
-            observer.disconnect();
+            suggestionsWrap.appendChild(img);
         });
-    }, { threshold: 0.45 });
+    }
 
-    observer.observe(section);
+    renderMain();
+    renderSuggestions();
 });
 </script>
+
 
 
     <!-- Footer -->
@@ -1252,7 +1489,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </div>
         </div>
         <div class="footer-bottom">
-            <p>&copy; 2023 XO, Variva. All rights reserved.</p>
+            <p>&copy; 2025 XO, Variva. All rights reserved.</p>
         </div>
     </footer>
 
@@ -1268,5 +1505,107 @@ document.addEventListener('DOMContentLoaded', () => {
     <script src="js/main.js"></script>
     <script src="js/cart.js"></script>
     <script src="js/animations.js"></script>
+
+
+<style>
+/* ===============================
+   GLOBAL SCROLL REVEAL SYSTEM
+================================ */
+
+/* Default hidden state */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(40px);
+    transition:
+        opacity 0.9s cubic-bezier(0.23,1,0.32,1),
+        transform 0.9s cubic-bezier(0.23,1,0.32,1);
+    will-change: transform, opacity;
+}
+
+/* Revealed */
+[data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Direction variants */
+[data-reveal="left"] {
+    transform: translateX(-40px);
+}
+[data-reveal="right"] {
+    transform: translateX(40px);
+}
+[data-reveal="scale"] {
+    transform: scale(0.94);
+}
+[data-reveal="fade"] {
+    transform: none;
+}
+
+/* Revealed overrides */
+[data-reveal].revealed[data-reveal="left"],
+[data-reveal].revealed[data-reveal="right"] {
+    transform: translateX(0);
+}
+[data-reveal].revealed[data-reveal="scale"] {
+    transform: scale(1);
+}
+
+/* Accessibility: reduce motion */
+@media (prefers-reduced-motion: reduce) {
+    [data-reveal] {
+        transition: none;
+        transform: none;
+        opacity: 1;
+    }
+}
+</style>
+<script>
+/* ===============================
+   GLOBAL SCROLL REVEAL ENGINE
+================================ */
+document.addEventListener('DOMContentLoaded', () => {
+
+    /* Automatically tag elements */
+    const autoTargets = document.querySelectorAll(`
+        section,
+        .section-container,
+        .hero-content,
+        .dm-video-card,
+        .media-item,
+        .purchase-image,
+        .purchase-details,
+        .purchase-thumbs img,
+        .cart-panel,
+        .footer-container,
+        .footer-brand,
+        .footer-links,
+        .footer-social
+    `);
+
+    autoTargets.forEach(el => {
+        if (!el.hasAttribute('data-reveal')) {
+            el.setAttribute('data-reveal', 'fade');
+        }
+    });
+
+    const revealElements = document.querySelectorAll('[data-reveal]');
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+
+            entry.target.classList.add('revealed');
+            observer.unobserve(entry.target);
+        });
+    }, {
+        threshold: 0.18,
+        rootMargin: '0px 0px -10% 0px'
+    });
+
+    revealElements.forEach(el => observer.observe(el));
+});
+</script>
+
 </body>
 </html>
