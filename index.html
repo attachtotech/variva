@@ -279,29 +279,36 @@
 </style>
 </head>
 <body>
-    <!-- Luxury Toolbar -->
-    <header class="luxury-toolbar">
-        <div class="toolbar-container">
-<div class="logo">
-    <img src="logo.png" alt="XO Variva Logo" class="logo-icon">
-    XO, <span class="logo-variva">Variva</span>
-</div>            <nav class="nav-menu">
-                <button class="menu-icon" id="menuToggle">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <button class="cart-icon" id="cartToggle">
-                    <i class="fas fa-shopping-bag"></i>
-                    <span class="cart-count">0</span>
-                </button>
-            </nav>
-        </div>
-    </header>
 
-<!-- Floating Menu -->
+
+    
+   <!-- Luxury Toolbar -->
+<!-- FIXED WHITE NAVBAR (ORIGINAL, CLEAN) -->
+<header class="luxury-navbar">
+    <div class="navbar-inner">
+
+        <!-- CENTER LOGO -->
+        <div class="logo-center">
+            <img src="logo.png" alt="XO Variva Logo" class="logo-icon">
+        </div>
+
+        <!-- MENU + CART (TOP RIGHT) -->
+        <nav class="nav-menu">
+            <button class="menu-icon" id="menuToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            <button class="cart-icon" id="cartToggle">
+                <i class="fas fa-shopping-bag"></i>
+                <span class="cart-count">0</span>
+            </button>
+        </nav>
+
+    </div>
+</header>
+
+<!-- FLOATING MENU -->
 <div class="floating-menu" id="floatingMenu">
-    <button class="close-menu" id="closeMenu">
-        ✕
-    </button>
+    <button class="close-menu" id="closeMenu">✕</button>
     <nav class="menu-items">
         <a href="#" class="menu-item">The Experience</a>
         <a href="#" class="menu-item">The Gift</a>
@@ -310,6 +317,149 @@
         <a href="#" class="menu-item">About</a>
     </nav>
 </div>
+
+<style>
+/* ===============================
+   FIXED WHITE NAVBAR
+================================ */
+.luxury-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: #ffffff;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+}
+
+.navbar-inner {
+    max-width: 1400px;
+    margin: auto;
+    height: 80px; /* original clean height */
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+/* LOGO */
+.logo-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo-icon {
+    margin-top: 30px;
+    height: 300px; /* works well for small logo */
+}
+
+/* MENU + CART */
+.nav-menu {
+    position: absolute;
+    right: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.4rem;
+}
+
+.menu-icon,
+.cart-icon {
+    background: none;
+    border: none;
+    color: #1a1a1a;
+    font-size: 1.2rem;
+    cursor: pointer;
+    position: relative;
+}
+
+.cart-count {
+    position: absolute;
+    top: -6px;
+    right: -10px;
+    background: #1a1a1a;
+    color: #ffffff;
+    font-size: 0.65rem;
+    padding: 2px 6px;
+    border-radius: 50%;
+}
+
+/* ===============================
+   FLOATING MENU (UNCHANGED)
+================================ */
+.floating-menu {
+    position: fixed;
+    inset: 0;
+    background: rgba(18, 4, 9, 0.96);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.35s ease;
+    z-index: 2000;
+}
+
+.floating-menu.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.close-menu {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 1.4rem;
+    cursor: pointer;
+}
+
+.menu-items {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    text-align: center;
+}
+
+.menu-item {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    letter-spacing: 0.08em;
+    color: #ffffff;
+    text-decoration: none;
+    opacity: 0.85;
+}
+
+.menu-item:hover {
+    opacity: 1;
+}
+
+/* ===============================
+   MOBILE RESPONSIVE
+================================ */
+@media (max-width: 768px) {
+    .navbar-inner {
+        height: 64px;
+        padding: 0 1.4rem;
+    }
+
+    .logo-icon {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .logo-icon {
+        height: 300px;
+    }
+
+    .menu-item {
+        font-size: 1.3rem;
+    }
+}
+</style>
 
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -333,18 +483,45 @@ document.addEventListener('DOMContentLoaded', () => {
     menuToggle.addEventListener('click', openMenu);
     closeMenu?.addEventListener('click', closeMenuFn);
 
-    // Close on link click
     floatingMenu.querySelectorAll('.menu-item').forEach(link => {
         link.addEventListener('click', closeMenuFn);
     });
 
-    // ESC key support (desktop UX polish)
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') closeMenuFn();
     });
 
 });
 </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     <!-- Luxury Cart Panel -->
     <div class="cart-panel" id="cartPanel">
@@ -430,2250 +607,171 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-<section class="luxury-hero-artistic">
-    <!-- Animated Background -->
-    <div class="artistic-hero-bg">
-        <div class="light-ray ray-1"></div>
-        <div class="light-ray ray-2"></div>
-        <div class="light-ray ray-3"></div>
-        <div class="luxury-particle p1"></div>
-        <div class="luxury-particle p2"></div>
-        <div class="luxury-particle p3"></div>
+<section class="dm-hero">
+    <div class="dm-wrap">
+
+        <div class="dm-video-card">
+            <video class="dm-video" autoplay muted loop playsinline preload="auto">
+                <source src="hero.mp4" type="video/mp4">
+            </video>
+
+            <!-- Full Width Search Bar -->
+            <div class="dm-search">
+                <svg class="dm-search-icon" viewBox="0 0 24 24">
+                    <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.4"/>
+                    <path d="M16 16L21 21" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
+                </svg>
+                <span class="dm-search-text">Date Night Plans?</span>
+            </div>
+        </div>
+
+        <p class="dm-caption">
+            Intimate moments, intentionally designed
+        </p>
+
     </div>
-    
-    <div class="artistic-hero-grid">
-        <!-- LEFT ART PANEL - Renewal Theme -->
-        <div class="hero-art-panel left-art">
-            <div class="art-frame art-frame-1">
-                <div class="art-image-container">
-                    <img src="85928.jpg" alt="Renewal" class="art-img" loading="lazy">
-                    <div class="art-overlay"></div>
-                    <div class="art-reflect"></div>
-                </div>
-                <div class="art-deco-line"></div>
-                <div class="frame-ornament top-left"></div>
-                <div class="frame-ornament top-right"></div>
-                <div class="frame-ornament bottom-left"></div>
-                <div class="frame-ornament bottom-right"></div>
-            </div>
-            <div class="art-caption-container">
-                <h3 class="art-title">Renewal</h3>
-                <p class="art-subtitle">Moments that refresh the soul</p>
-                <div class="art-divider">
-                    <div class="divider-line"></div>
-                    <div class="divider-dot"></div>
-                    <div class="divider-line"></div>
-                </div>
-            </div>
-            <div class="art-floating-elements">
-                <div class="float-element elem-1"></div>
-                <div class="float-element elem-2"></div>
-                <div class="float-element elem-3"></div>
-            </div>
-        </div>
-
-        <!-- CENTER VIDEO (5:7 Aspect Ratio) -->
-        <div class="hero-video-core">
-            <div class="video-wrapper">
-                <div class="video-container">
-                    <video class="hero-video" autoplay muted loop playsinline preload="metadata">
-                        <source src="hero.mp4" type="video/mp4">
-                        Your browser does not support the video tag.
-                    </video>
-
-                    <!-- Centered Search Bar -->
-                    <div class="video-search-center">
-                        <div class="search-icon-wrapper">
-                            <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                                <circle cx="11" cy="11" r="8"></circle>
-                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                            </svg>
-                        </div>
-                        <span class="search-text">Date Night Plans?</span>
-                        <div class="search-hint">❤️</div>
-                    </div>
-
-                    <!-- Video overlays -->
-                    <div class="video-overlay"></div>
-                    <div class="video-glow"></div>
-                    
-                    <!-- Video decorative elements -->
-                    <div class="video-corner tl"></div>
-                    <div class="video-corner tr"></div>
-                    <div class="video-corner bl"></div>
-                    <div class="video-corner br"></div>
-                </div>
-                                
-                
-                <!-- Scroll indicator -->
-                <div class="scroll-indicator">
-                    <div class="scroll-dots">
-                        <div class="scroll-dot"></div>
-                        <div class="scroll-dot"></div>
-                        <div class="scroll-dot"></div>
-                    </div>
-                    <span class="scroll-text">Scroll to explore</span>
-                </div>
-            </div>
-        </div>
-
-        <!-- RIGHT ART PANEL - Discovery Theme -->
-        <div class="hero-art-panel right-art">
-            <div class="art-frame art-frame-2">
-                <div class="art-image-container">
-                    <img src="85931.jpg" alt="Discovery" class="art-img" loading="lazy">
-                    <div class="art-overlay"></div>
-                    <div class="art-reflect"></div>
-                </div>
-                <div class="art-deco-line"></div>
-                <div class="frame-ornament top-left"></div>
-                <div class="frame-ornament top-right"></div>
-                <div class="frame-ornament bottom-left"></div>
-                <div class="frame-ornament bottom-right"></div>
-            </div>
-            <div class="art-caption-container">
-                <h3 class="art-title">Discovery</h3>
-                <p class="art-subtitle">Unforgettable shared experiences</p>
-                <div class="art-divider">
-                    <div class="divider-line"></div>
-                    <div class="divider-dot"></div>
-                    <div class="divider-line"></div>
-                </div>
-            </div>
-            <div class="art-floating-elements">
-                <div class="float-element elem-1"></div>
-                <div class="float-element elem-2"></div>
-                <div class="float-element elem-3"></div>
-            </div>
-        </div>
-    </div>
-    
-    <!-- Bottom decorative line -->
-    <div class="hero-bottom-line"></div>
 </section>
-
 <style>
-/* ===============================
-   RESET & GLOBAL VARIABLES
-================================ */
-:root {
-    --primary-gold: #D4A574;
-    --primary-burgundy: #7a1c3f;
-    --primary-dark: #0a0a0a;
-    --primary-light: #F2ECE4;
-    --accent-teal: #4a8c8c;
-    --transition-smooth: cubic-bezier(0.4, 0, 0.2, 1);
-    --font-serif: 'Cormorant Garamond', serif;
-    --font-sans: 'Inter', sans-serif;
+    :root {
+    --dm-maroon-ink: #1a040c;
+    --dm-maroon-deep: #260610;
+    --dm-maroon-core: #320916;
+
+    --dm-beige: #f2e9dc;
+    --dm-beige-soft: rgba(242, 233, 220, 0.96);
+
+    --dm-serif: 'DM Serif Display', serif;
+    --dm-sans: 'Manrope', system-ui, sans-serif;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* ===============================
-   LUXURY ARTISTIC HERO
-================================ */
-.luxury-hero-artistic {
+/* HERO */
+.dm-hero {
     min-height: 100vh;
-    background: linear-gradient(135deg, 
-        #0a0a0a 0%, 
-        #1a0f15 30%, 
-        #2d1b1f 70%, 
-        #0a0a0a 100%);
+    background: radial-gradient(
+        120% 120% at 50% 0%,
+        var(--dm-maroon-core),
+        var(--dm-maroon-ink)
+    );
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 2rem 1rem;
-    overflow: hidden;
-    position: relative;
-    font-family: var(--font-serif);
 }
 
-/* Animated background */
-.artistic-hero-bg {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    z-index: 1;
-}
-
-.light-ray {
-    position: absolute;
-    background: linear-gradient(90deg, 
-        transparent 0%, 
-        rgba(122, 28, 63, 0.1) 20%, 
-        rgba(212, 165, 116, 0.15) 50%, 
-        rgba(122, 28, 63, 0.1) 80%, 
-        transparent 100%);
-    height: 1px;
-    width: 200%;
-    filter: blur(8px);
-    opacity: 0.5;
-}
-
-.ray-1 {
-    top: 15%;
-    left: -100%;
-    animation: rayMove 25s linear infinite;
-}
-
-.ray-2 {
-    top: 50%;
-    left: -100%;
-    animation: rayMove 30s linear infinite reverse;
-    opacity: 0.3;
-}
-
-.ray-3 {
-    top: 85%;
-    left: -100%;
-    animation: rayMove 35s linear infinite;
-    opacity: 0.4;
-}
-
-.luxury-particle {
-    position: absolute;
-    border-radius: 50%;
-    background: radial-gradient(circle, 
-        rgba(212, 165, 116, 0.05), 
-        transparent 70%);
-    filter: blur(15px);
-    animation: floatParticle 20s infinite linear;
-}
-
-.p1 { width: 150px; height: 150px; top: 20%; left: 10%; animation-delay: 0s; }
-.p2 { width: 100px; height: 100px; top: 60%; right: 15%; animation-delay: -7s; }
-.p3 { width: 120px; height: 120px; bottom: 30%; left: 20%; animation-delay: -12s; }
-
-/* ===============================
-   HERO GRID LAYOUT
-================================ */
-.artistic-hero-grid {
-    width: 100%;
-    max-width: 1500px;
-    display: grid;
-    grid-template-columns: 1fr auto 1fr;
-    align-items: center;
-    gap: 4rem;
-    position: relative;
-    z-index: 2;
-}
-
-/* ===============================
-   SIDE ART PANELS - Premium Design
-================================ */
-.hero-art-panel {
+/* WRAP */
+.dm-wrap {
     display: flex;
     flex-direction: column;
     align-items: center;
+    gap: 2.4rem;
+}
+
+/* VIDEO CARD */
+.dm-video-card {
     position: relative;
-    opacity: 0;
-    animation: artFadeIn 1.2s var(--transition-smooth) forwards;
-}
-
-.hero-art-panel.left-art {
-    animation-delay: 0.3s;
-}
-
-.hero-art-panel.right-art {
-    animation-delay: 0.6s;
-}
-
-.art-frame {
-    position: relative;
-    margin-bottom: 2.5rem;
-}
-
-.art-frame-1 {
-    animation: panelFloat 8s ease-in-out infinite;
-}
-
-.art-frame-2 {
-    animation: panelFloat 8s ease-in-out infinite reverse;
-    animation-delay: -2s;
-}
-
-/* Art image container */
-.art-image-container {
-    width: 280px;
-    height: 380px;
-    border-radius: 16px;
-    overflow: hidden;
-    position: relative;
-    transform: perspective(1200px) rotateY(-8deg);
-    transition: transform 0.8s var(--transition-smooth);
-    box-shadow: 
-        0 35px 70px rgba(0, 0, 0, 0.5),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.05),
-        0 0 50px rgba(122, 28, 63, 0.2);
-}
-
-.right-art .art-image-container {
-    transform: perspective(1200px) rotateY(8deg);
-}
-
-.art-image-container:hover {
-    transform: perspective(1200px) rotateY(0deg) scale(1.02);
-}
-
-.art-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    filter: contrast(1.1) saturate(1.1);
-    transition: transform 1.2s var(--transition-smooth);
-}
-
-.art-image-container:hover .art-img {
-    transform: scale(1.05);
-}
-
-.art-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to bottom,
-        transparent 40%,
-        rgba(10, 10, 10, 0.8) 90%
-    );
-    mix-blend-mode: multiply;
-    pointer-events: none;
-}
-
-.art-reflect {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 40%;
-    background: linear-gradient(
-        to bottom,
-        rgba(255, 255, 255, 0.08),
-        transparent
-    );
-    border-radius: 16px 16px 0 0;
-    pointer-events: none;
-}
-
-.art-deco-line {
-    position: absolute;
-    bottom: -12px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 70%;
-    height: 2px;
-    background: linear-gradient(90deg, 
-        transparent, 
-        var(--primary-gold), 
-        transparent);
-    filter: blur(1px);
-}
-
-/* Frame ornaments */
-.frame-ornament {
-    position: absolute;
-    width: 20px;
-    height: 20px;
-    border: 1px solid rgba(212, 165, 116, 0.3);
-    opacity: 0;
-    animation: ornamentAppear 0.8s var(--transition-smooth) forwards;
-}
-
-.top-left {
-    top: 12px;
-    left: 12px;
-    border-right: none;
-    border-bottom: none;
-    animation-delay: 0.8s;
-}
-
-.top-right {
-    top: 12px;
-    right: 12px;
-    border-left: none;
-    border-bottom: none;
-    animation-delay: 1s;
-}
-
-.bottom-left {
-    bottom: 12px;
-    left: 12px;
-    border-right: none;
-    border-top: none;
-    animation-delay: 1.2s;
-}
-
-.bottom-right {
-    bottom: 12px;
-    right: 12px;
-    border-left: none;
-    border-top: none;
-    animation-delay: 1.4s;
-}
-
-/* Art caption */
-.art-caption-container {
-    text-align: center;
-    margin-top: 2rem;
-    opacity: 0;
-    animation: fadeUp 0.8s var(--transition-smooth) forwards;
-    animation-delay: 1.6s;
-}
-
-.art-title {
-    font-size: 2.4rem;
-    font-weight: 300;
-    letter-spacing: 0.15em;
-    color: var(--primary-light);
-    margin-bottom: 0.8rem;
-    position: relative;
-    display: inline-block;
-}
-
-.art-title:after {
-    content: '';
-    position: absolute;
-    bottom: -6px;
-    left: 0;
-    width: 100%;
-    height: 1px;
-    background: linear-gradient(90deg, 
-        transparent, 
-        var(--primary-gold), 
-        transparent);
-    opacity: 0.7;
-}
-
-.art-subtitle {
-    font-family: var(--font-sans);
-    font-size: 0.9rem;
-    font-weight: 300;
-    letter-spacing: 0.2em;
-    color: rgba(242, 236, 228, 0.7);
-    text-transform: uppercase;
-    margin-top: 0.8rem;
-    line-height: 1.6;
-}
-
-.art-divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 12px;
-    margin-top: 1.5rem;
-}
-
-.divider-line {
-    width: 40px;
-    height: 1px;
-    background: linear-gradient(90deg, 
-        var(--primary-gold), 
-        transparent);
-    opacity: 0.5;
-}
-
-.right-art .divider-line {
-    background: linear-gradient(90deg, 
-        transparent, 
-        var(--primary-gold));
-}
-
-.divider-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--primary-gold);
-    opacity: 0.6;
-}
-
-/* Floating elements */
-.art-floating-elements {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: -1;
-}
-
-.float-element {
-    position: absolute;
-    background: rgba(212, 165, 116, 0.08);
-    border-radius: 50%;
-    filter: blur(3px);
-    animation: floatElement 15s infinite ease-in-out;
-}
-
-.left-art .float-element {
-    background: rgba(122, 28, 63, 0.08);
-}
-
-.float-element.elem-1 {
-    width: 10px;
-    height: 10px;
-    top: 25%;
-    left: 20%;
-    animation-delay: 0s;
-}
-
-.float-element.elem-2 {
-    width: 8px;
-    height: 8px;
-    top: 65%;
-    right: 15%;
-    animation-delay: -5s;
-    animation-direction: reverse;
-}
-
-.float-element.elem-3 {
-    width: 12px;
-    height: 12px;
-    bottom: 20%;
-    left: 30%;
-    animation-delay: -10s;
-}
-
-/* ===============================
-   CENTER VIDEO - 5:7 Aspect Ratio
-================================ */
-.hero-video-core {
-    position: relative;
-    z-index: 3;
-}
-
-.video-wrapper {
-    position: relative;
-    width: 420px; /* Optimal size for 5:7 */
-}
-
-/* Video container - 5:7 aspect ratio */
-.video-container {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 5 / 7; /* Changed from 9/16 to 5/7 */
-    border-radius: 20px;
+    width: 440px;
+    aspect-ratio: 5 / 7;
+    border-radius: 28px;
     overflow: hidden;
     background: #000;
     box-shadow:
-        0 60px 120px rgba(0, 0, 0, 0.6),
-        inset 0 0 0 1px rgba(255, 255, 255, 0.1),
-        0 0 0 2px rgba(0, 0, 0, 0.3);
-    animation: videoFloat 8s ease-in-out infinite;
+        0 60px 120px rgba(0, 0, 0, 0.75),
+        inset 0 0 0 1px rgba(255, 255, 255, 0.06);
 }
 
-.hero-video {
+.dm-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: contrast(1.1) brightness(1.05);
+    filter: brightness(1.12) contrast(1.06);
 }
 
-/* Video corners */
-.video-corner {
+/* SEARCH BAR */
+.dm-search {
     position: absolute;
-    width: 30px;
-    height: 30px;
-    border: 1px solid rgba(212, 165, 116, 0.4);
-    opacity: 0;
-    animation: cornerAppear 0.8s var(--transition-smooth) forwards;
-}
-
-.video-corner.tl {
-    top: 15px;
-    left: 15px;
-    border-right: none;
-    border-bottom: none;
-    animation-delay: 0.5s;
-}
-
-.video-corner.tr {
-    top: 15px;
-    right: 15px;
-    border-left: none;
-    border-bottom: none;
-    animation-delay: 0.7s;
-}
-
-.video-corner.bl {
-    bottom: 15px;
-    left: 15px;
-    border-right: none;
-    border-top: none;
-    animation-delay: 0.9s;
-}
-
-.video-corner.br {
-    bottom: 15px;
-    right: 15px;
-    border-left: none;
-    border-top: none;
-    animation-delay: 1.1s;
-}
-
-/* Video overlays */
-.video-overlay {
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        to bottom,
-        rgba(0, 0, 0, 0.4) 0%,
-        transparent 25%,
-        transparent 75%,
-        rgba(0, 0, 0, 0.5) 100%
-    );
-    pointer-events: none;
-    z-index: 1;
-}
-
-.video-glow {
-    position: absolute;
-    inset: -20%;
-    background: radial-gradient(circle at center,
-        rgba(122, 28, 63, 0.3) 0%,
-        rgba(212, 165, 116, 0.2) 30%,
-        transparent 70%);
-    filter: blur(50px);
-    opacity: 0.6;
-    animation: glowPulse 7s infinite alternate;
-    pointer-events: none;
-    z-index: 0;
-}
-
-/* ===============================
-   SEARCH BAR (CENTERED)
-================================ */
-.video-search-center {
-    position: absolute;
-    top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    background: rgba(242, 236, 228, 0.95);
-    backdrop-filter: blur(20px);
-    padding: 18px 28px;
-    border-radius: 50px;
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    font-size: 1.05rem;
-    color: #1a1a1a;
-    letter-spacing: 0.5px;
-    box-shadow:
-        0 25px 60px rgba(0, 0, 0, 0.4),
-        0 0 0 1px rgba(255, 255, 255, 0.1);
-    animation: searchBreath 4s ease-in-out infinite;
-    z-index: 4;
-    cursor: pointer;
-    transition: all 0.4s var(--transition-smooth);
-    font-family: var(--font-sans);
-    font-weight: 400;
-    width: 90%;
-    max-width: 320px;
-    border: 1px solid rgba(255, 255, 255, 0.15);
-}
+    bottom: 50%;
+    transform: translate(-50%, 50%);
+    width: calc(100% - 3rem);
+    height: 58px;
 
-.video-search-center:hover {
-    background: rgba(255, 255, 255, 0.98);
-    transform: translate(-50%, -50%) scale(1.03);
-    box-shadow:
-        0 35px 80px rgba(0, 0, 0, 0.5),
-        0 0 0 1px rgba(255, 255, 255, 0.2);
-}
-
-.search-icon-wrapper {
-    color: var(--primary-burgundy);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    animation: iconPulse 2s infinite;
-}
-
-.search-text {
-    flex: 1;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    font-weight: 500;
-}
-
-.search-hint {
-    font-size: 0.75rem;
-    font-weight: 500;
-    color: var(--primary-burgundy);
-    background: rgba(122, 28, 63, 0.1);
-    padding: 4px 10px;
-    border-radius: 20px;
-    opacity: 0;
-    transform: translateX(10px);
-    transition: all 0.3s ease;
-}
-
-.video-search-center:hover .search-hint {
-    opacity: 1;
-    transform: translateX(0);
-}
-
-/* ===============================
-   VIDEO CONTROL PANEL
-================================ */
-.video-control-panel {
-    position: absolute;
-    bottom: -50px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    align-items: center;
-    gap: 20px;
-    background: rgba(10, 10, 10, 0.8);
-    backdrop-filter: blur(20px);
-    padding: 12px 24px;
-    border-radius: 50px;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    opacity: 0;
-    animation: controlsAppear 1s var(--transition-smooth) forwards;
-    animation-delay: 1.8s;
-}
-
-.control-btn {
-    background: rgba(212, 165, 116, 0.1);
-    border: 1px solid rgba(212, 165, 116, 0.2);
-    color: var(--primary-gold);
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.control-btn:hover {
-    background: rgba(212, 165, 116, 0.2);
-    transform: scale(1.1);
-}
-
-.volume-control {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: var(--primary-gold);
-}
-
-.volume-slider {
-    width: 80px;
-    height: 4px;
-    -webkit-appearance: none;
-    appearance: none;
-    background: rgba(242, 236, 228, 0.1);
-    border-radius: 2px;
-    outline: none;
-}
-
-.volume-slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 14px;
-    height: 14px;
-    border-radius: 50%;
-    background: var(--primary-gold);
-    cursor: pointer;
-    box-shadow: 0 0 10px rgba(212, 165, 116, 0.5);
-}
-
-/* ===============================
-   SCROLL INDICATOR
-================================ */
-.scroll-indicator {
-    position: absolute;
-    bottom: -100px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    opacity: 0;
-    animation: indicatorAppear 1s var(--transition-smooth) forwards;
-    animation-delay: 2s;
-}
-
-.scroll-dots {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 6px;
-}
-
-.scroll-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background: var(--primary-gold);
-    opacity: 0.6;
-    animation: scrollDot 1.5s infinite;
-}
-
-.scroll-dot:nth-child(2) {
-    animation-delay: 0.2s;
-}
-
-.scroll-dot:nth-child(3) {
-    animation-delay: 0.4s;
-}
-
-.scroll-text {
-    font-family: var(--font-sans);
-    font-size: 0.85rem;
-    font-weight: 300;
-    letter-spacing: 0.2em;
-    color: rgba(242, 236, 228, 0.7);
-    text-transform: uppercase;
-}
-
-/* ===============================
-   HERO BOTTOM LINE
-================================ */
-.hero-bottom-line {
-    position: absolute;
-    bottom: 40px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 80%;
-    max-width: 800px;
-    height: 1px;
-    background: linear-gradient(90deg,
-        transparent,
-        rgba(212, 165, 116, 0.3),
-        rgba(122, 28, 63, 0.3),
-        rgba(212, 165, 116, 0.3),
-        transparent
-    );
-    opacity: 0;
-    animation: lineExpand 1.5s var(--transition-smooth) forwards;
-    animation-delay: 2.5s;
-}
-
-/* ===============================
-   ANIMATIONS
-================================ */
-@keyframes rayMove {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(100%); }
-}
-
-@keyframes floatParticle {
-    0%, 100% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-    25% {
-        transform: translate(40px, -20px) rotate(90deg);
-    }
-    50% {
-        transform: translate(0, -40px) rotate(180deg);
-    }
-    75% {
-        transform: translate(-40px, -20px) rotate(270deg);
-    }
-}
-
-@keyframes artFadeIn {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes panelFloat {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-20px); }
-}
-
-@keyframes videoFloat {
-    0%, 100% { transform: translateY(0) rotateX(0); }
-    50% { transform: translateY(-15px) rotateX(2deg); }
-}
-
-@keyframes glowPulse {
-    0% {
-        opacity: 0.4;
-        transform: scale(1);
-    }
-    100% {
-        opacity: 0.8;
-        transform: scale(1.1);
-    }
-}
-
-@keyframes searchBreath {
-    0%, 100% { transform: translate(-50%, -50%) scale(1); }
-    50% { transform: translate(-50%, -50%) scale(1.03); }
-}
-
-@keyframes fadeUp {
-    from { opacity: 0; transform: translateY(20px); }
-    to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes lineExpand {
-    from { width: 0; }
-    to { width: 100%; }
-}
-
-@keyframes floatElement {
-    0%, 100% { transform: translate(0, 0) scale(1); }
-    25% { transform: translate(-10px, -15px) scale(1.2); }
-    50% { transform: translate(10px, -5px) scale(0.8); }
-    75% { transform: translate(-5px, -20px) scale(1.1); }
-}
-
-@keyframes ornamentAppear {
-    from { opacity: 0; transform: scale(0.5); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes cornerAppear {
-    from { opacity: 0; transform: scale(0.5); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-@keyframes iconPulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
-}
-
-@keyframes controlsAppear {
-    from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-    to { opacity: 1; transform: translateX(-50%) translateY(0); }
-}
-
-@keyframes indicatorAppear {
-    from { opacity: 0; transform: translateX(-50%) translateY(20px); }
-    to { opacity: 1; transform: translateX(-50%) translateY(0); }
-}
-
-@keyframes scrollDot {
-    0%, 100% { opacity: 0.3; transform: translateY(0); }
-    50% { opacity: 1; transform: translateY(5px); }
-}
-
-/* ===============================
-   MOBILE RESPONSIVENESS
-================================ */
-@media (max-width: 1200px) {
-    .artistic-hero-grid {
-        gap: 3rem;
-    }
-    
-    .art-image-container {
-        width: 240px;
-        height: 336px; /* Maintain 3:4 ratio */
-    }
-    
-    .video-wrapper {
-        width: 380px;
-    }
-    
-    .art-title {
-        font-size: 2.2rem;
-    }
-}
-
-@media (max-width: 992px) {
-    .artistic-hero-grid {
-        grid-template-columns: 1fr;
-        gap: 4rem;
-    }
-    
-    .hero-art-panel {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        gap: 3rem;
-        margin: 0 auto;
-        max-width: 800px;
-    }
-    
-    .hero-art-panel.left-art,
-    .hero-art-panel.right-art {
-        animation: none;
-        opacity: 1;
-        transform: none;
-    }
-    
-    .art-frame {
-        margin-bottom: 0;
-    }
-    
-    .art-caption-container {
-        text-align: left;
-        margin-top: 0;
-        max-width: 200px;
-    }
-    
-    .right-art .art-caption-container {
-        text-align: right;
-        order: -1;
-    }
-    
-    .art-title {
-        font-size: 2rem;
-    }
-    
-    .art-title:after {
-        left: 0;
-        transform: none;
-    }
-    
-    .right-art .art-title:after {
-        left: auto;
-        right: 0;
-    }
-    
-    .art-divider {
-        justify-content: flex-start;
-    }
-    
-    .right-art .art-divider {
-        justify-content: flex-end;
-    }
-    
-    .video-wrapper {
-        width: 400px;
-    }
-}
-
-@media (max-width: 768px) {
-    .luxury-hero-artistic {
-        padding: 1.5rem 1rem;
-        min-height: 90vh;
-    }
-    
-    .hero-art-panel {
-        flex-direction: column;
-        gap: 2rem;
-    }
-    
-    .art-caption-container {
-        text-align: center;
-        max-width: 280px;
-    }
-    
-    .right-art .art-caption-container {
-        text-align: center;
-        order: 0;
-    }
-    
-    .art-title:after {
-        left: 50%;
-        transform: translateX(-50%);
-    }
-    
-    .art-divider {
-        justify-content: center;
-    }
-    
-    .video-wrapper {
-        width: 340px;
-    }
-    
-    .video-search-center {
-        width: 95%;
-        padding: 16px 24px;
-        font-size: 0.95rem;
-    }
-    
-    .search-hint {
-        display: none;
-    }
-    
-    .video-control-panel {
-        padding: 10px 20px;
-        gap: 15px;
-    }
-    
-    .volume-slider {
-        width: 60px;
-    }
-    
-    .scroll-indicator {
-        bottom: -90px;
-    }
-    
-    .hero-bottom-line {
-        width: 90%;
-        bottom: 30px;
-    }
-}
-
-@media (max-width: 576px) {
-    .artistic-hero-grid {
-        gap: 3rem;
-    }
-    
-    .hero-art-panel {
-        gap: 1.5rem;
-    }
-    
-    .art-image-container {
-        width: 200px;
-        height: 280px;
-    }
-    
-    .video-wrapper {
-        width: 300px;
-    }
-    
-    .video-container {
-        border-radius: 16px;
-    }
-    
-    .video-search-center {
-        padding: 14px 20px;
-        font-size: 0.9rem;
-        gap: 12px;
-    }
-    
-    .search-icon {
-        width: 18px;
-        height: 18px;
-    }
-    
-    .video-control-panel {
-        bottom: -60px;
-        padding: 8px 16px;
-    }
-    
-    .control-btn {
-        width: 32px;
-        height: 32px;
-    }
-    
-    .scroll-indicator {
-        bottom: -80px;
-    }
-    
-    .scroll-text {
-        font-size: 0.75rem;
-    }
-}
-
-@media (max-width: 400px) {
-    .art-image-container {
-        width: 180px;
-        height: 252px;
-    }
-    
-    .video-wrapper {
-        width: 280px;
-    }
-    
-    .video-search-center {
-        padding: 12px 18px;
-        font-size: 0.85rem;
-    }
-    
-    .art-title {
-        font-size: 1.8rem;
-    }
-    
-    .art-subtitle {
-        font-size: 0.8rem;
-    }
-}
-
-/* Touch device optimizations */
-@media (hover: none) and (pointer: coarse) {
-    .art-image-container:hover {
-        transform: perspective(1200px) rotateY(-8deg);
-    }
-    
-    .art-image-container:hover .art-img {
-        transform: scale(1);
-    }
-    
-    .video-search-center:hover {
-        transform: translate(-50%, -50%) scale(1);
-    }
-    
-    .control-btn:hover {
-        transform: none;
-    }
-    
-    .search-hint {
-        display: none;
-    }
-}
-</style>
-
-<script>
-// JavaScript for video controls and search functionality
-document.addEventListener('DOMContentLoaded', function() {
-    const heroVideo = document.querySelector('.hero-video');
-    const playPauseBtn = document.querySelector('.play-pause');
-    const volumeSlider = document.querySelector('.volume-slider');
-    const searchCenter = document.querySelector('.video-search-center');
-    const searchInput = document.createElement('input');
-    
-    // Replace search span with input on click
-    searchCenter.addEventListener('click', function(e) {
-        if (e.target === searchCenter || e.target.closest('.search-text')) {
-            const searchText = this.querySelector('.search-text');
-            searchInput.type = 'text';
-            searchInput.className = 'search-input';
-            searchInput.placeholder = 'Discover restaurants, experiences...';
-            searchInput.value = searchText.textContent.replace('What\'s your date night vision?', '');
-            searchText.style.display = 'none';
-            this.insertBefore(searchInput, this.querySelector('.search-hint'));
-            searchInput.focus();
-            
-            // Update search hint
-            const hint = this.querySelector('.search-hint');
-            hint.textContent = 'Press Enter';
-            hint.style.opacity = '1';
-            hint.style.transform = 'translateX(0)';
-        }
-    });
-    
-    // Handle search input
-    searchInput.addEventListener('keypress', function(e) {
-        if (e.key === 'Enter') {
-            const searchTerm = this.value.trim();
-            if (searchTerm) {
-                // Here you would implement actual search functionality
-                console.log('Searching for:', searchTerm);
-                
-                // Visual feedback
-                searchCenter.style.animation = 'none';
-                setTimeout(() => {
-                    searchCenter.style.animation = 'searchBreath 4s ease-in-out infinite';
-                }, 10);
-                
-                // Reset search display
-                const searchText = searchCenter.querySelector('.search-text');
-                const hint = searchCenter.querySelector('.search-hint');
-                
-                searchText.textContent = 'What\'s your date night vision?';
-                searchText.style.display = 'block';
-                this.remove();
-                
-                hint.textContent = 'Press Enter';
-                hint.style.opacity = '0';
-                hint.style.transform = 'translateX(10px)';
-            }
-        }
-    });
-    
-    // Video play/pause functionality
-    playPauseBtn.addEventListener('click', function() {
-        if (heroVideo.paused) {
-            heroVideo.play();
-            this.innerHTML = `
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <rect x="6" y="4" width="4" height="16"></rect>
-                    <rect x="14" y="4" width="4" height="16"></rect>
-                </svg>
-            `;
-        } else {
-            heroVideo.pause();
-            this.innerHTML = `
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z"/>
-                </svg>
-            `;
-        }
-    });
-    
-    // Volume control
-    volumeSlider.addEventListener('input', function() {
-        heroVideo.volume = this.value / 100;
-    });
-    
-    // Initialize video volume
-    heroVideo.volume = volumeSlider.value / 100;
-    
-    // Add scroll indicator animation
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    let scrollTimeout;
-    
-    window.addEventListener('scroll', function() {
-        scrollIndicator.style.opacity = '0.3';
-        clearTimeout(scrollTimeout);
-        
-        scrollTimeout = setTimeout(() => {
-            scrollIndicator.style.opacity = '1';
-        }, 1000);
-    });
-});
-</script>
-
-
-
-
-
-
-
-
-
-
-<section class="love-editorial">
-  <div class="editorial-container">
-
-    <!-- Left Column -->
-    <div class="editorial-column image-column">
-      <div class="text-block">
-        <span class="label">Valentine Edit</span>
-        <h3>Crafted for Love</h3>
-        <p>Every detail begins with a feeling, shaped slowly into something eternal.</p>
-      </div>
-      <img src="85928.jpg" alt="Variva love detail">
-    </div>
-
-    <!-- Center Video -->
-    <div class="editorial-column video-column">
-      <video
-        src="hero.mp4"
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata">
-      </video>
-    </div>
-
-    <!-- Right Column -->
-    <div class="editorial-column image-column">
-      <div class="text-block">
-        <span class="label">Issued in Love</span>
-        <h3>Meant to Last</h3>
-        <p>A promise expressed in gold, carried through time.</p>
-      </div>
-      <img src="85931.jpg" alt="Variva romance texture">
-    </div>
-
-  </div>
-</section>
-
-
-<section class="essence-editorial compact" id="essenceEditorial">
-  <div class="editorial-wrapper">
-
-    <!-- Block 1 -->
-    <div class="editorial-block image-full animate-item">
-      <img src="85923.jpg" alt="Issued in Love Editorial">
-      <div class="overlay-title">THE ESSENCE</div>
-    </div>
-
-    <!-- Block 2 -->
-    <div class="editorial-block text-block animate-item">
-      <span class="editorial-label">Featured</span>
-      <h3>
-        24 moments <br>
-        designed for <br>
-        intentional love
-      </h3>
-      <p>
-        Issued in Love is thoughtfully created around meaningful experiences —
-        some planned, some spontaneous — all designed to deepen connection
-        naturally.
-      </p>
-    </div>
-
-    <!-- Block 3 -->
-    <div class="editorial-block image-half animate-item">
-      <img src="85058 (1).jpg" alt="Plan & Anticipate">
-      <div class="caption">
-        <strong>Plan & Anticipate</strong>
-        <span>Moments worth waiting for</span>
-      </div>
-    </div>
-
-    <!-- Block 4 -->
-    <div class="editorial-block image-half animate-item">
-      <img src="85920.jpg" alt="Spontaneous Joy">
-      <div class="caption">
-        <strong>Spontaneous Joy</strong>
-        <span>Unplanned, effortless love</span>
-      </div>
-    </div>
-
-    <!-- Block 5 -->
-    <div class="editorial-block text-quote animate-item">
-      <p>
-        “The most meaningful connections are built
-        in the quiet, intentional moments.”
-      </p>
-    </div>
-
-    <!-- Block 6 -->
-    <div class="editorial-block image-wide animate-item">
-      <img src="85923.jpg" alt="Deepen & Reconnect">
-      <div class="caption">
-        <strong>Deepen & Reconnect</strong>
-        <span>Where love grows stronger</span>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<style>
-    /* ===============================
-   ESSENCE – COMPACT EDITORIAL
-================================ */
-
-.essence-editorial.compact {
-    background: #f6efe7;
-    padding: 5.5rem 2rem; /* REDUCED */
-}
-
-.editorial-wrapper {
-    max-width: 1080px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-auto-rows: minmax(220px, auto);
-    gap: 1.6rem; /* REDUCED GAP */
-}
-
-/* Base block */
-.editorial-block {
-    position: relative;
-    background: #fff;
-    overflow: hidden;
-}
-
-/* Images */
-.editorial-block img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
-    transition: transform 1.2s cubic-bezier(0.23,1,0.32,1);
-}
-
-/* Image hover (desktop only) */
-@media (hover: hover) {
-    .editorial-block:hover img {
-        transform: scale(1.04);
-    }
-}
-
-/* Full image */
-.image-full {
-    grid-column: span 2;
-    height: 420px; /* REDUCED */
-}
-
-/* Overlay title */
-.overlay-title {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.8rem;
-    letter-spacing: 0.14em;
-    color: rgba(255,255,255,0.92);
-    background: linear-gradient(
-        to bottom,
-        rgba(0,0,0,0.15),
-        rgba(0,0,0,0.3)
-    );
-}
-
-/* Text block */
-.text-block {
-    padding: 2.4rem; /* REDUCED */
-    background: #efe3d6;
-}
-
-.editorial-label {
-    font-size: 0.7rem;
-    letter-spacing: 0.22em;
-    margin-bottom: 0.6rem;
-    display: inline-block;
-    color: #7a1c3f;
-}
-
-.text-block h3 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.85rem;
-    line-height: 1.25;
-    margin-bottom: 0.8rem;
-    color: #3a1c2a;
-}
-
-.text-block p {
-    font-size: 0.9rem;
-    line-height: 1.6;
-    color: #555;
-}
-
-/* Half images */
-.image-half {
-    height: 300px; /* REDUCED */
-}
-
-/* Wide image */
-.image-wide {
-    grid-column: span 2;
-    height: 360px; /* REDUCED */
-}
-
-/* Captions */
-.caption {
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    padding: 0.9rem; /* REDUCED */
-    background: linear-gradient(to top, rgba(0,0,0,0.55), transparent);
-    color: #fff;
-}
-
-.caption strong {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-}
-
-.caption span {
-    font-size: 0.8rem;
-    opacity: 0.9;
-}
-
-/* Quote */
-.text-quote {
-    background: #d7c3ad;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 2.4rem; /* REDUCED */
-    text-align: center;
-}
-
-.text-quote p {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    line-height: 1.4;
-    color: #5c2b46;
-    max-width: 420px;
-}
-
-/* ===============================
-   ANIMATION – LUXURY MINIMAL
-================================ */
-
-.animate-item {
-    opacity: 0;
-    transform: translateY(26px) scale(0.985);
-    transition:
-        opacity 0.9s cubic-bezier(0.23,1,0.32,1),
-        transform 0.9s cubic-bezier(0.23,1,0.32,1);
-}
-
-.animate-item.reveal {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-}
-
-/* ===============================
-   MOBILE
-================================ */
-
-@media (max-width: 768px) {
-
-    .essence-editorial.compact {
-        padding: 4rem 1.4rem;
-    }
-
-    .editorial-wrapper {
-        grid-template-columns: 1fr;
-        gap: 1.4rem;
-    }
-
-    .image-full,
-    .image-wide {
-        grid-column: span 1;
-        height: 300px;
-    }
-
-    .image-half {
-        height: 260px;
-    }
-
-    .text-block {
-        padding: 1.8rem;
-    }
-
-    .overlay-title {
-        font-size: 2.1rem;
-        letter-spacing: 0.1em;
-    }
-
-    .text-quote p {
-        font-size: 1.3rem;
-    }
-}
-
-</style>
-
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-
-    const items = document.querySelectorAll('#essenceEditorial .animate-item');
-
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach((entry, index) => {
-            if (entry.isIntersecting) {
-                setTimeout(() => {
-                    entry.target.classList.add('reveal');
-                }, index * 120); // subtle stagger
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.3 });
-
-    items.forEach(item => observer.observe(item));
-
-});
-</script>
-
-
-    <!-- What Makes It Different Section -->
-    <section class="different-section">
-        <div class="section-container">
-            <div class="section-header">
-                <h2 class="section-title">What Makes It Different</h2>
-                <div class="section-divider"></div>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <h3>Designed for Modern Couples</h3>
-                    <p>Created with contemporary relationships in mind—adaptable, honest, and real.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-balance-scale"></i>
-                    </div>
-                    <h3>Intention Meets Spontaneity</h3>
-                    <p>Balances planned connection with organic moments that arise naturally.</p>
-                </div>
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-infinity"></i>
-                    </div>
-                    <h3>For All Chapters of Love</h3>
-                    <p>Works beautifully for new beginnings and deepening long-term connections.</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-
-
-<!-- XO EXPERIENCE – STORY STEPS -->
-<section class="xo-experience-steps">
-
-    <div class="xo-experience-bg"></div>
-
-    <div class="section-container">
-        <div class="xo-experience-wrapper">
-
-            <span class="xo-eyebrow">The Experience</span>
-
-            <h2 class="xo-experience-title">
-                Love, <span>Designed in Moments</span>
-            </h2>
-
-            <p class="xo-experience-sub">
-                Issued in Love isn’t rushed.  
-                It unfolds — intentionally — through moments that feel right.
-            </p>
-
-            <div class="xo-steps">
-
-                <!-- STEP 1 -->
-                <div class="xo-step step-anticipation">
-                    <div class="xo-step-visual"></div>
-                    <h4>Anticipation</h4>
-                    <p>Thoughtful plans that give you something to look forward to.</p>
-                </div>
-
-                <!-- STEP 2 -->
-                <div class="xo-step step-spontaneity">
-                    <div class="xo-step-visual"></div>
-                    <h4>Spontaneity</h4>
-                    <p>Unplanned gestures that feel effortless and alive.</p>
-                </div>
-
-                <!-- STEP 3 -->
-                <div class="xo-step step-connection">
-                    <div class="xo-step-visual"></div>
-                    <h4>Connection</h4>
-                    <p>Moments that quietly deepen what already exists.</p>
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<style>
- /* ===============================
-   XO EXPERIENCE – BASE
-================================ */
-.xo-experience-steps {
-    position: relative;
-    padding: 8rem 2rem;
     background: linear-gradient(
         180deg,
-        #fdf9f6,
-        #f7f2ec
+        rgba(26, 4, 12, 0.55),
+        rgba(26, 4, 12, 0.75)
     );
-    overflow: hidden;
-}
+    backdrop-filter: blur(16px);
 
-/* Soft ambient background */
-.xo-experience-bg {
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(circle at 20% 30%, rgba(122,28,63,0.08), transparent 60%),
-        radial-gradient(circle at 80% 70%, rgba(212,197,162,0.12), transparent 60%);
-    pointer-events: none;
-}
-
-/* Wrapper */
-.xo-experience-wrapper {
-    position: relative;
-    max-width: 960px;
-    margin: 0 auto;
-    text-align: center;
-}
-
-/* Eyebrow */
-.xo-eyebrow {
-    letter-spacing: 3px;
-    font-size: 0.75rem;
-    text-transform: uppercase;
-    color: #7a1c3f;
-    opacity: 0.6;
-}
-
-/* Title */
-.xo-experience-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 3.2rem;
-    color: #7a1c3f;
-    margin: 1.2rem 0;
-}
-
-.xo-experience-title span {
-    color: #5c2b46;
-}
-
-/* Sub */
-.xo-experience-sub {
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #555;
-    max-width: 620px;
-    margin: 0 auto 4.5rem;
-}
-
-/* ===============================
-   STEPS LAYOUT
-================================ */
-.xo-steps {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-}
-
-.xo-step {
-    position: relative;
-    padding: 3.2rem 2rem;
-    border-radius: 26px;
-    background: rgba(255,255,255,0.75);
-    backdrop-filter: blur(6px);
-    box-shadow: 0 20px 60px rgba(122,28,63,0.12);
-    opacity: 0;
-    transform: translateY(40px);
-    transition: all 1s cubic-bezier(0.23,1,0.32,1);
-}
-
-.xo-step.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.xo-step h4 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    color: #7a1c3f;
-    margin-bottom: 0.6rem;
-}
-
-.xo-step p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    color: #666;
-}
-
-/* ===============================
-   STEP VISUAL CORE
-================================ */
-.xo-step-visual {
-    width: 72px;
-    height: 72px;
-    margin: 0 auto 1.6rem;
-    position: relative;
-}
-
-/* -------------------------------
-   STEP 1 – ANTICIPATION
-   (Line draw / reveal)
--------------------------------- */
-.step-anticipation .xo-step-visual::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    border-radius: 50%;
-    border: 2px dashed rgba(122,28,63,0.6);
-    animation: drawCircle 2.5s ease forwards;
-}
-
-@keyframes drawCircle {
-    from { stroke-dasharray: 0 300; opacity: 0; }
-    to   { stroke-dasharray: 300 0; opacity: 1; }
-}
-
-/* -------------------------------
-   STEP 2 – SPONTANEITY
-   (Pulse / breath)
--------------------------------- */
-.step-spontaneity .xo-step-visual {
-    background: radial-gradient(circle, rgba(122,28,63,0.35), transparent 65%);
-    border-radius: 50%;
-    animation: pulseSoft 3s ease-in-out infinite;
-}
-
-@keyframes pulseSoft {
-    0%,100% { transform: scale(0.9); opacity: 0.7; }
-    50%     { transform: scale(1.05); opacity: 1; }
-}
-
-/* -------------------------------
-   STEP 3 – CONNECTION
-   (Interlocking motion)
--------------------------------- */
-.step-connection .xo-step-visual::before,
-.step-connection .xo-step-visual::after {
-    content: '';
-    position: absolute;
-    width: 42px;
-    height: 42px;
-    border-radius: 50%;
-    border: 2px solid rgba(122,28,63,0.6);
-    top: 15px;
-}
-
-.step-connection .xo-step-visual::before {
-    left: 0;
-    animation: linkLeft 2s ease forwards;
-}
-
-.step-connection .xo-step-visual::after {
-    right: 0;
-    animation: linkRight 2s ease forwards;
-}
-
-@keyframes linkLeft {
-    from { transform: translateX(-20px); opacity: 0; }
-    to   { transform: translateX(0); opacity: 1; }
-}
-
-@keyframes linkRight {
-    from { transform: translateX(20px); opacity: 0; }
-    to   { transform: translateX(0); opacity: 1; }
-}
-
-/* ===============================
-   MOBILE
-================================ */
-@media (max-width: 768px) {
-
-    .xo-experience-title {
-        font-size: 2.3rem;
-    }
-
-    .xo-experience-sub {
-        font-size: 1rem;
-        margin-bottom: 3.5rem;
-    }
-
-    .xo-steps {
-        grid-template-columns: 1fr;
-        gap: 2.5rem;
-    }
-}
-/* ===============================
-   SCROLL MOTION – EXPERIENCE
-================================ */
-
-/* Enable GPU acceleration */
-.xo-step,
-.xo-step-visual {
-    will-change: transform;
-}
-
-/* Subtle parallax base */
-.xo-step {
-    transition: transform 0.3s linear;
-}
-
-/* Background motion */
-.xo-experience-bg {
-    transition: transform 0.3s linear;
-}
-
-/* ===============================
-   ESSENCE SCROLL MOTION
-================================ */
-
-/* Prepare reveal */
-.essence-text,
-.essence-image {
-    opacity: 0;
-    transform: translateY(40px);
-    transition:
-        opacity 1s cubic-bezier(0.23,1,0.32,1),
-        transform 1s cubic-bezier(0.23,1,0.32,1);
-    will-change: transform, opacity;
-}
-
-/* Active reveal */
-.essence-visible .essence-text,
-.essence-visible .essence-image {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-/* Stagger depth for images */
-.essence-visible .image-1 { transition-delay: 0.15s; }
-.essence-visible .image-2 { transition-delay: 0.35s; }
-.essence-visible .image-3 { transition-delay: 0.55s; }
-
-/* Mobile safety (no extra movement) */
-@media (max-width: 768px) {
-    .essence-image {
-        transform: translateY(20px);
-    }
-}
-
-</style>
-<script>
-/* =====================================
-   ESSENCE SCROLL REVEAL ENGINE
-===================================== */
-document.addEventListener('DOMContentLoaded', () => {
-
-    const essenceSection = document.querySelector('.essence-section');
-    if (!essenceSection) return;
-
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                essenceSection.classList.add('essence-visible');
-                observer.disconnect();
-            }
-        });
-    }, {
-        threshold: 0.35
-    });
-
-    observer.observe(essenceSection);
-});
-</script>
-
-<script>
-    
-document.addEventListener('DOMContentLoaded', () => {
-
-    const section = document.querySelector('.xo-experience-steps');
-    const steps = section.querySelectorAll('.xo-step');
-
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (!entry.isIntersecting) return;
-
-            steps.forEach((step, i) => {
-                setTimeout(() => {
-                    step.classList.add('visible');
-                }, i * 350);
-            });
-
-            observer.disconnect();
-        });
-    }, { threshold: 0.4 });
-
-    observer.observe(section);
-});
-</script>
-
-<script>
-/* =====================================
-   XO EXPERIENCE – SCROLL MOTION ENGINE
-===================================== */
-document.addEventListener('DOMContentLoaded', () => {
-
-    const section = document.querySelector('.xo-experience-steps');
-    if (!section) return;
-
-    const steps = section.querySelectorAll('.xo-step');
-    const bg = section.querySelector('.xo-experience-bg');
-
-    function onScroll() {
-        const rect = section.getBoundingClientRect();
-        const viewH = window.innerHeight;
-
-        /* Progress from 0 → 1 while section is in view */
-        const progress = Math.min(
-            Math.max((viewH - rect.top) / (viewH + rect.height), 0),
-            1
-        );
-
-        /* Background drift */
-        if (bg) {
-            bg.style.transform = `translateY(${progress * 30}px)`;
-        }
-
-        /* Step depth motion */
-        steps.forEach((step, index) => {
-            const depth = (index + 1) * 12;
-            const lift = (0.5 - progress) * depth;
-
-            step.style.transform = `
-                translateY(${lift}px)
-            `;
-
-            /* Visual micro-motion */
-            const visual = step.querySelector('.xo-step-visual');
-            if (visual) {
-                const rotate = (progress - 0.5) * (index % 2 === 0 ? 6 : -6);
-                visual.style.transform = `rotate(${rotate}deg)`;
-            }
-        });
-    }
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-});
-</script>
-
-
-
-
-
-   <!-- Valentine's Edit Section -->
-<section class="valentine-section xo-valentine">
-    <div class="valentine-border"></div>
-
-    <div class="section-container">
-        <div class="valentine-core">
-
-            <div class="valentine-label">
-                <span>Valentine’s Edit</span>
-                <div class="label-divider"></div>
-            </div>
-
-            <h2 class="valentine-title">
-                Issued in Love <span>remains the hero</span>
-            </h2>
-
-            <p class="valentine-description">
-                This Valentine’s, give more than flowers or chocolates.
-                <br>
-                <strong>Give intentional connection</strong> that lasts beyond a single day.
-            </p>
-
-            <!-- Floating hearts -->
-            <div class="valentine-hearts"></div>
-
-        </div>
-    </div>
-</section>
-<style>/* ===============================
-   XO VALENTINE SIGNATURE SECTION
-================================ */
-
-.xo-valentine {
-    position: relative;
-    background: radial-gradient(
-        circle at top,
-        rgba(122,28,63,0.08),
-        #f5f1e8 70%
-    );
-    padding: 7rem 2rem;
-    overflow: hidden;
-}
-
-/* Section border frame */
-.valentine-border {
-    position: absolute;
-    inset: 20px;
-    border-radius: 26px;
-    border: 1px solid rgba(122,28,63,0.15);
-    pointer-events: none;
-}
-
-/* Core content */
-.valentine-core {
-    position: relative;
-    text-align: center;
-    max-width: 720px;
-    margin: 0 auto;
-    z-index: 2;
-}
-
-/* Label */
-.valentine-label {
-    display: inline-flex;
+    border-radius: 14px;
+    display: flex;
     align-items: center;
-    gap: 1rem;
-    margin-bottom: 2rem;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.8s ease;
+    gap: 14px;
+    padding: 0 1.6rem;
+
+    box-shadow:
+        0 18px 45px rgba(0, 0, 0, 0.6),
+        inset 0 0 0 1px rgba(242, 233, 220, 0.18);
 }
 
-.valentine-label.visible {
-    opacity: 1;
-    transform: translateY(0);
+/* SEARCH CONTENT */
+.dm-search-icon {
+    width: 20px;
+    height: 20px;
+    color: var(--dm-beige);
+    opacity: 0.85;
 }
 
-/* Title */
-.valentine-title {
-    font-family: var(--font-serif);
-    font-size: 3rem;
-    color: var(--deep-maroon);
-    margin-bottom: 1.5rem;
-    opacity: 0;
-    transform: scale(0.95);
-    transition: all 1s cubic-bezier(0.23,1,0.32,1);
+.dm-search-text {
+    font-family: var(--dm-sans);
+    font-size: 1.05rem;
+    letter-spacing: 0.02em;
+    color: var(--dm-beige);
+    white-space: nowrap;
 }
 
-.valentine-title span {
-    display: block;
-    font-size: 2.2rem;
-    color: #5c2b46;
-    margin-top: 0.5rem;
+/* CAPTION */
+.dm-caption {
+    font-family: var(--dm-serif);
+    font-size: 1.1rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dm-beige);
+    opacity: 0.7;
+    text-align: center;
 }
 
-/* Description */
-.valentine-description {
-    font-size: 1.2rem;
-    line-height: 1.8;
-    color: #555;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 1s cubic-bezier(0.23,1,0.32,1) 0.4s;
+/* RESPONSIVE */
+@media (max-width: 480px) {
+    .dm-video-card {
+        width: 320px;
+    }
+
+    .dm-search {
+        height: 52px;
+        padding: 0 1.3rem;
+    }
+
+    .dm-search-text {
+        font-size: 0.95rem;
+    }
+
+    .dm-caption {
+        font-size: 0.9rem;
+    }
 }
 
-/* Reveal states */
-.valentine-title.visible,
-.valentine-description.visible {
-    opacity: 1;
-    transform: none;
-}
-
-/* Floating heart particles */
-.valentine-hearts {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    z-index: 1;
-}
-
-.valentine-heart {
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    background: var(--deep-maroon);
-    clip-path: polygon(
-        50% 0%, 100% 35%, 80% 100%,
-        50% 75%, 20% 100%, 0% 35%
-    );
-    opacity: 0.25;
-    animation: heartFloat 6s ease-in-out infinite;
-}
-
-@keyframes heartFloat {
-    0%,100% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-40px) scale(1.2); }
-}
 </style>
 
-<script>
-/* XO Valentine Reveal + Floating Hearts */
-document.addEventListener('DOMContentLoaded', () => {
 
-    const section = document.querySelector('.xo-valentine');
-    const label = section.querySelector('.valentine-label');
-    const title = section.querySelector('.valentine-title');
-    const desc  = section.querySelector('.valentine-description');
-    const heartsContainer = section.querySelector('.valentine-hearts');
 
-    /* Reveal observer */
-    const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                label.classList.add('visible');
-                setTimeout(() => title.classList.add('visible'), 300);
-                setTimeout(() => desc.classList.add('visible'), 600);
-            }
-        });
-    }, { threshold: 0.4 });
 
-    observer.observe(section);
 
-    /* Create floating hearts */
-    for (let i = 0; i < 14; i++) {
-        const heart = document.createElement('div');
-        heart.className = 'valentine-heart';
 
-        heart.style.left = Math.random() * 100 + '%';
-        heart.style.top = Math.random() * 100 + '%';
-        heart.style.animationDelay = Math.random() * 5 + 's';
-        heart.style.opacity = Math.random() * 0.3 + 0.1;
 
-        heartsContainer.appendChild(heart);
-    }
-});
-</script>
-<script>
-/* =====================================
-   MICRO SCROLL PARALLAX – CARDS
-===================================== */
-document.addEventListener('scroll', () => {
 
-    document.querySelectorAll('.feature-card, .xo-step').forEach((el, i) => {
-        const rect = el.getBoundingClientRect();
-        const viewH = window.innerHeight;
 
-        if (rect.top < viewH && rect.bottom > 0) {
-            const progress = (viewH - rect.top) / (viewH + rect.height);
-            const offset = (0.5 - progress) * (i % 2 === 0 ? 12 : -12);
 
-            el.style.transform = `translateY(${offset}px)`;
-        }
-    });
 
-}, { passive: true });
-</script>
+
 
     <!-- Media Reels Section -->
 <section class="media-section">
