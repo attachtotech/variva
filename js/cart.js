@@ -576,3 +576,4 @@ window.updateCartUI = updateCartUI;
 window.openWhatsApp = openWhatsApp;
 
 console.log('Cart system initialized successfully');
+

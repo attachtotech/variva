@@ -1123,9 +1123,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 <!-- Purchase Section -->
-<section class="purchase-section">
+<section class="purchase-section" id="purchase">
     <!-- TOP CENTER WHATSAPP CTA -->
-<a href="https://wa.me/91XXXXXXXXXX" target="_blank"
+<a a href="#" onclick="openWhatsApp(cartState.items[0].quantity)"
    style="
     position: absolute;
     top: clamp(1rem, 2.5vw, 1.8rem);
@@ -1233,6 +1233,36 @@ document.addEventListener('DOMContentLoaded', function() {
     opacity: 0.9;
     transform: scale(1.04);
 }
+/* ===============================
+   LOCK MAIN IMAGE SIZE (CRITICAL)
+================================ */
+.purchase-image {
+    width: 100%;
+    max-width: 420px;          /* desktop consistency */
+    aspect-ratio: 3 / 4;       /* SAME for all images */
+    overflow: hidden;
+    border-radius: 16px;
+    background: #111;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* FORCE ALL MAIN IMAGES TO MATCH */
+.purchase-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;         /* fills container uniformly */
+    object-position: center;
+    display: block;
+}
+
+/* MOBILE PERFECT FIT */
+@media (max-width: 768px) {
+    .purchase-image {
+        max-width: 100%;
+    }
+}
 
 </style>
 <script>
@@ -1240,55 +1270,60 @@ document.addEventListener('DOMContentLoaded', function() {
 document.addEventListener('DOMContentLoaded', () => {
 
     const products = [
-        {
-            img: '85931.jpg',
-            title: 'Issued in Love',
-            price: 'Rs.68',
-            desc: 'A beautifully crafted experience for couples seeking intentional connection. 24 thoughtfully designed coupons, premium packaging, and a guide to deepening your relationship.',
-            features: [
-                '24 curated connection prompts',
-                'Premium matte finish cards',
-                'Luxury gift packaging',
-                'Digital guide included'
-            ]
-        },
-        {
-            img: '85928.jpg',
-            title: 'Midnight Edition',
-            price: 'Rs.89',
-            desc: 'A deeper, bolder edition designed for couples who want intensity, mystery, and emotional depth.',
-            features: [
-                '30 bold intimacy prompts',
-                'Black matte luxury cards',
-                'Exclusive keepsake box',
-                'Digital ritual guide'
-            ]
-        },
-        {
-            img: '85923.jpg',
-            title: 'Anniversary Edit',
-            price: 'Rs.99',
-            desc: 'Created to celebrate milestones and memories with reflective prompts and romantic rituals.',
-            features: [
-                '28 memory-driven prompts',
-                'Gold-accent cards',
-                'Anniversary gift wrap',
-                'Couple reflection guide'
-            ]
-        },
-        {
-            img: '85920.jpg',
-            title: 'First Love Edition',
-            price: 'Rs.59',
-            desc: 'A lighter, playful edition for new couples beginning their journey together.',
-            features: [
-                '20 playful prompts',
-                'Soft-touch cards',
-                'Minimal gift sleeve',
-                'Beginner connection guide'
-            ]
-        }
-    ];
+    {
+        img: '85931.jpg',
+        title: 'Issued in Love',
+        price: 'Rs.68',
+        priceValue: 68,
+        desc: 'A beautifully crafted experience for couples seeking intentional connection. 24 thoughtfully designed coupons, premium packaging, and a guide to deepening your relationship.',
+        features: [
+            '24 curated connection prompts',
+            'Premium matte finish cards',
+            'Luxury gift packaging',
+            'Digital guide included'
+        ]
+    },
+    {
+        img: '85928.jpg',
+        title: 'Midnight Edition',
+        price: 'Rs.89',
+        priceValue: 89,
+        desc: 'A deeper, bolder edition designed for couples who want intensity, mystery, and emotional depth.',
+        features: [
+            '30 bold intimacy prompts',
+            'Black matte luxury cards',
+            'Exclusive keepsake box',
+            'Digital ritual guide'
+        ]
+    },
+    {
+        img: '85923.jpg',
+        title: 'Anniversary Edit',
+        price: 'Rs.99',
+        priceValue: 99,
+        desc: 'Created to celebrate milestones and memories with reflective prompts and romantic rituals.',
+        features: [
+            '28 memory-driven prompts',
+            'Gold-accent cards',
+            'Anniversary gift wrap',
+            'Couple reflection guide'
+        ]
+    },
+    {
+        img: '85920.jpg',
+        title: 'First Love Edition',
+        price: 'Rs.59',
+        priceValue: 59,
+        desc: 'A lighter, playful edition for new couples beginning their journey together.',
+        features: [
+            '20 playful prompts',
+            'Soft-touch cards',
+            'Minimal gift sleeve',
+            'Beginner connection guide'
+        ]
+    }
+];
+
 
     let activeIndex = 0;
 
@@ -1300,20 +1335,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const suggestionsWrap = document.getElementById('purchaseSuggestions');
 
     function renderMain() {
-        const p = products[activeIndex];
-        mainImage.src = p.img;
-        title.textContent = p.title;
-        price.textContent = p.price;
-        desc.textContent = p.desc;
+    const p = products[activeIndex];
 
-        featuresWrap.innerHTML = '';
-        p.features.forEach(f => {
-            const div = document.createElement('div');
-            div.className = 'feature revealed';
-            div.innerHTML = `<i class="fas fa-check"></i><span>${f}</span>`;
-            featuresWrap.appendChild(div);
-        });
+    // UI updates
+    mainImage.src = p.img;
+    title.textContent = p.title;
+    price.textContent = p.price;
+    desc.textContent = p.desc;
+
+    // 🔥 CART STATE SYNC (CRITICAL)
+    if (window.cartState && cartState.items[0]) {
+        cartState.items[0].name = p.title;
+        cartState.items[0].price = p.priceValue;
+        cartState.items[0].image = p.img;
+
+        cartState.total = calculateTotal();
+        updateCartUI();
     }
+
+    // Features
+    featuresWrap.innerHTML = '';
+    p.features.forEach(f => {
+        const div = document.createElement('div');
+        div.className = 'feature revealed';
+        div.innerHTML = `<i class="fas fa-check"></i><span>${f}</span>`;
+        featuresWrap.appendChild(div);
+    });
+}
 
     function renderSuggestions() {
         suggestionsWrap.innerHTML = '';
