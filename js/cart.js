@@ -190,7 +190,7 @@ function initWhatsAppIntegration() {
     // Function to open WhatsApp with pre-filled message
     window.openWhatsApp = function(quantity) {
         // Use actual phone number (replace with Variva's WhatsApp number)
-        const phoneNumber = "1234567890"; // Replace with actual number
+        const phoneNumber = "8452018403"; // Replace with actual number
         
         // Build the message
         const message = `Hi Variva, I'd like to purchase 'Issued in Love' (Qty: ${quantity})`;
