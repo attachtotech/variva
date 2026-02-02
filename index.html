@@ -638,7 +638,7 @@ document.addEventListener('DOMContentLoaded', () => {
             </video>
 
             <!-- Full Width Search Bar -->
-            <a href="#purchase-details" class="dm-search">
+            <a href="#purchase" class="dm-search" id="heroSearchCta">
                 <svg class="dm-search-icon" viewBox="0 0 24 24">
                     <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.4"/>
                     <path d="M16 16L21 21" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
@@ -661,6 +661,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     </div>
 </section>
+
 
 <style>
 :root {
@@ -1114,6 +1115,27 @@ document.addEventListener('DOMContentLoaded', function() {
     document.addEventListener('click', function() {
         playVideo();
     }, { once: true });
+});
+document.addEventListener('DOMContentLoaded', () => {
+    const searchCta = document.getElementById('heroSearchCta');
+    const purchaseSection = document.getElementById('purchase');
+
+    if (!searchCta || !purchaseSection) return;
+
+    searchCta.addEventListener('click', (e) => {
+        e.preventDefault(); // ⛔ stop page navigation
+
+        purchaseSection.scrollIntoView({
+            behavior: 'smooth',
+            block: 'start'
+        });
+
+        // Optional subtle highlight (safe)
+        purchaseSection.classList.add('highlight-section');
+        setTimeout(() => {
+            purchaseSection.classList.remove('highlight-section');
+        }, 1800);
+    });
 });
 </script>
 
