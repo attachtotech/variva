@@ -279,34 +279,36 @@
 </style>
 </head>
 <body>
-
-
-    
-   <!-- Luxury Toolbar -->
-<!-- FIXED WHITE NAVBAR (ORIGINAL, CLEAN) -->
+<!-- ===============================
+     FIXED LUXURY NAVBAR
+================================ -->
 <header class="luxury-navbar">
     <div class="navbar-inner">
 
-        <!-- CENTER LOGO -->
+        <!-- LEFT : MENU -->
+        <button class="menu-icon" id="menuToggle" aria-label="Open Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <!-- CENTER : LOGO -->
         <div class="logo-center">
-            <a href="#"><img src="logo.png" alt="XO Variva Logo" class="logo-icon"></a>
+            <a href="#">
+                <img src="logo.png" alt="XO Variva Logo" class="logo-icon">
+            </a>
         </div>
 
-        <!-- MENU + CART (TOP RIGHT) -->
-        <nav class="nav-menu">
-            <button class="menu-icon" id="menuToggle">
-                <i class="fas fa-bars"></i>
-            </button>
-            <button class="cart-icon" id="cartToggle">
-                <i class="fas fa-shopping-bag"></i>
-                <span class="cart-count">0</span>
-            </button>
-        </nav>
+        <!-- RIGHT : CART -->
+        <button class="cart-icon" id="cartToggle" aria-label="Cart">
+            <i class="fas fa-shopping-bag"></i>
+            <span class="cart-count">0</span>
+        </button>
 
     </div>
 </header>
 
-<!-- FLOATING MENU -->
+<!-- ===============================
+     FLOATING MENU
+================================ -->
 <div class="floating-menu" id="floatingMenu">
     <button class="close-menu" id="closeMenu">✕</button>
     <nav class="menu-items">
@@ -319,60 +321,52 @@
 </div>
 
 <style>
-/* ===============================
+    /* ===============================
    FIXED WHITE NAVBAR
 ================================ */
 .luxury-navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    z-index: 1000;
     background: #ffffff;
     border-bottom: 1px solid rgba(0,0,0,0.06);
+    z-index: 1000;
 }
 
 .navbar-inner {
     max-width: 1400px;
     margin: auto;
-    height: 80px; /* original clean height */
+    height: 80px;
     padding: 0 2rem;
-    display: flex;
-    align-items: center;
-    justify-content: center;
     position: relative;
 }
 
-/* LOGO */
-.logo-center {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-}
-
-.logo-icon {
-    margin-top: 30px;
-    height: 300px; /* works well for small logo */
-}
-
-/* MENU + CART */
-.nav-menu {
-    position: absolute;
-    right: 2rem;
-    display: flex;
-    align-items: center;
-    gap: 1.4rem;
-}
-
+/* ===============================
+   LEFT / RIGHT ICONS
+================================ */
 .menu-icon,
 .cart-icon {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     background: none;
     border: none;
     color: #1a1a1a;
     font-size: 1.2rem;
     cursor: pointer;
-    position: relative;
 }
 
+/* LEFT */
+.menu-icon {
+    left: 2rem;
+}
+
+/* RIGHT */
+.cart-icon {
+    right: 2rem;
+}
+
+/* CART COUNT */
 .cart-count {
     position: absolute;
     top: -6px;
@@ -385,7 +379,22 @@
 }
 
 /* ===============================
-   FLOATING MENU (UNCHANGED)
+   CENTER LOGO (TRUE CENTER)
+================================ */
+.logo-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.logo-icon {
+    margin-top: -85px;       /* PRESERVED */
+    height: 300px;          /* PRESERVED */
+    display: block;
+}
+
+/* ===============================
+   FLOATING MENU
 ================================ */
 .floating-menu {
     position: fixed;
@@ -437,7 +446,7 @@
 }
 
 /* ===============================
-   MOBILE RESPONSIVE
+   MOBILE — LOCKED & STABLE
 ================================ */
 @media (max-width: 768px) {
     .navbar-inner {
@@ -445,30 +454,33 @@
         padding: 0 1.4rem;
     }
 
+    .menu-icon {
+        left: 1.4rem;
+    }
+
+    .cart-icon {
+        right: 1.4rem;
+    }
+
     .logo-icon {
-        height: 300px;
+        margin-top: -95px;
+        height: 300px; /* UNCHANGED */
     }
 }
 
 @media (max-width: 480px) {
-    .logo-icon {
-        height: 300px;
-    }
-
     .menu-item {
         font-size: 1.3rem;
     }
 }
-</style>
 
+</style>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
 
     const menuToggle = document.getElementById('menuToggle');
     const floatingMenu = document.getElementById('floatingMenu');
     const closeMenu = document.getElementById('closeMenu');
-
-    if (!menuToggle || !floatingMenu) return;
 
     function openMenu() {
         floatingMenu.classList.add('active');
@@ -481,13 +493,13 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     menuToggle.addEventListener('click', openMenu);
-    closeMenu?.addEventListener('click', closeMenuFn);
+    closeMenu.addEventListener('click', closeMenuFn);
 
-    floatingMenu.querySelectorAll('.menu-item').forEach(link => {
-        link.addEventListener('click', closeMenuFn);
+    floatingMenu.querySelectorAll('.menu-item').forEach(item => {
+        item.addEventListener('click', closeMenuFn);
     });
 
-    document.addEventListener('keydown', (e) => {
+    document.addEventListener('keydown', e => {
         if (e.key === 'Escape') closeMenuFn();
     });
 
@@ -564,6 +576,9 @@ document.addEventListener('DOMContentLoaded', () => {
     </div>
 
 
+
+
+
     <!-- Luxury Cart Panel -->
 <div class="cart-panel" id="cartPanel">
     <div class="cart-header">
@@ -607,6 +622,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 <br><br><br>
+
 <section class="dm-hero">
     <div class="dm-wrap">
         
@@ -618,38 +634,17 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="dm-video-card">
             <video class="dm-video" autoplay muted loop playsinline preload="auto">
                 <source src="hero.mp4" type="video/mp4">
+                Your browser does not support the video tag.
             </video>
-            
-            <!-- Heart Animation Container -->
-            <div class="dm-heart-container">
-                <!-- Left Heart -->
-                <div class="dm-heart dm-heart-1">
-                    <svg class="dm-heart-svg" viewBox="0 0 200 200">
-                        <path class="dm-heart-path" d="M100,36.4C72.7-8.7,0,10.2,0,70.6c0,39.2,63.1,78.1,100,129.4C136.9,148.7,200,109.8,200,70.6C200,10.2,127.3-8.7,100,36.4z"/>
-                    </svg>
-                </div>
-                <!-- Middle Heart -->
-                <div class="dm-heart dm-heart-2">
-                    <svg class="dm-heart-svg" viewBox="0 0 200 200">
-                        <path class="dm-heart-path" d="M100,36.4C72.7-8.7,0,10.2,0,70.6c0,39.2,63.1,78.1,100,129.4C136.9,148.7,200,109.8,200,70.6C200,10.2,127.3-8.7,100,36.4z"/>
-                    </svg>
-                </div>
-                <!-- Right Heart -->
-                <div class="dm-heart dm-heart-3">
-                    <svg class="dm-heart-svg" viewBox="0 0 200 200">
-                        <path class="dm-heart-path" d="M100,36.4C72.7-8.7,0,10.2,0,70.6c0,39.2,63.1,78.1,100,129.4C136.9,148.7,200,109.8,200,70.6C200,10.2,127.3-8.7,100,36.4z"/>
-                    </svg>
-                </div>
-            </div>
 
             <!-- Full Width Search Bar -->
-            <div class="dm-search">
+            <a href="#purchase-details" class="dm-search">
                 <svg class="dm-search-icon" viewBox="0 0 24 24">
                     <circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="1.4"/>
                     <path d="M16 16L21 21" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/>
                 </svg>
                 <span class="dm-search-text">Date Night Plans?</span>
-            </div>
+            </a>
         </div>
 
         <p class="dm-caption">
@@ -661,7 +656,6 @@ document.addEventListener('DOMContentLoaded', () => {
             <div class="dm-edits-line">
                 <span class="dm-edits-text">The Valentine Edits</span>
                 <span class="dm-divider">—</span>
-                <span class="dm-by-text">by CO, Variva</span>
             </div>
         </div>
 
@@ -677,6 +671,8 @@ document.addEventListener('DOMContentLoaded', () => {
     --dm-beige-soft: rgba(242, 233, 220, 0.96);
     --dm-metallic-red: #9d1c38;
     --dm-metallic-gold: #d4af37;
+    --dm-gold: #d4af37;
+    --dm-bright-gold: #ffd700;
     --dm-glow-red: rgba(157, 28, 56, 0.3);
     --dm-gold-glow: rgba(212, 175, 55, 0.1);
     --dm-serif: 'DM Serif Display', serif;
@@ -697,6 +693,8 @@ document.addEventListener('DOMContentLoaded', () => {
     position: relative;
     overflow: hidden;
     padding: 2rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
 }
 
 /* WRAP */
@@ -707,8 +705,9 @@ document.addEventListener('DOMContentLoaded', () => {
     gap: 2.8rem;
     position: relative;
     z-index: 2;
-    max-width: 440px;
     width: 100%;
+    max-width: 440px;
+    box-sizing: border-box;
 }
 
 /* Header Text - Above Video */
@@ -722,6 +721,9 @@ document.addEventListener('DOMContentLoaded', () => {
     font-weight: 300;
     opacity: 0;
     animation: fadeInUp 1s cubic-bezier(0.215, 0.61, 0.355, 1) 0.3s forwards;
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
 @keyframes fadeInUp {
@@ -747,120 +749,18 @@ document.addEventListener('DOMContentLoaded', () => {
     box-shadow:
         0 60px 120px rgba(0, 0, 0, 0.75),
         inset 0 0 0 1px rgba(255, 255, 255, 0.06);
+    margin: 0 auto;
 }
 
 .dm-video {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    object-position: center;
     filter: brightness(1.12) contrast(1.06);
-}
-
-/* Heart Animation Container */
-.dm-heart-container {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
-    overflow: hidden;
-}
-
-/* Heart Styling */
-.dm-heart {
-    position: absolute;
-    width: 80px;
-    height: 80px;
-    opacity: 0;
-    filter: 
-        drop-shadow(0 0 15px var(--dm-glow-red))
-        drop-shadow(0 0 30px rgba(212, 175, 55, 0.08));
-}
-
-.dm-heart-svg {
-    width: 100%;
-    height: 100%;
-    animation: heartFloat 20s ease-in-out infinite;
-}
-
-.dm-heart-path {
-    fill: url(#metallic-gradient);
-    stroke: var(--dm-metallic-gold);
-    stroke-width: 0.8;
-    stroke-opacity: 0.2;
-    animation: heartPulse 4s ease-in-out infinite;
-}
-
-/* Heart Positions */
-.dm-heart-1 {
-    left: 15%;
-    top: 70%;
-    animation-delay: 0s;
-}
-
-.dm-heart-2 {
-    left: 50%;
-    top: 60%;
-    transform: translateX(-50%);
-    width: 100px;
-    height: 100px;
-    animation-delay: 1s;
-}
-
-.dm-heart-3 {
-    right: 15%;
-    top: 75%;
-    animation-delay: 2s;
-}
-
-/* Heart Floating Animation */
-@keyframes heartFloat {
-    0%, 100% {
-        transform: translateY(0) rotate(0deg);
-        opacity: 0.7;
-    }
-    25% {
-        transform: translateY(-30px) rotate(5deg);
-        opacity: 0.9;
-    }
-    50% {
-        transform: translateY(-60px) rotate(-3deg);
-        opacity: 0.8;
-    }
-    75% {
-        transform: translateY(-30px) rotate(3deg);
-        opacity: 0.9;
-    }
-}
-
-@keyframes heartPulse {
-    0%, 100% {
-        filter: brightness(1) drop-shadow(0 0 10px var(--dm-glow-red));
-    }
-    50% {
-        filter: brightness(1.3) drop-shadow(0 0 20px var(--dm-glow-red));
-    }
-}
-
-/* Fade in hearts */
-.dm-heart-1 {
-    animation: fadeInHeart 1s ease-out 0.8s forwards, heartFloat 20s ease-in-out infinite 1.8s;
-}
-
-.dm-heart-2 {
-    animation: fadeInHeart 1s ease-out 1s forwards, heartFloat 20s ease-in-out infinite 2s;
-}
-
-.dm-heart-3 {
-    animation: fadeInHeart 1s ease-out 1.2s forwards, heartFloat 20s ease-in-out infinite 2.2s;
-}
-
-@keyframes fadeInHeart {
-    to {
-        opacity: 0.7;
-    }
+    display: block;
+    /* Ensure video plays */
+    -webkit-tap-highlight-color: transparent;
 }
 
 /* SEARCH BAR */
@@ -880,6 +780,7 @@ document.addEventListener('DOMContentLoaded', () => {
     border-radius: 14px;
     display: flex;
     align-items: center;
+    justify-content: flex-start;
     gap: 14px;
     padding: 0 1.6rem;
     box-shadow:
@@ -889,6 +790,19 @@ document.addEventListener('DOMContentLoaded', () => {
     opacity: 0;
     animation: slideInUp 0.8s cubic-bezier(0.215, 0.61, 0.355, 1) 1.5s forwards;
     border: 1px solid rgba(242, 233, 220, 0.05);
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-sizing: border-box;
+}
+
+.dm-search:hover {
+    background: linear-gradient(
+        180deg,
+        rgba(38, 6, 16, 0.8),
+        rgba(38, 6, 16, 0.9)
+    );
+    transform: translateX(-50%) scale(1.02);
 }
 
 @keyframes slideInUp {
@@ -909,6 +823,7 @@ document.addEventListener('DOMContentLoaded', () => {
     color: var(--dm-beige);
     opacity: 0.85;
     flex-shrink: 0;
+    min-width: 20px;
 }
 
 .dm-search-text {
@@ -919,6 +834,8 @@ document.addEventListener('DOMContentLoaded', () => {
     white-space: nowrap;
     font-weight: 300;
     opacity: 0.9;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 /* CAPTION */
@@ -933,6 +850,9 @@ document.addEventListener('DOMContentLoaded', () => {
     opacity: 0;
     animation: fadeIn 1s ease-out 2s forwards;
     font-weight: 300;
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
 @keyframes fadeIn {
@@ -941,70 +861,106 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 }
 
-/* Post-Video Content */
+/* Post-Video Content - Adjusted size */
 .dm-post-video {
-    margin-top: 0.5rem;
+    margin-top: 1rem;
     opacity: 0;
     animation: fadeIn 1s ease-out 2.3s forwards;
+    width: 100%;
+    padding: 0 1rem;
+    box-sizing: border-box;
 }
 
 .dm-edits-line {
     display: flex;
     align-items: center;
-    gap: 1rem;
+    justify-content: center;
+    gap: 0.8rem;
     font-family: var(--dm-sans);
-    font-size: 0.9rem;
+    font-size: 1rem; /* Adjusted to be slightly smaller */
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--dm-beige);
-    opacity: 0.9;
+    color: var(--dm-bright-gold);
+    opacity: 0.95;
+    white-space: nowrap;
+    width: 100%;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
 }
 
 .dm-edits-text {
-    font-weight: 300;
+    font-weight: 400;
     letter-spacing: 0.15em;
+    color: var(--dm-bright-gold);
+    flex-shrink: 0;
 }
 
 .dm-divider {
-    opacity: 0.5;
-    font-weight: 100;
+    opacity: 0.9;
+    font-weight: 300;
+    color: var(--dm-bright-gold);
+    flex-shrink: 0;
+    font-size: 1.1rem;
 }
 
 .dm-by-text {
-    font-weight: 400;
+    font-weight: 500;
     letter-spacing: 0.08em;
-    color: rgba(242, 233, 220, 0.8);
+    color: var(--dm-bright-gold);
+    opacity: 0.95;
+    flex-shrink: 0;
 }
 
 /* RESPONSIVE */
 @media (max-width: 480px) {
+    .dm-hero {
+        padding: 1rem 0.5rem;
+        min-height: 100dvh;
+        display: flex;
+        align-items: center;
+    }
+    
     .dm-wrap {
         gap: 2.5rem;
+        max-width: 100%;
+        padding: 0;
+        width: 100%;
     }
     
     .dm-header-text {
         font-size: 2.2rem;
-        margin-bottom: 0.5rem;
+        margin-bottom: 0;
+        padding: 0 0.5rem;
     }
     
     .dm-video-card {
-        max-width: 320px;
+        max-width: 100%;
+        width: calc(100% - 1rem);
+        margin: 0 auto;
+        border-radius: 20px;
+        aspect-ratio: 5 / 7;
     }
     
-    .dm-heart {
-        width: 60px;
-        height: 60px;
-    }
-    
-    .dm-heart-2 {
-        width: 75px;
-        height: 75px;
+    .dm-video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+        /* Force video to play on mobile */
+        -webkit-playback-rate: 1;
+        playback-rate: 1;
     }
     
     .dm-search {
         height: 52px;
         padding: 0 1.3rem;
         width: calc(100% - 2rem);
+        bottom: 22px;
+        border-radius: 12px;
+        max-width: 400px;
+        left: 50%;
+        transform: translateX(-50%);
     }
     
     .dm-search-text {
@@ -1013,271 +969,194 @@ document.addEventListener('DOMContentLoaded', () => {
     
     .dm-caption {
         font-size: 0.9rem;
+        padding: 0 0.5rem;
+        letter-spacing: 0.12em;
     }
     
     .dm-edits-line {
-        font-size: 0.8rem;
-        gap: 0.8rem;
+        font-size: 0.9rem; /* Slightly smaller for mobile */
+        gap: 0.6rem;
+        padding: 0;
+        justify-content: center;
+        letter-spacing: 0.08em;
+    }
+    
+    .dm-edits-text {
+        letter-spacing: 0.12em;
+    }
+    
+    .dm-divider {
+        font-size: 1rem;
+    }
+    
+    .dm-by-text {
+        letter-spacing: 0.06em;
+    }
+    
+    .dm-post-video {
+        padding: 0 0.5rem;
+        margin-top: 0.8rem;
     }
 }
 
-/* Metallic gradient */
-svg:not(:root) {
-    overflow: visible;
+/* Tablet */
+@media (min-width: 481px) and (max-width: 768px) {
+    .dm-wrap {
+        max-width: 440px;
+    }
+    
+    .dm-video-card {
+        max-width: 440px;
+        aspect-ratio: 5 / 7;
+    }
+    
+    .dm-header-text {
+        font-size: 2.5rem;
+    }
+    
+    .dm-edits-line {
+        font-size: 1rem; /* Adjusted to be more balanced */
+    }
 }
 
-</style>
-
-<svg style="display: none;">
-    <defs>
-        <linearGradient id="metallic-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stop-color="#8a1532" />
-            <stop offset="25%" stop-color="#b82547" />
-            <stop offset="50%" stop-color="#d43a5e" />
-            <stop offset="75%" stop-color="#b82547" />
-            <stop offset="100%" stop-color="#8a1532" />
-        </linearGradient>
-    </defs>
-</svg>
-
-
-
-
-
-
-
-
-
-
-
-    <!-- Media Reels Section -->
-<section class="media-section">
-    <div class="section-container">
-        <div class="media-header">
-            <h2 class="media-title">Moments of Connection</h2>
-            <div class="section-divider"></div>
-        </div>
-
-        <!-- Media Grid (VIDEOS ONLY) -->
-        <div class="media-grid">
-            <div class="media-item" onclick="openVideoZoom(this)">
-                <div class="media-image">
-                    <video src="1.mp4" muted loop playsinline></video>
-                    <div class="media-overlay">
-                        <i class="fas fa-play"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="media-item" onclick="openVideoZoom(this)">
-                <div class="media-image">
-                    <video src="2.mp4" muted loop playsinline></video>
-                    <div class="media-overlay">
-                        <i class="fas fa-play"></i>
-                    </div>
-                </div>
-            </div>
-
-            <div class="media-item" onclick="openVideoZoom(this)">
-                <div class="media-image">
-                    <video src="3.mp4" muted loop playsinline></video>
-                    <div class="media-overlay">
-                        <i class="fas fa-play"></i>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-<style>
-    /* ===============================
-   MEDIA SECTION – MOBILE FIX
-================================ */
-
-.media-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.8rem;
+/* Desktop */
+@media (min-width: 769px) {
+    .dm-wrap {
+        max-width: 440px;
+    }
+    
+    .dm-video-card {
+        max-width: 440px;
+        aspect-ratio: 5 / 7;
+    }
+    
+    .dm-edits-line {
+        font-size: 1rem; /* Consistent size */
+    }
 }
 
-/* MEDIA ITEM */
-.media-item {
-    width: 100%;
-}
-
-/* VIDEO CONTAINER */
-.media-image {
-    position: relative;
-    width: 100%;
-    aspect-ratio: 9 / 16; /* 🔥 CRITICAL FOR MOBILE */
-    overflow: hidden;
-    border-radius: 18px;
-    background: #000;
-}
-
-/* VIDEO ITSELF */
-.media-image video {
+/* Ensure no horizontal scroll */
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    display: block;
 }
 
-/* Overlay play icon */
-.media-overlay {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background: rgba(0,0,0,0.25);
-    opacity: 0;
-    transition: opacity 0.4s ease;
+* {
+    box-sizing: border-box;
 }
 
-.media-item:hover .media-overlay {
-    opacity: 1;
+/* Video play fix for iOS */
+video {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
-/* ===============================
-   MOBILE LAYOUT
-================================ */
-@media (max-width: 768px) {
+/* JavaScript fallback for video autoplay */
+.dm-video {
+    /* Fallback if autoplay doesn't work */
+    animation: videoPlayFallback 0.1s forwards;
+}
 
-    .media-grid {
-        grid-template-columns: 1fr;
-        gap: 1.6rem;
-    }
-
-    .media-image {
-        aspect-ratio: 4 / 5; /* better for mobile viewing */
-        max-height: 75vh;
-    }
-
-    .media-overlay {
-        opacity: 1; /* always visible on mobile */
-        background: linear-gradient(
-            to top,
-            rgba(0,0,0,0.45),
-            rgba(0,0,0,0.15)
-        );
+@keyframes videoPlayFallback {
+    to {
+        opacity: 1;
     }
 }
 
+/* Fix for very small screens */
+@media (max-width: 320px) {
+    .dm-edits-line {
+        font-size: 0.85rem;
+        gap: 0.5rem;
+    }
+    
+    .dm-divider {
+        font-size: 0.9rem;
+    }
+}
 </style>
-<script>
-/* MOBILE VIDEO VISIBILITY FIX */
-document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('.media-image video').forEach(video => {
-        video.muted = true;
-        video.playsInline = true;
 
-        const playPromise = video.play();
-        if (playPromise !== undefined) {
-            playPromise.catch(() => {
-                // Silent fail – user interaction will trigger later
-            });
+<script>
+// JavaScript to ensure video plays on all devices
+document.addEventListener('DOMContentLoaded', function() {
+    const video = document.querySelector('.dm-video');
+    
+    // Try to play the video
+    const playVideo = () => {
+        if (video) {
+            const promise = video.play();
+            
+            if (promise !== undefined) {
+                promise.catch(error => {
+                    // Autoplay was prevented
+                    console.log('Autoplay prevented, showing fallback');
+                    // Add a play button overlay if needed
+                });
+            }
         }
-    });
+    };
+    
+    // Try to play on load
+    playVideo();
+    
+    // Try again when user interacts with page (for iOS)
+    document.addEventListener('touchstart', function() {
+        playVideo();
+    }, { once: true });
+    
+    document.addEventListener('click', function() {
+        playVideo();
+    }, { once: true });
 });
 </script>
 
 
-<!-- Video Zoom Overlay -->
-<div id="videoZoom" style="
-    position: fixed;
-    inset: 0;
-    background: rgba(122,28,63,0.95);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 4000;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.5s ease;
-">
-    <div id="videoZoomBox" style="
-        position: relative;
-        width: 85%;
-        max-width: 1000px;
-        aspect-ratio: 16 / 9;
-        background: #000;
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 50px 140px rgba(0,0,0,0.7);
-        transform: scale(0.9);
-        transition: transform 0.5s ease;
-    ">
-        <video id="videoZoomPlayer" controls autoplay playsinline
-            style="
-                width: 100%;
-                height: 100%;
-                object-fit: contain;
-                background: #000;
-            ">
-        </video>
 
-        <button onclick="closeVideoZoom()" style="
-            position: absolute;
-            top: 18px;
-            right: 18px;
-            width: 46px;
-            height: 46px;
-            border-radius: 50%;
-            border: none;
-            background: rgba(255,255,255,0.15);
-            color: #fff;
-            font-size: 1.3rem;
-            cursor: pointer;
-            transition: background 0.3s ease;
-        ">✕</button>
-    </div>
-</div>
-
-<script>
-/* Auto play preview videos */
-document.querySelectorAll('.media-image video').forEach(video => {
-    video.play().catch(() => {});
-});
-
-/* Open zoom */
-function openVideoZoom(element) {
-    const sourceVideo = element.querySelector('video');
-    const zoom = document.getElementById('videoZoom');
-    const zoomBox = document.getElementById('videoZoomBox');
-    const zoomPlayer = document.getElementById('videoZoomPlayer');
-
-    zoomPlayer.src = sourceVideo.src;
-    zoomPlayer.currentTime = 0;
-
-    zoom.style.opacity = '1';
-    zoom.style.pointerEvents = 'auto';
-    zoomBox.style.transform = 'scale(1)';
-    document.body.style.overflow = 'hidden';
-
-    zoomPlayer.play();
-}
-
-/* Close zoom */
-function closeVideoZoom() {
-    const zoom = document.getElementById('videoZoom');
-    const zoomBox = document.getElementById('videoZoomBox');
-    const zoomPlayer = document.getElementById('videoZoomPlayer');
-
-    zoomPlayer.pause();
-    zoomPlayer.src = '';
-
-    zoom.style.opacity = '0';
-    zoom.style.pointerEvents = 'none';
-    zoomBox.style.transform = 'scale(0.9)';
-    document.body.style.overflow = '';
-}
-</script>
 
 
 
 <!-- Purchase Section -->
 <section class="purchase-section">
+    <!-- TOP CENTER WHATSAPP CTA -->
+<a href="https://wa.me/91XXXXXXXXXX" target="_blank"
+   style="
+    position: absolute;
+    top: clamp(1rem, 2.5vw, 1.8rem);
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(8px, 2vw, 10px);
+    padding: clamp(9px, 2.5vw, 12px) clamp(18px, 4vw, 26px);
+    background: linear-gradient(
+        135deg,
+        #075e54,
+        #054c44
+    );
+    color: #eafaf6;
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-size: clamp(0.75rem, 2.8vw, 0.85rem);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 999px;
+    box-shadow:
+        0 10px 26px rgba(0,0,0,0.38),
+        inset 0 0 0 1px rgba(255,255,255,0.14);
+    z-index: 30;
+    white-space: nowrap;
+">
+    <i class="fab fa-whatsapp" style="font-size: clamp(0.9rem, 3vw, 1rem);"></i>
+    Chat on WhatsApp
+</a>
+
     <div class="section-container">
         <div class="purchase-content">
 
@@ -1459,6 +1338,286 @@ document.addEventListener('DOMContentLoaded', () => {
     renderMain();
     renderSuggestions();
 });
+</script>
+
+
+
+
+
+
+<!-- Media Reels Section -->
+<section class="media-section">
+    <div class="section-container">
+        <div class="media-header">
+            <h2 class="media-title">Moments of Connection</h2>
+            <div class="section-divider"></div>
+        </div>
+
+        <!-- Media Grid (VIDEOS ONLY) -->
+        <div class="media-grid">
+            <div class="media-item" onclick="openVideoZoom(this)">
+                <div class="media-image">
+                    <video src="1.mp4" muted loop playsinline></video>
+                    <div class="media-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="media-item" onclick="openVideoZoom(this)">
+                <div class="media-image">
+                    <video src="2.mp4" muted loop playsinline></video>
+                    <div class="media-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="media-item" onclick="openVideoZoom(this)">
+                <div class="media-image">
+                    <video src="3.mp4" muted loop playsinline></video>
+                    <div class="media-overlay">
+                        <i class="fas fa-play"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<style>
+    /* ===============================
+   MEDIA SECTION – MOBILE FIX
+================================ */
+
+.media-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.8rem;
+    width: 100%;
+}
+
+/* MEDIA ITEM */
+.media-item {
+    width: 100%;
+    cursor: pointer;
+}
+
+/* VIDEO CONTAINER */
+.media-image {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 9 / 16; /* Vertical/Portrait ratio */
+    overflow: hidden;
+    border-radius: 18px;
+    background: #000;
+}
+
+/* VIDEO ITSELF */
+.media-image video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Overlay play icon */
+.media-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0,0,0,0.25);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    font-size: 2.5rem;
+    color: white;
+}
+
+.media-item:hover .media-overlay {
+    opacity: 1;
+}
+
+/* ===============================
+   MOBILE LAYOUT
+================================ */
+@media (max-width: 768px) {
+    .media-grid {
+        grid-template-columns: 1fr;
+        gap: 1.6rem;
+        padding: 0 0.5rem;
+    }
+
+    /* Rectangle aspect ratio for mobile */
+    .media-image {
+        aspect-ratio: 4 / 3; /* Rectangle aspect ratio */
+        max-height: 60vh;
+        border-radius: 16px;
+        width: 100%;
+    }
+
+    /* Ensure video fills the rectangle properly */
+    .media-image video {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    .media-overlay {
+        opacity: 1; /* always visible on mobile */
+        background: linear-gradient(
+            to top,
+            rgba(0,0,0,0.45),
+            rgba(0,0,0,0.15)
+        );
+        font-size: 2rem;
+    }
+    
+    /* Tablet/Mid screens */
+    @media (min-width: 481px) and (max-width: 768px) {
+        .media-grid {
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.4rem;
+        }
+        
+        .media-image {
+            aspect-ratio: 1 / 1; /* Square on tablet */
+        }
+    }
+}
+
+/* Small mobile phones */
+@media (max-width: 360px) {
+    .media-image {
+        aspect-ratio: 3 / 4; /* Slightly taller rectangle */
+        border-radius: 14px;
+    }
+    
+    .media-overlay {
+        font-size: 1.8rem;
+    }
+}
+
+</style>
+<script>
+/* MOBILE VIDEO VISIBILITY FIX */
+document.addEventListener('DOMContentLoaded', () => {
+    document.querySelectorAll('.media-image video').forEach(video => {
+        video.muted = true;
+        video.playsInline = true;
+        video.loop = true;
+
+        const playPromise = video.play();
+        if (playPromise !== undefined) {
+            playPromise.catch(() => {
+                // Silent fail – user interaction will trigger later
+            });
+        }
+    });
+});
+</script>
+
+
+<!-- Video Zoom Overlay -->
+<div id="videoZoom" style="
+    position: fixed;
+    inset: 0;
+    background: rgba(122,28,63,0.95);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 4000;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+">
+    <div id="videoZoomBox" style="
+        position: relative;
+        width: 85%;
+        max-width: 1000px;
+        aspect-ratio: 16 / 9;
+        background: #000;
+        border-radius: 20px;
+        overflow: hidden;
+        box-shadow: 0 50px 140px rgba(0,0,0,0.7);
+        transform: scale(0.9);
+        transition: transform 0.5s ease;
+    ">
+        <video id="videoZoomPlayer" controls autoplay playsinline
+            style="
+                width: 100%;
+                height: 100%;
+                object-fit: contain;
+                background: #000;
+            ">
+        </video>
+
+        <button onclick="closeVideoZoom()" style="
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            border: none;
+            background: rgba(255,255,255,0.15);
+            color: #fff;
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        ">✕</button>
+    </div>
+</div>
+
+<script>
+/* Auto play preview videos */
+document.querySelectorAll('.media-image video').forEach(video => {
+    video.play().catch(() => {});
+});
+
+/* Open zoom */
+function openVideoZoom(element) {
+    const sourceVideo = element.querySelector('video');
+    const zoom = document.getElementById('videoZoom');
+    const zoomBox = document.getElementById('videoZoomBox');
+    const zoomPlayer = document.getElementById('videoZoomPlayer');
+
+    zoomPlayer.src = sourceVideo.src;
+    zoomPlayer.currentTime = 0;
+
+    zoom.style.opacity = '1';
+    zoom.style.pointerEvents = 'auto';
+    zoomBox.style.transform = 'scale(1)';
+    document.body.style.overflow = 'hidden';
+
+    // Mobile responsive zoom
+    if (window.innerWidth <= 768) {
+        zoomBox.style.width = '95%';
+        zoomBox.style.maxWidth = '95%';
+        zoomBox.style.aspectRatio = '9 / 16'; // Match mobile video aspect
+    } else {
+        zoomBox.style.width = '85%';
+        zoomBox.style.maxWidth = '1000px';
+        zoomBox.style.aspectRatio = '16 / 9';
+    }
+
+    zoomPlayer.play();
+}
+
+/* Close zoom */
+function closeVideoZoom() {
+    const zoom = document.getElementById('videoZoom');
+    const zoomBox = document.getElementById('videoZoomBox');
+    const zoomPlayer = document.getElementById('videoZoomPlayer');
+
+    zoomPlayer.pause();
+    zoomPlayer.src = '';
+
+    zoom.style.opacity = '0';
+    zoom.style.pointerEvents = 'none';
+    zoomBox.style.transform = 'scale(0.9)';
+    document.body.style.overflow = '';
+}
 </script>
 
 
