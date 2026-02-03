@@ -621,7 +621,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
+
+
+
+
 <br><br><br>
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1143,6 +1158,208 @@ document.addEventListener('DOMContentLoaded', () => {
 </script>
 
 
+
+
+
+
+
+
+
+
+
+
+<section class="coupon-section">
+  <div class="coupon-ticket js-reveal">
+
+    <!-- Left Ticket Cut -->
+    <div class="ticket-edge"></div>
+
+    <!-- Main Content -->
+    <div class="coupon-main">
+      <div class="coupon-text">
+        <span class="coupon-tag">Special Valentine</span>
+        <h2 class="coupon-title">Special Code</h2>
+        <p class="coupon-desc">Applicable only on Games</p>
+      </div>
+    </div>
+
+    <!-- Perforation -->
+    <div class="coupon-dots">
+      <span></span><span></span><span></span><span></span>
+      <span></span><span></span><span></span>
+    </div>
+
+    <!-- Tear Strip -->
+    <div class="coupon-strip">
+      <span class="coupon-heart">♥</span>
+      <span class="coupon-strip-text">Coupon</span>
+    </div>
+
+  </div>
+</section>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --maroon: #6a121f;
+  --white: #ffffff;
+  --text-dark: #2a2a2a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.coupon-section {
+  padding: 64px 16px;
+  display: flex;
+  justify-content: center;
+  background: #ffffff;
+}
+
+/* Coupon Container */
+.coupon-ticket {
+  display: flex;
+  align-items: stretch;
+  max-width: 880px;
+  width: 100%;
+  background: var(--white);
+  border-radius: 16px;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+
+  /* animation state */
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.coupon-ticket.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Left Zig-Zag Edge */
+.ticket-edge {
+  width: 22px;
+  background:
+    radial-gradient(circle at right, transparent 10px, var(--white) 11px)
+    repeat-y;
+  background-size: 22px 22px;
+}
+
+/* Main Coupon */
+.coupon-main {
+  flex: 1;
+  border: 3px solid var(--maroon);
+  border-right: none;
+  border-radius: 16px 0 0 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px 24px;
+}
+
+.coupon-text {
+  text-align: center;
+}
+
+.coupon-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 1.2px;
+  font-weight: 600;
+  color: var(--maroon);
+  text-transform: uppercase;
+}
+
+.coupon-title {
+  margin: 6px 0 4px;
+  font-family: 'Libre Baskerville', serif;
+  font-size: 36px;
+  color: var(--maroon);
+}
+
+.coupon-desc {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  color: var(--text-dark);
+}
+
+/* Perforation */
+.coupon-dots {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 6px;
+}
+
+.coupon-dots span {
+  width: 6px;
+  height: 6px;
+  background: var(--maroon);
+  border-radius: 50%;
+}
+
+/* Tear Strip */
+.coupon-strip {
+  width: 72px;
+  border: 3px solid var(--maroon);
+  border-left: none;
+  border-radius: 0 16px 16px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.coupon-heart {
+  font-size: 18px;
+  color: var(--maroon);
+  margin-bottom: 10px;
+}
+
+.coupon-strip-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  letter-spacing: 1px;
+  font-weight: 600;
+  color: var(--maroon);
+}
+
+/* Mobile Adjustments */
+@media (max-width: 480px) {
+  .coupon-title {
+    font-size: 28px;
+  }
+
+  .coupon-strip {
+    width: 56px;
+  }
+
+  .coupon-main {
+    padding: 24px 16px;
+  }
+}
+
+</style>
+<script>
+  const observer = new IntersectionObserver(
+    entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("is-visible");
+        }
+      });
+    },
+    { threshold: 0.3 }
+  );
+
+  document.querySelectorAll(".js-reveal").forEach(el => {
+    observer.observe(el);
+  });
+</script>
 
 
 
