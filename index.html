@@ -1100,6 +1100,7 @@ video {
         font-size: 0.9rem;
     }
 }
+
 </style>
 
 <script>
@@ -1160,192 +1161,224 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+<!-- valentine banner coupon code -->
+<section class="valentine-feature">
+  <div class="vf-container vf-reveal">
 
+    <!-- Decorative Layer -->
+    <div class="vf-decor"></div>
 
+    <div class="vf-content">
 
+      <span class="vf-tag">Valentine Edition</span>
 
+      <h1 class="vf-title">
+        Special Valentine<br>
+        Coupons Code
+      </h1>
 
+      <p class="vf-subtitle">
+        Unlock exclusive in-game rewards with code
+        <strong>LOVEGAME25</strong>
+      </p>
 
+      <span class="vf-note">Valid on Games Only</span>
 
-
-<section class="coupon-section">
-  <div class="coupon-ticket js-reveal">
-
-    <!-- Left Ticket Cut -->
-    <div class="ticket-edge"></div>
-
-    <!-- Main Content -->
-    <div class="coupon-main">
-      <div class="coupon-text">
-        <span class="coupon-tag">Special Valentine</span>
-        <h2 class="coupon-title">Special Code</h2>
-        <p class="coupon-desc">Applicable only on Games</p>
-      </div>
-    </div>
-
-    <!-- Perforation -->
-    <div class="coupon-dots">
-      <span></span><span></span><span></span><span></span>
-      <span></span><span></span><span></span>
-    </div>
-
-    <!-- Tear Strip -->
-    <div class="coupon-strip">
-      <span class="coupon-heart">♥</span>
-      <span class="coupon-strip-text">Coupon</span>
     </div>
 
   </div>
 </section>
 <style>
-    @import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:wght@400;700&family=Inter:wght@400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap');
 
 :root {
-  --maroon: #6a121f;
-  --white: #ffffff;
-  --text-dark: #2a2a2a;
+  --maroon: #5a0f1b;
+  --maroon-dark: #3a0b12;
+  --ivory: #faf7f3;
 }
 
 * {
   box-sizing: border-box;
 }
 
-.coupon-section {
-  padding: 64px 16px;
-  display: flex;
-  justify-content: center;
-  background: #ffffff;
-}
-
-/* Coupon Container */
-.coupon-ticket {
-  display: flex;
-  align-items: stretch;
-  max-width: 880px;
+.valentine-feature {
   width: 100%;
-  background: var(--white);
-  border-radius: 16px;
-  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+  min-height: 360px;
+  padding: 90px 20px;
 
-  /* animation state */
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease, transform 0.8s ease;
-}
+  background: linear-gradient(135deg, var(--ivory), #ffffff);
 
-.coupon-ticket.is-visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Left Zig-Zag Edge */
-.ticket-edge {
-  width: 22px;
-  background:
-    radial-gradient(circle at right, transparent 10px, var(--white) 11px)
-    repeat-y;
-  background-size: 22px 22px;
-}
-
-/* Main Coupon */
-.coupon-main {
-  flex: 1;
-  border: 3px solid var(--maroon);
-  border-right: none;
-  border-radius: 16px 0 0 16px;
   display: flex;
-  align-items: center;
   justify-content: center;
-  padding: 32px 24px;
+  align-items: center;
+
+  overflow: hidden;
 }
 
-.coupon-text {
-  text-align: center;
+/* MAIN CARD */
+.vf-container {
+  position: relative;
+
+  width: 100%;
+  max-width: 1100px;
+
+  background: rgba(255,255,255,0.95);
+  border-radius: 24px;
+
+  padding: 64px 64px;
+
+  box-shadow: 0 30px 70px rgba(0,0,0,0.15);
+  border: 1px solid rgba(90,15,27,0.15);
+
+  overflow: hidden;
+
+  /* Reveal */
+  opacity: 0;
+  transform: translateY(50px) scale(0.97);
+  transition: all 1.2s cubic-bezier(.16,1,.3,1);
 }
 
-.coupon-tag {
+.vf-container.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* DECORATIVE LIGHT SWEEP */
+.vf-decor {
+  position: absolute;
+  inset: -40%;
+  background: linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(90,15,27,0.08),
+    transparent 60%
+  );
+  transform: rotate(10deg);
+  animation: sweep 8s linear infinite;
+}
+
+@keyframes sweep {
+  from {
+    transform: translateX(-60%) rotate(10deg);
+  }
+  to {
+    transform: translateX(60%) rotate(10deg);
+  }
+}
+
+/* CONTENT */
+.vf-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+
+/* TEXT STAGGER */
+.vf-tag,
+.vf-title,
+.vf-subtitle,
+.vf-note {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.vf-container.is-visible .vf-tag {
+  animation: rise 0.8s ease forwards 0.3s;
+}
+
+.vf-container.is-visible .vf-title {
+  animation: rise 0.9s ease forwards 0.5s;
+}
+
+.vf-container.is-visible .vf-subtitle {
+  animation: rise 0.9s ease forwards 0.7s;
+}
+
+.vf-container.is-visible .vf-note {
+  animation: rise 0.8s ease forwards 0.9s;
+}
+
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TYPOGRAPHY */
+.vf-tag {
   font-family: 'Inter', sans-serif;
   font-size: 12px;
-  letter-spacing: 1.2px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   font-weight: 600;
   color: var(--maroon);
-  text-transform: uppercase;
+  display: block;
+  margin-bottom: 14px;
 }
 
-.coupon-title {
-  margin: 6px 0 4px;
-  font-family: 'Libre Baskerville', serif;
-  font-size: 36px;
-  color: var(--maroon);
+.vf-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  color: var(--maroon-dark);
+  margin: 0 0 18px;
+  line-height: 1.15;
 }
 
-.coupon-desc {
+.vf-subtitle {
   font-family: 'Inter', sans-serif;
-  font-size: 14px;
-  color: var(--text-dark);
+  font-size: 16px;
+  line-height: 1.6;
+  color: #1f1f1f;
+  margin-bottom: 20px;
 }
 
-/* Perforation */
-.coupon-dots {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  padding: 20px 6px;
-}
-
-.coupon-dots span {
-  width: 6px;
-  height: 6px;
-  background: var(--maroon);
-  border-radius: 50%;
-}
-
-/* Tear Strip */
-.coupon-strip {
-  width: 72px;
-  border: 3px solid var(--maroon);
-  border-left: none;
-  border-radius: 0 16px 16px 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.coupon-heart {
-  font-size: 18px;
+.vf-subtitle strong {
   color: var(--maroon);
-  margin-bottom: 10px;
 }
 
-.coupon-strip-text {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
+.vf-note {
   font-family: 'Inter', sans-serif;
   font-size: 13px;
-  letter-spacing: 1px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--maroon);
+  padding: 7px 16px;
+  border: 1px solid rgba(90,15,27,0.25);
+  border-radius: 20px;
+  display: inline-block;
 }
 
-/* Mobile Adjustments */
-@media (max-width: 480px) {
-  .coupon-title {
-    font-size: 28px;
+/* HOVER POLISH (DESKTOP) */
+@media (hover: hover) {
+  .vf-container:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.18);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+
+  .valentine-feature {
+    padding: 60px 16px;
   }
 
-  .coupon-strip {
-    width: 56px;
+  .vf-container {
+    padding: 36px 28px;
   }
 
-  .coupon-main {
-    padding: 24px 16px;
+  .vf-title {
+    font-size: 32px;
+  }
+
+  .vf-subtitle {
+    font-size: 14px;
   }
 }
 
 </style>
 <script>
-  const observer = new IntersectionObserver(
+  const vfObserver = new IntersectionObserver(
     entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -1356,10 +1389,15 @@ document.addEventListener('DOMContentLoaded', () => {
     { threshold: 0.3 }
   );
 
-  document.querySelectorAll(".js-reveal").forEach(el => {
-    observer.observe(el);
+  document.querySelectorAll(".vf-reveal").forEach(el => {
+    vfObserver.observe(el);
   });
 </script>
+
+
+
+
+
 
 
 
@@ -1932,7 +1970,10 @@ function closeVideoZoom() {
     <footer class="luxury-footer">
         <div class="footer-container">
             <div class="footer-brand">
-                <div class="footer-logo">XO, <span class="logo-variva">Variva</span></div>
+<div class="footer-logo footer-logo-img">
+    <img src="logo.png" alt="XO Variva Logo">
+</div>
+<br>
                 <p class="footer-tagline">Intentional connections, beautifully crafted.</p>
             </div>
             <div class="footer-links">
