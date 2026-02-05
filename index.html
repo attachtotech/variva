@@ -312,11 +312,9 @@
 <div class="floating-menu" id="floatingMenu">
     <button class="close-menu" id="closeMenu">✕</button>
     <nav class="menu-items">
-        <a href="#" class="menu-item">The Experience</a>
-        <a href="#" class="menu-item">The Gift</a>
-        <a href="#" class="menu-item">Valentine's Edit</a>
-        <a href="#" class="menu-item">Journal</a>
-        <a href="#" class="menu-item">About</a>
+        <a href="#" class="menu-item">Date Night Games</a>
+        <a href="#" class="menu-item">F1 </a>
+        <a href="#" class="menu-item">Wall Art</a>
     </nav>
 </div>
 
@@ -673,8 +671,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <!-- Post-Video Content -->
         <div class="dm-post-video">
             <div class="dm-edits-line">
-                <span class="dm-edits-text">The Valentine Edits</span>
-                <span class="dm-divider">—</span>
+                <span class="dm-edits-text">The Valentine Edit</span>
             </div>
         </div>
 
@@ -1161,238 +1158,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-<!-- valentine banner coupon code -->
-<section class="valentine-feature">
-  <div class="vf-container vf-reveal">
 
-    <!-- Decorative Layer -->
-    <div class="vf-decor"></div>
-
-    <div class="vf-content">
-
-      <span class="vf-tag">Valentine Edition</span>
-
-      <h1 class="vf-title">
-        Special Valentine<br>
-        Coupons Code
-      </h1>
-
-      <p class="vf-subtitle">
-        Unlock exclusive in-game rewards with code
-        <strong>LOVEGAME25</strong>
-      </p>
-
-      <span class="vf-note">Valid on Games Only</span>
-
-    </div>
-
-  </div>
-</section>
-<style>
-    @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap');
-
-:root {
-  --maroon: #5a0f1b;
-  --maroon-dark: #3a0b12;
-  --ivory: #faf7f3;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-.valentine-feature {
-  width: 100%;
-  min-height: 360px;
-  padding: 90px 20px;
-
-  background: linear-gradient(135deg, var(--ivory), #ffffff);
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  overflow: hidden;
-}
-
-/* MAIN CARD */
-.vf-container {
-  position: relative;
-
-  width: 100%;
-  max-width: 1100px;
-
-  background: rgba(255,255,255,0.95);
-  border-radius: 24px;
-
-  padding: 64px 64px;
-
-  box-shadow: 0 30px 70px rgba(0,0,0,0.15);
-  border: 1px solid rgba(90,15,27,0.15);
-
-  overflow: hidden;
-
-  /* Reveal */
-  opacity: 0;
-  transform: translateY(50px) scale(0.97);
-  transition: all 1.2s cubic-bezier(.16,1,.3,1);
-}
-
-.vf-container.is-visible {
-  opacity: 1;
-  transform: translateY(0) scale(1);
-}
-
-/* DECORATIVE LIGHT SWEEP */
-.vf-decor {
-  position: absolute;
-  inset: -40%;
-  background: linear-gradient(
-    120deg,
-    transparent 40%,
-    rgba(90,15,27,0.08),
-    transparent 60%
-  );
-  transform: rotate(10deg);
-  animation: sweep 8s linear infinite;
-}
-
-@keyframes sweep {
-  from {
-    transform: translateX(-60%) rotate(10deg);
-  }
-  to {
-    transform: translateX(60%) rotate(10deg);
-  }
-}
-
-/* CONTENT */
-.vf-content {
-  position: relative;
-  z-index: 2;
-  max-width: 600px;
-}
-
-/* TEXT STAGGER */
-.vf-tag,
-.vf-title,
-.vf-subtitle,
-.vf-note {
-  opacity: 0;
-  transform: translateY(20px);
-}
-
-.vf-container.is-visible .vf-tag {
-  animation: rise 0.8s ease forwards 0.3s;
-}
-
-.vf-container.is-visible .vf-title {
-  animation: rise 0.9s ease forwards 0.5s;
-}
-
-.vf-container.is-visible .vf-subtitle {
-  animation: rise 0.9s ease forwards 0.7s;
-}
-
-.vf-container.is-visible .vf-note {
-  animation: rise 0.8s ease forwards 0.9s;
-}
-
-@keyframes rise {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* TYPOGRAPHY */
-.vf-tag {
-  font-family: 'Inter', sans-serif;
-  font-size: 12px;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-  font-weight: 600;
-  color: var(--maroon);
-  display: block;
-  margin-bottom: 14px;
-}
-
-.vf-title {
-  font-family: 'Playfair Display', serif;
-  font-size: 48px;
-  color: var(--maroon-dark);
-  margin: 0 0 18px;
-  line-height: 1.15;
-}
-
-.vf-subtitle {
-  font-family: 'Inter', sans-serif;
-  font-size: 16px;
-  line-height: 1.6;
-  color: #1f1f1f;
-  margin-bottom: 20px;
-}
-
-.vf-subtitle strong {
-  color: var(--maroon);
-}
-
-.vf-note {
-  font-family: 'Inter', sans-serif;
-  font-size: 13px;
-  font-weight: 500;
-  color: var(--maroon);
-  padding: 7px 16px;
-  border: 1px solid rgba(90,15,27,0.25);
-  border-radius: 20px;
-  display: inline-block;
-}
-
-/* HOVER POLISH (DESKTOP) */
-@media (hover: hover) {
-  .vf-container:hover {
-    transform: translateY(-4px) scale(1.01);
-    box-shadow: 0 40px 80px rgba(0,0,0,0.18);
-  }
-}
-
-/* MOBILE */
-@media (max-width: 768px) {
-
-  .valentine-feature {
-    padding: 60px 16px;
-  }
-
-  .vf-container {
-    padding: 36px 28px;
-  }
-
-  .vf-title {
-    font-size: 32px;
-  }
-
-  .vf-subtitle {
-    font-size: 14px;
-  }
-}
-
-</style>
-<script>
-  const vfObserver = new IntersectionObserver(
-    entries => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
-        }
-      });
-    },
-    { threshold: 0.3 }
-  );
-
-  document.querySelectorAll(".vf-reveal").forEach(el => {
-    vfObserver.observe(el);
-  });
-</script>
 
 
 
@@ -1554,59 +1320,60 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
 
     const products = [
-    {
-        img: '85931.jpg',
-        title: 'Issued in Love',
-        price: 'Rs.1850',
-        priceValue: 1850,
-        desc: 'A beautifully crafted experience for couples seeking intentional connection. 24 thoughtfully designed coupons, premium packaging, and a guide to deepening your relationship.',
-        features: [
-            '24 curated connection prompts',
-            'Premium matte finish cards',
-            'Luxury gift packaging',
-            'Digital guide included'
-        ]
-    },
-    {
-        img: '85928.jpg',
-        title: 'Midnight Edition',
-        price: 'Rs.1850',
-        priceValue: 1850,
-        desc: 'A deeper, bolder edition designed for couples who want intensity, mystery, and emotional depth.',
-        features: [
-            '30 bold intimacy prompts',
-            'Black matte luxury cards',
-            'Exclusive keepsake box',
-            'Digital ritual guide'
-        ]
-    },
-    {
-        img: '85923.jpg',
-        title: 'Anniversary Edit',
-        price: 'Rs.1850',
-        priceValue: 1850,
-        desc: 'Created to celebrate milestones and memories with reflective prompts and romantic rituals.',
-        features: [
-            '28 memory-driven prompts',
-            'Gold-accent cards',
-            'Anniversary gift wrap',
-            'Couple reflection guide'
-        ]
-    },
-    {
-        img: '85920.jpg',
-        title: 'First Love Edition',
-        price: 'Rs.1850',
-        priceValue: 1850,
-        desc: 'A lighter, playful edition for new couples beginning their journey together.',
-        features: [
-            '20 playful prompts',
-            'Soft-touch cards',
-            'Minimal gift sleeve',
-            'Beginner connection guide'
-        ]
-    }
-];
+        {
+            img: '85931.jpg',
+            title: 'Issued in Love',
+            price: 'Rs.1850',
+            priceValue: 1850,
+            desc: 'Date nights work better when there’s less pressure to get them right. This game is for couples who want to spend quality time together without overthinking the plan. No long prep or complicated ideas. No pressure to perform or get it perfect. 24 coupons with a mix of small moments and bigger shared experiences. One coupon at a time, one week at a time. Each coupon reveals a simple activity to do together. Some are playful, some romantic, some quietly comforting, all focused on connection. Because love doesn’t need grand gestures. Just a reason to begin.',
+            features: [
+                '24 curated connection prompts',
+                'Premium matte finish cards',
+                'Luxury gift packaging',
+                'Digital guide included'
+            ]
+        },
+        {
+            img: '85931.jpg',
+            title: 'Issued in Love',
+            price: 'Rs.1850',
+            priceValue: 1850,
+            desc: 'Date nights work better when there’s less pressure to get them right. This game is for couples who want to spend quality time together without overthinking the plan. No long prep or complicated ideas. No pressure to perform or get it perfect. 24 coupons with a mix of small moments and bigger shared experiences. One coupon at a time, one week at a time. Each coupon reveals a simple activity to do together. Some are playful, some romantic, some quietly comforting, all focused on connection. Because love doesn’t need grand gestures. Just a reason to begin.',
+            features: [
+                '24 curated connection prompts',
+                'Premium matte finish cards',
+                'Luxury gift packaging',
+                'Digital guide included'
+            ]
+        },
+        {
+            img: '85931.jpg',
+            title: 'Issued in Love',
+            price: 'Rs.1850',
+            priceValue: 1850,
+            desc: 'Date nights work better when there’s less pressure to get them right. This game is for couples who want to spend quality time together without overthinking the plan. No long prep or complicated ideas. No pressure to perform or get it perfect. 24 coupons with a mix of small moments and bigger shared experiences. One coupon at a time, one week at a time. Each coupon reveals a simple activity to do together. Some are playful, some romantic, some quietly comforting, all focused on connection. Because love doesn’t need grand gestures. Just a reason to begin.',
+            features: [
+                '24 curated connection prompts',
+                'Premium matte finish cards',
+                'Luxury gift packaging',
+                'Digital guide included'
+            ]
+        },
+        {
+            img: '85931.jpg',
+            title: 'Issued in Love',
+            price: 'Rs.1850',
+            priceValue: 1850,
+            desc: 'Date nights work better when there’s less pressure to get them right. This game is for couples who want to spend quality time together without overthinking the plan. No long prep or complicated ideas. No pressure to perform or get it perfect. 24 coupons with a mix of small moments and bigger shared experiences. One coupon at a time, one week at a time. Each coupon reveals a simple activity to do together. Some are playful, some romantic, some quietly comforting, all focused on connection. Because love doesn’t need grand gestures. Just a reason to begin.',
+            features: [
+                '24 curated connection prompts',
+                'Premium matte finish cards',
+                'Luxury gift packaging',
+                'Digital guide included'
+            ]
+        }
+    ];
+
 
 
     let activeIndex = 0;
@@ -1669,6 +1436,279 @@ document.addEventListener('DOMContentLoaded', () => {
 
     renderMain();
     renderSuggestions();
+});
+</script>
+
+
+
+
+
+
+
+
+<!-- valentine banner coupon code -->
+<section class="valentine-feature">
+  <div class="vf-container vf-reveal">
+
+    <!-- Decorative Layer -->
+    <div class="vf-decor"></div>
+
+    <div class="vf-content">
+
+      <span class="vf-tag">Valentine Edition</span>
+
+      <h1 class="vf-title">
+        Special Valentine<br>
+        Coupon Code
+      </h1>
+
+      <p class="vf-subtitle">
+        Unlock exclusive in-game rewards with code
+        <strong>LOVEGAME25</strong>
+      </p>
+
+      <span class="vf-note">Valid on Games Only</span>
+
+    </div>
+
+  </div>
+</section>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  --maroon: #5a0f1b;
+  --maroon-dark: #3a0b12;
+  --ivory: #faf7f3;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+/* SECTION */
+.valentine-feature {
+  width: 100%;
+  min-height: 360px;
+  padding: 90px 20px;
+
+  background: linear-gradient(135deg, var(--ivory), #ffffff);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  overflow: hidden;
+}
+
+/* CARD */
+.vf-container {
+  position: relative;
+
+  width: 100%;
+  max-width: 1100px;
+
+  background: rgba(255,255,255,0.95);
+  border-radius: 24px;
+
+  padding: 64px 64px;
+
+  box-shadow: 0 30px 70px rgba(0,0,0,0.15);
+  border: 1px solid rgba(90,15,27,0.15);
+
+  overflow: hidden;
+
+  /* Reveal */
+  opacity: 0;
+  transform: translateY(50px) scale(0.97);
+  transition: all 1.2s cubic-bezier(.16,1,.3,1);
+
+  display: flex;
+  align-items: center;
+}
+
+.vf-container.is-visible {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* DECOR */
+.vf-decor {
+  position: absolute;
+  inset: -40%;
+
+  background: linear-gradient(
+    120deg,
+    transparent 40%,
+    rgba(90,15,27,0.08),
+    transparent 60%
+  );
+
+  transform: rotate(10deg);
+  animation: sweep 8s linear infinite;
+}
+
+@keyframes sweep {
+  from {
+    transform: translateX(-60%) rotate(10deg);
+  }
+  to {
+    transform: translateX(60%) rotate(10deg);
+  }
+}
+
+/* CONTENT */
+.vf-content {
+  position: relative;
+  z-index: 2;
+  max-width: 600px;
+}
+
+/* ANIMATION */
+.vf-tag,
+.vf-title,
+.vf-subtitle,
+.vf-note {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.vf-container.is-visible .vf-tag {
+  animation: rise 0.8s ease forwards 0.3s;
+}
+
+.vf-container.is-visible .vf-title {
+  animation: rise 0.9s ease forwards 0.5s;
+}
+
+.vf-container.is-visible .vf-subtitle {
+  animation: rise 0.9s ease forwards 0.7s;
+}
+
+.vf-container.is-visible .vf-note {
+  animation: rise 0.8s ease forwards 0.9s;
+}
+
+@keyframes rise {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* TEXT */
+.vf-tag {
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--maroon);
+  margin-bottom: 12px;
+}
+
+.vf-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 48px;
+  color: var(--maroon-dark);
+  margin: 0 0 14px;
+  line-height: 1.15;
+}
+
+.vf-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #1f1f1f;
+  margin-bottom: 16px;
+}
+
+.vf-subtitle strong {
+  color: var(--maroon);
+}
+
+.vf-note {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--maroon);
+  padding: 6px 14px;
+  border: 1px solid rgba(90,15,27,0.25);
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* HOVER */
+@media (hover: hover) {
+  .vf-container:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.18);
+  }
+}
+
+/* ========================= */
+/* MOBILE = SMALL RECTANGLE */
+/* ========================= */
+
+@media (max-width: 768px) {
+
+  /* Section smaller */
+  .valentine-feature {
+    min-height: 140px;       /* About 1/3 */
+    padding: 24px 12px;
+  }
+
+  /* Card compact */
+  .vf-container {
+    min-height: 110px;
+    padding: 18px 18px;
+    border-radius: 14px;
+  }
+
+  /* Content tighter */
+  .vf-content {
+    max-width: 100%;
+  }
+
+  .vf-tag {
+    font-size: 10px;
+    margin-bottom: 6px;
+  }
+
+  .vf-title {
+    font-size: 22px;
+    margin-bottom: 6px;
+    line-height: 1.2;
+  }
+
+  .vf-subtitle {
+    font-size: 12px;
+    margin-bottom: 8px;
+    line-height: 1.4;
+  }
+
+  .vf-note {
+    font-size: 11px;
+    padding: 4px 10px;
+  }
+}
+
+
+</style>
+<script>
+const vfObserver = new IntersectionObserver(
+  entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+      }
+    });
+  },
+  { threshold: 0.3 }
+);
+
+document.querySelectorAll(".vf-reveal").forEach(el => {
+  vfObserver.observe(el);
 });
 </script>
 

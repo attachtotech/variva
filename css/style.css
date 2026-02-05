@@ -1110,9 +1110,9 @@ section {
 }
 
 .purchase-price {
-    font-family: var(--font-serif);
+    font-family:Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
     font-size: 2.2rem;
-    color: var(--black);
+    color: var(--deep-maroon);
     margin-bottom: 2rem;
     font-weight: 500;
 }
