@@ -1330,7 +1330,7 @@ section {
     }
 
     .footer-logo-img img {
-        margin: 0 auto;
+        margin: 0;
     }
 
     .footer-links {
@@ -1359,7 +1359,10 @@ section {
 /* Mobile adjustment */
 @media (max-width: 600px) {
     .footer-logo-img img {
-        width: 180px;      /* Better fit on phones */
+        text-align: center;
+        width: 180px;
+        margin-top: -70px;
+        height: 100px;      /* Better fit on phones */
     }
 
     .footer-brand {

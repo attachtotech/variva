@@ -278,6 +278,7 @@
 
 </style>
 </head>
+
 <body>
 <!-- ===============================
      FIXED LUXURY NAVBAR
@@ -326,7 +327,7 @@
     position: fixed;
     top: 0;
     width: 100%;
-    background: #ffffff;
+    background: var(--dm-maroon-core);
     border-bottom: 1px solid rgba(0,0,0,0.06);
     z-index: 1000;
 }
@@ -349,7 +350,7 @@
     transform: translateY(-50%);
     background: none;
     border: none;
-    color: #1a1a1a;
+    color: var(--ivory);
     font-size: 1.2rem;
     cursor: pointer;
 }
@@ -369,7 +370,7 @@
     position: absolute;
     top: -6px;
     right: -10px;
-    background: #1a1a1a;
+    background: var(--dm-gold);
     color: #ffffff;
     font-size: 0.65rem;
     padding: 2px 6px;
@@ -386,8 +387,8 @@
 }
 
 .logo-icon {
-    margin-top: -85px;       /* PRESERVED */
-    height: 300px;          /* PRESERVED */
+    margin-top: auto;       /* PRESERVED */
+    height: 75px;          /* PRESERVED */
     display: block;
 }
 
@@ -461,8 +462,8 @@
     }
 
     .logo-icon {
-        margin-top: -95px;
-        height: 300px; /* UNCHANGED */
+        margin-top: auto;
+        height: 65px; /* UNCHANGED */
     }
 }
 
@@ -625,7 +626,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-<br><br><br>
 
 
 
@@ -645,7 +645,7 @@ document.addEventListener('DOMContentLoaded', () => {
         
         <!-- "Issued in Love" Text Above Video -->
         <div class="dm-header-text">
-            Issued in Love
+           <br><br> Issued in Love
         </div>
 
         <div class="dm-video-card">
@@ -1172,64 +1172,57 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-<!-- Purchase Section -->
 <section class="purchase-section" id="purchase">
+
     <!-- TOP CENTER WHATSAPP CTA -->
-<a a href="#" onclick="openWhatsApp(cartState.items[0].quantity)"
-   style="
-    position: absolute;
-    top: clamp(1rem, 2.5vw, 1.8rem);
-    left: 50%;
-    transform: translateX(-50%);
-    display: inline-flex;
-    align-items: center;
-    gap: clamp(8px, 2vw, 10px);
-    padding: clamp(9px, 2.5vw, 12px) clamp(18px, 4vw, 26px);
-    background: linear-gradient(
-        135deg,
-        #075e54,
-        #054c44
-    );
-    color: #eafaf6;
-    font-family: 'Manrope', system-ui, sans-serif;
-    font-size: clamp(0.75rem, 2.8vw, 0.85rem);
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    text-decoration: none;
-    border-radius: 999px;
-    box-shadow:
-        0 10px 26px rgba(0,0,0,0.38),
-        inset 0 0 0 1px rgba(255,255,255,0.14);
-    z-index: 30;
-    white-space: nowrap;
-">
-    <i class="fab fa-whatsapp" style="font-size: clamp(0.9rem, 3vw, 1rem);"></i>
-    Chat on WhatsApp
-</a>
+    <a href="#" onclick="openWhatsApp(cartState.items[0].quantity)"
+       style="
+        position: absolute;
+        top: clamp(1rem, 2.5vw, 1.8rem);
+        left: 50%;
+        transform: translateX(-50%);
+        display: inline-flex;
+        align-items: center;
+        gap: clamp(8px, 2vw, 10px);
+        padding: clamp(9px, 2.5vw, 12px) clamp(18px, 4vw, 26px);
+        background: linear-gradient(135deg,#075e54,#054c44);
+        color: #eafaf6;
+        font-family: 'Manrope', system-ui, sans-serif;
+        font-size: clamp(0.75rem, 2.8vw, 0.85rem);
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border-radius: 999px;
+        box-shadow:
+            0 10px 26px rgba(0,0,0,0.38),
+            inset 0 0 0 1px rgba(255,255,255,0.14);
+        z-index: 30;
+        white-space: nowrap;
+    ">
+        <i class="fab fa-whatsapp" style="font-size: clamp(0.9rem, 3vw, 1rem);"></i>
+        Chat on WhatsApp
+    </a>
 
     <div class="section-container">
         <div class="purchase-content">
 
             <!-- IMAGE SIDE -->
             <div class="purchase-image-wrap">
-                <!-- Main Image -->
+
                 <div class="purchase-image">
                     <img id="mainPurchaseImage" src="main.jpg" alt="Issued in Love">
                 </div>
 
-                <!-- Suggestions -->
                 <div class="purchase-thumbs" id="purchaseSuggestions"></div>
             </div>
 
             <!-- DETAILS -->
             <div class="purchase-details">
+
                 <h2 class="purchase-title">Issued in Love</h2>
                 <p class="purchase-price">Rs.1850</p>
 
-                <p class="purchase-description">
-                    A beautifully crafted experience for couples seeking intentional connection. 
-                    24 thoughtfully designed coupons, premium packaging, and a guide to deepening your relationship.
-                </p>
+                <p class="purchase-description"></p>
 
                 <div class="purchase-features"></div>
 
@@ -1250,13 +1243,15 @@ document.addEventListener('DOMContentLoaded', () => {
                 <p class="purchase-note">
                     You'll be redirected to WhatsApp to complete your purchase with personalized assistance.
                 </p>
+
             </div>
 
         </div>
     </div>
 </section>
+
 <style>
-    .purchase-image-wrap {
+.purchase-image-wrap {
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
@@ -1283,13 +1278,12 @@ document.addEventListener('DOMContentLoaded', () => {
     opacity: 0.9;
     transform: scale(1.04);
 }
-/* ===============================
-   LOCK MAIN IMAGE SIZE (CRITICAL)
-================================ */
+
+/* LOCK MAIN IMAGE SIZE */
 .purchase-image {
     width: 100%;
-    max-width: 420px;          /* desktop consistency */
-    aspect-ratio: 3 / 4;       /* SAME for all images */
+    max-width: 420px;
+    aspect-ratio: 3 / 4;
     overflow: hidden;
     border-radius: 16px;
     background: #111;
@@ -1298,23 +1292,26 @@ document.addEventListener('DOMContentLoaded', () => {
     justify-content: center;
 }
 
-/* FORCE ALL MAIN IMAGES TO MATCH */
 .purchase-image img {
     width: 100%;
     height: 100%;
-    object-fit: cover;         /* fills container uniformly */
-    object-position: center;
+    object-fit: cover;
     display: block;
 }
 
-/* MOBILE PERFECT FIT */
+/* DESCRIPTION FORMAT FIX */
+.purchase-description {
+    white-space: pre-line;
+}
+
+/* MOBILE */
 @media (max-width: 768px) {
     .purchase-image {
         max-width: 100%;
     }
 }
-
 </style>
+
 <script>
 /* PURCHASE SECTION – SUGGESTION LOGIC */
 document.addEventListener('DOMContentLoaded', () => {
@@ -1325,7 +1322,20 @@ document.addEventListener('DOMContentLoaded', () => {
             title: 'Issued in Love',
             price: 'Rs.1850',
             priceValue: 1850,
-            desc: 'Date nights work better when there’s less pressure to get them right. This game is for couples who want to spend quality time together without overthinking the plan. No long prep or complicated ideas. No pressure to perform or get it perfect. 24 coupons with a mix of small moments and bigger shared experiences. One coupon at a time, one week at a time. Each coupon reveals a simple activity to do together. Some are playful, some romantic, some quietly comforting, all focused on connection. Because love doesn’t need grand gestures. Just a reason to begin.',
+            desc: `Date nights work better when there’s less pressure to get them right.
+
+This game is for couples who want to spend quality time together without overthinking the plan.
+
+• No long prep or complicated ideas
+• No pressure to perform or get it perfect
+• 24 coupons with a mix of small moments and bigger shared experiences
+
+One coupon at a time, one week at a time.
+
+Each coupon reveals a simple activity to do together. Some are playful, some romantic, some quietly comforting, all focused on connection.
+
+Because love doesn’t need grand gestures.
+Just a reason to begin.`,
             features: [
                 '24 curated connection prompts',
                 'Premium matte finish cards',
@@ -1334,11 +1344,24 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         },
         {
-            img: '85931.jpg',
+            img: '85923.jpg',
             title: 'Issued in Love',
             price: 'Rs.1850',
             priceValue: 1850,
-            desc: 'Date nights work better when there’s less pressure to get them right. This game is for couples who want to spend quality time together without overthinking the plan. No long prep or complicated ideas. No pressure to perform or get it perfect. 24 coupons with a mix of small moments and bigger shared experiences. One coupon at a time, one week at a time. Each coupon reveals a simple activity to do together. Some are playful, some romantic, some quietly comforting, all focused on connection. Because love doesn’t need grand gestures. Just a reason to begin.',
+            desc: `Date nights work better when there’s less pressure to get them right.
+
+This game is for couples who want to spend quality time together without overthinking the plan.
+
+• No long prep or complicated ideas
+• No pressure to perform or get it perfect
+• 24 coupons with a mix of small moments and bigger shared experiences
+
+One coupon at a time, one week at a time.
+
+Each coupon reveals a simple activity to do together. Some are playful, some romantic, some quietly comforting, all focused on connection.
+
+Because love doesn’t need grand gestures.
+Just a reason to begin.`,
             features: [
                 '24 curated connection prompts',
                 'Premium matte finish cards',
@@ -1347,11 +1370,24 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         },
         {
-            img: '85931.jpg',
+            img: '85928.jpg',
             title: 'Issued in Love',
             price: 'Rs.1850',
             priceValue: 1850,
-            desc: 'Date nights work better when there’s less pressure to get them right. This game is for couples who want to spend quality time together without overthinking the plan. No long prep or complicated ideas. No pressure to perform or get it perfect. 24 coupons with a mix of small moments and bigger shared experiences. One coupon at a time, one week at a time. Each coupon reveals a simple activity to do together. Some are playful, some romantic, some quietly comforting, all focused on connection. Because love doesn’t need grand gestures. Just a reason to begin.',
+            desc: `Date nights work better when there’s less pressure to get them right.
+
+This game is for couples who want to spend quality time together without overthinking the plan.
+
+• No long prep or complicated ideas
+• No pressure to perform or get it perfect
+• 24 coupons with a mix of small moments and bigger shared experiences
+
+One coupon at a time, one week at a time.
+
+Each coupon reveals a simple activity to do together. Some are playful, some romantic, some quietly comforting, all focused on connection.
+
+Because love doesn’t need grand gestures.
+Just a reason to begin.`,
             features: [
                 '24 curated connection prompts',
                 'Premium matte finish cards',
@@ -1360,11 +1396,24 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         },
         {
-            img: '85931.jpg',
+            img: '85920.jpg',
             title: 'Issued in Love',
             price: 'Rs.1850',
             priceValue: 1850,
-            desc: 'Date nights work better when there’s less pressure to get them right. This game is for couples who want to spend quality time together without overthinking the plan. No long prep or complicated ideas. No pressure to perform or get it perfect. 24 coupons with a mix of small moments and bigger shared experiences. One coupon at a time, one week at a time. Each coupon reveals a simple activity to do together. Some are playful, some romantic, some quietly comforting, all focused on connection. Because love doesn’t need grand gestures. Just a reason to begin.',
+            desc: `Date nights work better when there’s less pressure to get them right.
+
+This game is for couples who want to spend quality time together without overthinking the plan.
+
+• No long prep or complicated ideas
+• No pressure to perform or get it perfect
+• 24 coupons with a mix of small moments and bigger shared experiences
+
+One coupon at a time, one week at a time.
+
+Each coupon reveals a simple activity to do together. Some are playful, some romantic, some quietly comforting, all focused on connection.
+
+Because love doesn’t need grand gestures.
+Just a reason to begin.`,
             features: [
                 '24 curated connection prompts',
                 'Premium matte finish cards',
@@ -1373,8 +1422,6 @@ document.addEventListener('DOMContentLoaded', () => {
             ]
         }
     ];
-
-
 
     let activeIndex = 0;
 
@@ -1386,33 +1433,33 @@ document.addEventListener('DOMContentLoaded', () => {
     const suggestionsWrap = document.getElementById('purchaseSuggestions');
 
     function renderMain() {
-    const p = products[activeIndex];
+        const p = products[activeIndex];
 
-    // UI updates
-    mainImage.src = p.img;
-    title.textContent = p.title;
-    price.textContent = p.price;
-    desc.textContent = p.desc;
+        // UI updates
+        mainImage.src = p.img;
+        title.textContent = p.title;
+        price.textContent = p.price;
+        desc.textContent = p.desc;
 
-    // 🔥 CART STATE SYNC (CRITICAL)
-    if (window.cartState && cartState.items[0]) {
-        cartState.items[0].name = p.title;
-        cartState.items[0].price = p.priceValue;
-        cartState.items[0].image = p.img;
+        // 🔥 CART STATE SYNC (PRESERVED)
+        if (window.cartState && cartState.items[0]) {
+            cartState.items[0].name = p.title;
+            cartState.items[0].price = p.priceValue;
+            cartState.items[0].image = p.img;
 
-        cartState.total = calculateTotal();
-        updateCartUI();
+            cartState.total = calculateTotal();
+            updateCartUI();
+        }
+
+        // Features
+        featuresWrap.innerHTML = '';
+        p.features.forEach(f => {
+            const div = document.createElement('div');
+            div.className = 'feature revealed';
+            div.innerHTML = `<i class="fas fa-check"></i><span>${f}</span>`;
+            featuresWrap.appendChild(div);
+        });
     }
-
-    // Features
-    featuresWrap.innerHTML = '';
-    p.features.forEach(f => {
-        const div = document.createElement('div');
-        div.className = 'feature revealed';
-        div.innerHTML = `<i class="fas fa-check"></i><span>${f}</span>`;
-        featuresWrap.appendChild(div);
-    });
-}
 
     function renderSuggestions() {
         suggestionsWrap.innerHTML = '';
@@ -1446,6 +1493,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- valentine banner coupon code -->
 <section class="valentine-feature">
   <div class="vf-container vf-reveal">
@@ -1455,7 +1514,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     <div class="vf-content">
 
-      <span class="vf-tag">Valentine Edition</span>
+      <span class="vf-tag">Valentine's Special</span>
 
       <h1 class="vf-title">
         Special Valentine<br>
@@ -1464,7 +1523,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       <p class="vf-subtitle">
         Unlock exclusive in-game rewards with code
-        <strong>LOVEGAME25</strong>
+        <strong>DATENIGHT</strong>
       </p>
 
       <span class="vf-note">Valid on Games Only</span>
@@ -1724,7 +1783,7 @@ document.querySelectorAll(".vf-reveal").forEach(el => {
 <section class="media-section">
     <div class="section-container">
         <div class="media-header">
-            <h2 class="media-title">Moments of Connection</h2>
+            <h2 class="media-title">Begin The Experience</h2>
             <div class="section-divider"></div>
         </div>
 
@@ -1813,33 +1872,35 @@ document.querySelectorAll(".vf-reveal").forEach(el => {
     opacity: 1;
 }
 
+
 /* ===============================
-   MOBILE LAYOUT
+   MOBILE LAYOUT (9:11 FIX)
 ================================ */
 @media (max-width: 768px) {
+
     .media-grid {
         grid-template-columns: 1fr;
         gap: 1.6rem;
         padding: 0 0.5rem;
     }
 
-    /* Rectangle aspect ratio for mobile */
+    /* Keep portrait ratio on mobile */
     .media-image {
-        aspect-ratio: 4 / 3; /* Rectangle aspect ratio */
-        max-height: 60vh;
+        aspect-ratio: 16/9;   /* Close to vertical video */
+        max-height: none;
         border-radius: 16px;
         width: 100%;
     }
 
-    /* Ensure video fills the rectangle properly */
     .media-image video {
-        object-fit: cover;
         width: 100%;
         height: 100%;
+        object-fit: cover;   /* Show full video */
+        background: #000;      /* Letterbox if needed */
     }
 
     .media-overlay {
-        opacity: 1; /* always visible on mobile */
+        opacity: 1;
         background: linear-gradient(
             to top,
             rgba(0,0,0,0.45),
@@ -1847,19 +1908,8 @@ document.querySelectorAll(".vf-reveal").forEach(el => {
         );
         font-size: 2rem;
     }
-    
-    /* Tablet/Mid screens */
-    @media (min-width: 481px) and (max-width: 768px) {
-        .media-grid {
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1.4rem;
-        }
-        
-        .media-image {
-            aspect-ratio: 1 / 1; /* Square on tablet */
-        }
-    }
 }
+
 
 /* Small mobile phones */
 @media (max-width: 360px) {
@@ -2014,7 +2064,6 @@ function closeVideoZoom() {
     <img src="logo.png" alt="XO Variva Logo">
 </div>
 <br>
-                <p class="footer-tagline">Intentional connections, beautifully crafted.</p>
             </div>
             <div class="footer-links">
                 <a href="#" class="footer-link">Contact</a>
@@ -2026,19 +2075,26 @@ function closeVideoZoom() {
                 <a href="https://www.instagram.com/xo.variva?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" class="social-link">
                     <i class="fab fa-instagram"></i>
                 </a>
-                <a href="#" class="social-link">
-                    <i class="fab fa-pinterest"></i>
-                </a>
-                <a href="#" class="social-link">
-                    <i class="far fa-envelope"></i>
-                </a>
+                <!-- WhatsApp -->
+<a href="https://wa.me/918452018403" 
+   class="social-link" 
+   target="_blank" 
+   rel="noopener">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+<!-- Email -->
+<a href="mailto:hello@variva.co.in" 
+   class="social-link">
+    <i class="far fa-envelope"></i>
+</a>
+
             </div>
         </div>
         <div class="footer-bottom">
             <p>&copy; 2026 XO, Variva. All rights reserved.</p>
         </div>
     </footer>
-
     <!-- Sticky Mobile CTA -->
     <div class="sticky-mobile-cta" id="stickyCta">
         <button class="mobile-whatsapp-btn" id="mobileWhatsapp">
