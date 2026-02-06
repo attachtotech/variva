@@ -1174,83 +1174,83 @@ document.addEventListener('DOMContentLoaded', () => {
 
 <section class="purchase-section" id="purchase">
 
-    <!-- TOP CENTER WHATSAPP CTA -->
-    <a href="#" onclick="openWhatsApp(cartState.items[0].quantity)"
-       style="
-        position: absolute;
-        top: clamp(1rem, 2.5vw, 1.8rem);
-        left: 50%;
-        transform: translateX(-50%);
-        display: inline-flex;
-        align-items: center;
-        gap: clamp(8px, 2vw, 10px);
-        padding: clamp(9px, 2.5vw, 12px) clamp(18px, 4vw, 26px);
-        background: linear-gradient(135deg,#075e54,#054c44);
-        color: #eafaf6;
-        font-family: 'Manrope', system-ui, sans-serif;
-        font-size: clamp(0.75rem, 2.8vw, 0.85rem);
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        text-decoration: none;
-        border-radius: 999px;
-        box-shadow:
-            0 10px 26px rgba(0,0,0,0.38),
-            inset 0 0 0 1px rgba(255,255,255,0.14);
-        z-index: 30;
-        white-space: nowrap;
-    ">
-        <i class="fab fa-whatsapp" style="font-size: clamp(0.9rem, 3vw, 1rem);"></i>
-        Chat on WhatsApp
-    </a>
+<!-- TOP CENTER WHATSAPP CTA -->
+<a href="#" onclick="openWhatsApp(cartState.items[0].quantity)"
+   style="
+    position: absolute;
+    top: clamp(1rem, 2.5vw, 1.8rem);
+    left: 50%;
+    transform: translateX(-50%);
+    display: inline-flex;
+    align-items: center;
+    gap: clamp(8px, 2vw, 10px);
+    padding: clamp(9px, 2.5vw, 12px) clamp(18px, 4vw, 26px);
+    background: linear-gradient(135deg,#075e54,#054c44);
+    color: #eafaf6;
+    font-family: 'Manrope', system-ui, sans-serif;
+    font-size: clamp(0.75rem, 2.8vw, 0.85rem);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-radius: 999px;
+    box-shadow:
+        0 10px 26px rgba(0,0,0,0.38),
+        inset 0 0 0 1px rgba(255,255,255,0.14);
+    z-index: 30;
+    white-space: nowrap;
+">
+    <i class="fab fa-whatsapp"></i>
+    Chat on WhatsApp
+</a>
 
-    <div class="section-container">
-        <div class="purchase-content">
+<div class="section-container">
+<div class="purchase-content">
 
-            <!-- IMAGE SIDE -->
-            <div class="purchase-image-wrap">
+<!-- IMAGE SIDE -->
+<div class="purchase-image-wrap">
 
-                <div class="purchase-image">
-                    <img id="mainPurchaseImage" src="main.jpg" alt="Issued in Love">
-                </div>
-
-                <div class="purchase-thumbs" id="purchaseSuggestions"></div>
-            </div>
-
-            <!-- DETAILS -->
-            <div class="purchase-details">
-
-                <h2 class="purchase-title">Issued in Love</h2>
-                <p class="purchase-price">Rs.1850</p>
-
-                <p class="purchase-description"></p>
-
-                <div class="purchase-features"></div>
-
-                <div class="quantity-selector purchase-qty">
-                    <span>Quantity:</span>
-                    <div class="qty-controls">
-                        <button class="qty-btn minus">-</button>
-                        <span class="qty-value">1</span>
-                        <button class="qty-btn plus">+</button>
-                    </div>
-                </div>
-
-                <button class="purchase-cta" id="purchaseCta">
-                    <i class="fab fa-whatsapp"></i>
-                    Buy on WhatsApp
-                </button>
-
-                <p class="purchase-note">
-                    You'll be redirected to WhatsApp to complete your purchase with personalized assistance.
-                </p>
-
-            </div>
-
-        </div>
+    <div class="purchase-image">
+        <img id="mainPurchaseImage" src="main.jpg" alt="Issued in Love">
     </div>
+
+    <div class="purchase-thumbs" id="purchaseSuggestions"></div>
+
+</div>
+
+<!-- DETAILS -->
+<div class="purchase-details">
+
+<h2 class="purchase-title">Issued in Love</h2>
+<p class="purchase-price">Rs.1850</p>
+
+<p class="purchase-description"></p>
+
+<div class="quantity-selector purchase-qty">
+    <span>Quantity:</span>
+    <div class="qty-controls">
+        <button class="qty-btn minus">-</button>
+        <span class="qty-value">1</span>
+        <button class="qty-btn plus">+</button>
+    </div>
+</div>
+
+<button class="purchase-cta" id="purchaseCta">
+    <i class="fab fa-whatsapp"></i>
+    Buy on WhatsApp
+</button>
+
+<p class="purchase-note">
+    You'll be redirected to WhatsApp to complete your purchase with personalized assistance.
+</p>
+
+</div>
+
+</div>
+</div>
 </section>
 
 <style>
+
 .purchase-image-wrap {
     display: flex;
     flex-direction: column;
@@ -1279,7 +1279,7 @@ document.addEventListener('DOMContentLoaded', () => {
     transform: scale(1.04);
 }
 
-/* LOCK MAIN IMAGE SIZE */
+/* MAIN IMAGE */
 .purchase-image {
     width: 100%;
     max-width: 420px;
@@ -1296,12 +1296,13 @@ document.addEventListener('DOMContentLoaded', () => {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    display: block;
 }
 
-/* DESCRIPTION FORMAT FIX */
+/* DESCRIPTION FORMAT */
 .purchase-description {
     white-space: pre-line;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
 }
 
 /* MOBILE */
@@ -1310,19 +1311,21 @@ document.addEventListener('DOMContentLoaded', () => {
         max-width: 100%;
     }
 }
+
 </style>
 
 <script>
-/* PURCHASE SECTION – SUGGESTION LOGIC */
+/* PURCHASE SECTION – CLEAN VERSION */
 document.addEventListener('DOMContentLoaded', () => {
 
-    const products = [
-        {
-            img: '85931.jpg',
-            title: 'Issued in Love',
-            price: 'Rs.1850',
-            priceValue: 1850,
-            desc: `Date nights work better when there’s less pressure to get them right.
+const products = [
+
+{
+    img: '85931.jpg',
+    title: 'Issued in Love',
+    price: 'Rs.1850',
+    priceValue: 1850,
+    desc: `Date nights work better when there’s less pressure to get them right.
 
 This game is for couples who want to spend quality time together without overthinking the plan.
 
@@ -1335,20 +1338,15 @@ One coupon at a time, one week at a time.
 Each coupon reveals a simple activity to do together. Some are playful, some romantic, some quietly comforting, all focused on connection.
 
 Because love doesn’t need grand gestures.
-Just a reason to begin.`,
-            features: [
-                '24 curated connection prompts',
-                'Premium matte finish cards',
-                'Luxury gift packaging',
-                'Digital guide included'
-            ]
-        },
-        {
-            img: '85923.jpg',
-            title: 'Issued in Love',
-            price: 'Rs.1850',
-            priceValue: 1850,
-            desc: `Date nights work better when there’s less pressure to get them right.
+Just a reason to begin.`
+},
+
+{
+    img: '85931.jpg',
+    title: 'Issued in Love',
+    price: 'Rs.1850',
+    priceValue: 1850,
+    desc: `Date nights work better when there’s less pressure to get them right.
 
 This game is for couples who want to spend quality time together without overthinking the plan.
 
@@ -1361,20 +1359,15 @@ One coupon at a time, one week at a time.
 Each coupon reveals a simple activity to do together. Some are playful, some romantic, some quietly comforting, all focused on connection.
 
 Because love doesn’t need grand gestures.
-Just a reason to begin.`,
-            features: [
-                '24 curated connection prompts',
-                'Premium matte finish cards',
-                'Luxury gift packaging',
-                'Digital guide included'
-            ]
-        },
-        {
-            img: '85928.jpg',
-            title: 'Issued in Love',
-            price: 'Rs.1850',
-            priceValue: 1850,
-            desc: `Date nights work better when there’s less pressure to get them right.
+Just a reason to begin.`
+},
+
+{
+    img: '85931.jpg',
+    title: 'Issued in Love',
+    price: 'Rs.1850',
+    priceValue: 1850,
+    desc: `Date nights work better when there’s less pressure to get them right.
 
 This game is for couples who want to spend quality time together without overthinking the plan.
 
@@ -1387,20 +1380,15 @@ One coupon at a time, one week at a time.
 Each coupon reveals a simple activity to do together. Some are playful, some romantic, some quietly comforting, all focused on connection.
 
 Because love doesn’t need grand gestures.
-Just a reason to begin.`,
-            features: [
-                '24 curated connection prompts',
-                'Premium matte finish cards',
-                'Luxury gift packaging',
-                'Digital guide included'
-            ]
-        },
-        {
-            img: '85920.jpg',
-            title: 'Issued in Love',
-            price: 'Rs.1850',
-            priceValue: 1850,
-            desc: `Date nights work better when there’s less pressure to get them right.
+Just a reason to begin.`
+},
+
+{
+    img: '85931.jpg',
+    title: 'Issued in Love',
+    price: 'Rs.1850',
+    priceValue: 1850,
+    desc: `Date nights work better when there’s less pressure to get them right.
 
 This game is for couples who want to spend quality time together without overthinking the plan.
 
@@ -1413,76 +1401,68 @@ One coupon at a time, one week at a time.
 Each coupon reveals a simple activity to do together. Some are playful, some romantic, some quietly comforting, all focused on connection.
 
 Because love doesn’t need grand gestures.
-Just a reason to begin.`,
-            features: [
-                '24 curated connection prompts',
-                'Premium matte finish cards',
-                'Luxury gift packaging',
-                'Digital guide included'
-            ]
-        }
-    ];
+Just a reason to begin.`
+}
 
-    let activeIndex = 0;
+];
 
-    const mainImage = document.getElementById('mainPurchaseImage');
-    const title = document.querySelector('.purchase-title');
-    const price = document.querySelector('.purchase-price');
-    const desc = document.querySelector('.purchase-description');
-    const featuresWrap = document.querySelector('.purchase-features');
-    const suggestionsWrap = document.getElementById('purchaseSuggestions');
+let activeIndex = 0;
 
-    function renderMain() {
-        const p = products[activeIndex];
+const mainImage = document.getElementById('mainPurchaseImage');
+const title = document.querySelector('.purchase-title');
+const price = document.querySelector('.purchase-price');
+const desc = document.querySelector('.purchase-description');
+const suggestionsWrap = document.getElementById('purchaseSuggestions');
 
-        // UI updates
-        mainImage.src = p.img;
-        title.textContent = p.title;
-        price.textContent = p.price;
-        desc.textContent = p.desc;
+function renderMain() {
 
-        // 🔥 CART STATE SYNC (PRESERVED)
-        if (window.cartState && cartState.items[0]) {
-            cartState.items[0].name = p.title;
-            cartState.items[0].price = p.priceValue;
-            cartState.items[0].image = p.img;
+const p = products[activeIndex];
 
-            cartState.total = calculateTotal();
-            updateCartUI();
-        }
+mainImage.src = p.img;
+title.textContent = p.title;
+price.textContent = p.price;
+desc.textContent = p.desc;
 
-        // Features
-        featuresWrap.innerHTML = '';
-        p.features.forEach(f => {
-            const div = document.createElement('div');
-            div.className = 'feature revealed';
-            div.innerHTML = `<i class="fas fa-check"></i><span>${f}</span>`;
-            featuresWrap.appendChild(div);
-        });
-    }
+/* CART SYNC (PRESERVED) */
+if (window.cartState && cartState.items[0]) {
 
-    function renderSuggestions() {
-        suggestionsWrap.innerHTML = '';
+    cartState.items[0].name = p.title;
+    cartState.items[0].price = p.priceValue;
+    cartState.items[0].image = p.img;
 
-        products.forEach((p, i) => {
-            if (i === activeIndex) return;
+    cartState.total = calculateTotal();
+    updateCartUI();
+}
 
-            const img = document.createElement('img');
-            img.src = p.img;
-            img.alt = p.title;
+}
 
-            img.addEventListener('click', () => {
-                activeIndex = i;
-                renderMain();
-                renderSuggestions();
-            });
+function renderSuggestions() {
 
-            suggestionsWrap.appendChild(img);
-        });
-    }
+suggestionsWrap.innerHTML = '';
 
-    renderMain();
-    renderSuggestions();
+products.forEach((p, i) => {
+
+    if (i === activeIndex) return;
+
+    const img = document.createElement('img');
+
+    img.src = p.img;
+    img.alt = p.title;
+
+    img.addEventListener('click', () => {
+        activeIndex = i;
+        renderMain();
+        renderSuggestions();
+    });
+
+    suggestionsWrap.appendChild(img);
+});
+
+}
+
+renderMain();
+renderSuggestions();
+
 });
 </script>
 
