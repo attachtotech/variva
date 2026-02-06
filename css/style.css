@@ -1362,7 +1362,7 @@ section {
         text-align: center;
         width: 180px;
         margin-top: -70px;
-        height: 70px;      /* Better fit on phones */
+        height: 50px;      /* Better fit on phones */
     }
 
     .footer-brand {
