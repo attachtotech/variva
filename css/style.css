@@ -1351,7 +1351,7 @@ section {
 .footer-logo-img img {
     width: 250px;          /* Requested size */
     max-width: 100%;       /* Responsive safety */
-    height: auto;          /* Keep ratio */
+    height: 90px;          /* Keep ratio */
     object-fit: contain;
     display: block;
 }
@@ -1379,6 +1379,93 @@ section {
         justify-content: center;
     }
 }
+
+
+/* ===============================
+   iPad & Tablet Perfect Alignment
+   =============================== */
+@media (min-width: 601px) and (max-width: 1024px) {
+
+    /* Grid balance */
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    /* Brand block center */
+    .footer-brand {
+        width: 100%;
+        max-width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+
+    /* Logo wrapper center */
+    .footer-logo-img {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    /* Logo image perfectly centered */
+    .footer-logo-img img {
+        display: block;
+        margin: 0 auto;
+        width: auto;
+        max-width: 220px;
+        max-height: 80px;
+    }
+
+    /* Links center */
+    .footer-links {
+        align-items: center;
+    }
+
+    /* Social icons center */
+    .footer-social {
+        justify-content: center;
+        width: 100%;
+    }
+
+    /* Footer bottom spacing */
+    .footer-bottom {
+        margin-top: 1.5rem;
+        text-align: center;
+    }
+}
+/* ===============================
+   Tablet / iPad Spacing Fix
+   =============================== */
+@media (min-width: 601px) and (max-width: 1024px) {
+
+    /* Remove negative margin that causes overlap */
+    .footer-logo {
+        margin-bottom: 0 !important;
+    }
+
+    /* Space after logo image */
+    .footer-logo-img {
+        margin-bottom: 1rem;
+    }
+
+    /* Extra breathing room for brand block */
+    .footer-brand {
+        gap: 0.3rem;
+    }
+
+    /* Ensure text flows normally */
+    .footer-tagline {
+        margin-top: 0.4rem;
+        line-height: 1.4;
+    }
+}
+
+
 
 /* Sticky Mobile CTA */
 .sticky-mobile-cta {
