@@ -671,7 +671,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <!-- Post-Video Content -->
         <div class="dm-post-video">
             <div class="dm-edits-line">
-                <span class="dm-edits-text">The Valentine Edit</span>
+                <span class="dm-edits-text">The Valentine's Edit</span>
             </div>
         </div>
 
@@ -1221,7 +1221,7 @@ document.addEventListener('DOMContentLoaded', () => {
 <div class="purchase-details">
 
 <h2 class="purchase-title">Issued in Love</h2>
-<p class="purchase-price">Rs.1850</p>
+<p class="purchase-price" style="font-size:20px;">Rs.1850</p>
 
 <p class="purchase-description"></p>
 
@@ -1330,7 +1330,7 @@ const products = [
 This game is for couples who want to spend quality time together without overthinking the plan.
 
 • No long prep or complicated ideas
-• No pressure to perform or get it perfect
+• No pressure or get it perfect
 • 24 coupons with a mix of small moments and bigger shared experiences
 
 One coupon at a time, one week at a time.
@@ -1342,7 +1342,7 @@ Just a reason to begin.`
 },
 
 {
-    img: '85931.jpg',
+    img: '85920.jpg',
     title: 'Issued in Love',
     price: 'Rs.1850',
     priceValue: 1850,
@@ -1351,7 +1351,7 @@ Just a reason to begin.`
 This game is for couples who want to spend quality time together without overthinking the plan.
 
 • No long prep or complicated ideas
-• No pressure to perform or get it perfect
+• No pressure or get it perfect
 • 24 coupons with a mix of small moments and bigger shared experiences
 
 One coupon at a time, one week at a time.
@@ -1363,7 +1363,7 @@ Just a reason to begin.`
 },
 
 {
-    img: '85931.jpg',
+    img: '85923.jpg',
     title: 'Issued in Love',
     price: 'Rs.1850',
     priceValue: 1850,
@@ -1372,7 +1372,7 @@ Just a reason to begin.`
 This game is for couples who want to spend quality time together without overthinking the plan.
 
 • No long prep or complicated ideas
-• No pressure to perform or get it perfect
+• No pressure or get it perfect
 • 24 coupons with a mix of small moments and bigger shared experiences
 
 One coupon at a time, one week at a time.
@@ -1384,7 +1384,7 @@ Just a reason to begin.`
 },
 
 {
-    img: '85931.jpg',
+    img: '85928.jpg',
     title: 'Issued in Love',
     price: 'Rs.1850',
     priceValue: 1850,
@@ -1393,7 +1393,7 @@ Just a reason to begin.`
 This game is for couples who want to spend quality time together without overthinking the plan.
 
 • No long prep or complicated ideas
-• No pressure to perform or get it perfect
+• No pressur or get it perfect
 • 24 coupons with a mix of small moments and bigger shared experiences
 
 One coupon at a time, one week at a time.
@@ -1526,17 +1526,16 @@ renderSuggestions();
   box-sizing: border-box;
 }
 
-/* SECTION */
+/* SECTION = DARK MAROON */
 .valentine-feature {
   width: 100%;
   min-height: 360px;
   padding: 90px 20px;
 
-  /* REVERSED: DARK BACKGROUND */
   background: linear-gradient(
     135deg,
     var(--maroon-dark),
-    var(--maroon)
+    #22070d
   );
 
   display: flex;
@@ -1546,24 +1545,22 @@ renderSuggestions();
   overflow: hidden;
 }
 
-/* CARD */
+/* CARD = IVORY */
 .vf-container {
   position: relative;
 
   width: 100%;
   max-width: 1100px;
 
-  /* REVERSED: DARK GLASS CARD */
-  background: rgba(58,11,18,0.92);
+  background: var(--ivory);
 
   border-radius: 24px;
 
-  padding: 64px 64px;
+  padding: 64px;
 
   box-shadow: 0 30px 70px rgba(0,0,0,0.45);
 
-  /* Light border for contrast */
-  border: 1px solid rgba(250,247,243,0.18);
+  border: 1px solid rgba(90,15,27,0.15);
 
   overflow: hidden;
 
@@ -1585,11 +1582,10 @@ renderSuggestions();
   position: absolute;
   inset: -40%;
 
-  /* Lighter sweep */
   background: linear-gradient(
     120deg,
     transparent 40%,
-    rgba(250,247,243,0.08),
+    rgba(90,15,27,0.08),
     transparent 60%
   );
 
@@ -1645,22 +1641,25 @@ renderSuggestions();
   }
 }
 
-/* TEXT (REVERSED TO IVORY) */
+/* TEXT = MAROON */
 .vf-tag {
   font-family: 'Inter', sans-serif;
   font-size: 12px;
   letter-spacing: 2px;
   text-transform: uppercase;
   font-weight: 600;
-  color: var(--ivory);
+
+  color: var(--maroon);
+
   margin-bottom: 12px;
-  opacity: 0.85;
 }
 
 .vf-title {
   font-family: 'Playfair Display', serif;
   font-size: 48px;
-  color: var(--ivory);
+
+  color: var(--maroon-dark);
+
   margin: 0 0 14px;
   line-height: 1.15;
 }
@@ -1669,12 +1668,14 @@ renderSuggestions();
   font-family: 'Inter', sans-serif;
   font-size: 16px;
   line-height: 1.6;
-  color: rgba(250,247,243,0.9);
+
+  color: #2a0b12;
+
   margin-bottom: 16px;
 }
 
 .vf-subtitle strong {
-  color: #ffffff;
+  color: var(--maroon);
 }
 
 .vf-note {
@@ -1682,11 +1683,11 @@ renderSuggestions();
   font-size: 13px;
   font-weight: 500;
 
-  color: var(--ivory);
+  color: var(--maroon);
 
   padding: 6px 14px;
 
-  border: 1px solid rgba(250,247,243,0.35);
+  border: 1px solid rgba(90,15,27,0.3);
 
   border-radius: 20px;
 
@@ -1697,14 +1698,11 @@ renderSuggestions();
 @media (hover: hover) {
   .vf-container:hover {
     transform: translateY(-4px) scale(1.01);
-    box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+    box-shadow: 0 40px 80px rgba(0,0,0,0.55);
   }
 }
 
-/* ========================= */
-/* MOBILE = SMALL RECTANGLE */
-/* ========================= */
-
+/* MOBILE */
 @media (max-width: 768px) {
 
   .valentine-feature {
