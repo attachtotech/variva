@@ -154,28 +154,96 @@ body {
     cursor: pointer;
     margin-bottom: 3rem;
 }
+/* Main Menu */
 
 .menu-items {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
 }
 
+
+/* Main Links */
+
 .menu-item {
-    font-family: var(--font-sans);
-    font-size: 1.2rem;
-    color: var(--black);
-    text-decoration: none;
-    padding: 0.75rem 0;
-    border-bottom: 1px solid var(--gray-medium);
-    transition: var(--transition-fast);
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--black);
+  text-decoration: none;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--gray-medium);
+  transition: var(--transition-fast);
+  cursor: pointer;
+  position: relative;
 }
 
 .menu-item:hover {
-    color: var(--deep-maroon);
-    padding-left: 0.5rem;
+  color: var(--deep-maroon);
+  padding-left: 0.5rem;
 }
 
+
+/* F1 Dropdown Container */
+
+.f1-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* F1 Title */
+
+.f1-menu > span {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--white);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--gray-medium);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.f1-menu > span:hover {
+  color: var(--deep-maroon);
+  padding-left: 0.5rem;
+}
+
+
+/* Submenu */
+
+.f1-submenu {
+  display: none;
+  flex-direction: column;
+  padding-left: 1.2rem;
+  margin-top: 0.4rem;
+  gap: 0.4rem;
+}
+
+
+/* Submenu Links */
+
+.f1-submenu a {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: #f7f5f5;
+  text-decoration: none;
+  padding: 0.4rem 0;
+  transition: var(--transition-fast);
+  border-left: 2px solid transparent;
+}
+
+.f1-submenu a:hover {
+  color: var(--deep-maroon);
+  padding-left: 0.4rem;
+  border-left: 2px solid var(--deep-maroon);
+}
+
+
+/* Show submenu on hover */
+
+.f1-menu:hover .f1-submenu {
+  display: flex;
+}
 /* Luxury Cart Panel */
 .cart-panel {
     position: fixed;

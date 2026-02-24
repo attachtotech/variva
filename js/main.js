@@ -432,3 +432,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
+// F1 menu toggle
+document.querySelector('.f1-toggle')
+  ?.addEventListener('click', function () {
+
+    const parent = this.closest('.f1-menu');
+
+    parent.classList.toggle('active');
+  });
