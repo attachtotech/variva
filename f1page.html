@@ -3,22 +3,18 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Variva · F1 Racing Magnet</title>
+  <title>Variva · F1 Racing Magnets</title>
   <!-- Poppins + Cormorant -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Cormorant+Garamond:wght@400;500;600;700&display=swap" rel="stylesheet">
+   <link rel="stylesheet" href="css/style.css">
+   <link rel="stylesheet" href="css/responsive.css">
   <!-- Font Awesome 6 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/responsive.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
   <style>
-    /* ===== CSS ROOT VARIABLES (matching index) ===== */
+    /* ===== CSS ROOT VARIABLES (matching original) ===== */
     :root {
       --deep-maroon: #6B1E2E;
       --light-maroon: #fceaea;
@@ -53,7 +49,8 @@
 
     /* grey containers for F1 page */
     .gallery-main, .trust-item, .highlight-box, .accordion-item,
-    .review-card, .gallery-card, .delivery-info, .offer-slider {
+    .review-card, .gallery-card, .delivery-info, .offer-slider,
+    .driver-selector {   /* new driver selector tile */
       background: #f8fafd;
       border-radius: 32px;
       box-shadow: 0 12px 30px rgba(0,0,0,0.03), 0 4px 10px rgba(0,0,0,0.02);
@@ -125,7 +122,7 @@
     .delivery-info { background: #f0f5fa; border-radius: 60px; padding: 16px 24px; margin: 20px 0; display: flex; align-items: center; gap: 12px; font-weight: 500; }
     .delivery-info i { color: var(--deep-maroon); font-size: 1.6rem; }
     
-    /* OFFER SLIDER - exactly as in your snippet */
+    /* OFFER SLIDER - exactly as in snippet */
     .offer-slider { display: flex; gap: 14px; overflow-x: auto; padding: 16px 18px; margin: 25px 0 0; background: #f5f8fe; border-radius: 70px; scroll-snap-type: x mandatory; }
     .offer-item { background: white; border-radius: 60px; padding: 8px 24px; white-space: nowrap; font-weight: 500; box-shadow: 0 2px 8px rgba(0,0,0,0.02); }
 
@@ -220,46 +217,7 @@
     }
     .logo-icon { height: 65px; display: block; }
 
-    /* floating menu */
-    .floating-menu {
-      position: fixed;
-      inset: 0;
-      background: rgba(18, 4, 9, 0.96);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.35s;
-      z-index: 2000;
-    }
-    .floating-menu.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    .close-menu {
-      position: absolute;
-      top: 2rem;
-      right: 2rem;
-      background: none;
-      border: none;
-      color: #fff;
-      font-size: 1.4rem;
-      cursor: pointer;
-    }
-    .menu-items {
-      display: flex;
-      flex-direction: column;
-      gap: 1.6rem;
-      text-align: center;
-    }
-    .menu-item {
-      font-family: var(--font-serif);
-      font-size: 1.5rem;
-      color: #fff;
-      text-decoration: none;
-    }
-
+    
     /* ===== YOUR EXACT CART PANEL STYLES ===== */
     .cart-panel {
       position: fixed;
@@ -421,10 +379,182 @@
       pointer-events: auto;
     }
 
+    /* DRIVER SELECTOR - new element */
+    .driver-selector {
+      background: #f5f8fe;
+      padding: 20px 25px;
+      margin-bottom: 25px;
+      border-radius: 70px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 15px 30px;
+    }
+    .driver-option {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      font-weight: 500;
+      padding: 8px 20px;
+      border-radius: 60px;
+      background: white;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      transition: 0.2s;
+    }
+    .driver-option.active-driver {
+      background: var(--deep-maroon);
+      color: white;
+    }
+    .driver-option.active-driver i { color: white; }
+    .driver-option i { font-size: 1.3rem; color: var(--deep-maroon); }
+    .pack-option {
+      display: flex;
+      gap: 8px;
+      background: white;
+      border-radius: 60px;
+      padding: 4px;
+    }
+    .pack-btn {
+      border: none;
+      padding: 10px 28px;
+      border-radius: 60px;
+      font-weight: 600;
+      cursor: pointer;
+      background: transparent;
+    }
+    .pack-btn.active-pack {
+      background: var(--deep-maroon);
+      color: white;
+    }
+
+
+    /* Sticky mobile CTA (hidden as original) */
+    .sticky-mobile-cta { display: none; }
     
     @media (max-width:480px) {
       .cart-panel { width: 100%; right: -100%; }
     }
+       /* Floating Menu */
+.floating-menu {
+    position: fixed;
+    top: 0;
+    right: -400px;
+    width: 300px;
+    height: 100vh;
+    background-color: var(--white);
+    z-index: 1001;
+    box-shadow: var(--shadow-floating);
+    padding: 3rem 2rem;
+    transition: var(--transition-slow);
+    display: flex;
+    flex-direction: column;
+}
+
+.floating-menu.active {
+    right: 0;
+}
+
+.close-menu {
+    align-self: flex-end;
+    background: none;
+    border: none;
+    font-size: 1.3rem;
+    color: var(--deep-maroon);
+    cursor: pointer;
+    margin-bottom: 3rem;
+}
+/* Main Menu */
+
+.menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+
+/* Main Links */
+
+.menu-item {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: var(--black);
+  text-decoration: none;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--gray-medium);
+  transition: var(--transition-fast);
+  cursor: pointer;
+  position: relative;
+}
+
+.menu-item:hover {
+  color: var(--deep-maroon);
+  padding-left: 0.5rem;
+}
+
+
+/* F1 Dropdown Container */
+
+.f1-menu {
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* F1 Title */
+
+.f1-menu > span {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  color: var(--deep-maroon);
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--gray-medium);
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.f1-menu > span:hover {
+  color: var(--deep-maroon);
+  padding-left: 0.5rem;
+}
+
+
+/* Submenu */
+
+.f1-submenu {
+  display: none;
+  flex-direction: column;
+  padding-left: 1.2rem;
+  margin-top: 0.4rem;
+  gap: 0.4rem;
+}
+
+
+/* Submenu Links */
+
+.f1-submenu a {
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  color: var(--deep-maroon);
+  text-decoration: none;
+  padding: 0.4rem 0;
+  transition: var(--transition-fast);
+  border-left: 2px solid transparent;
+}
+
+.f1-submenu a:hover {
+  color: var(--deep-maroon);
+  padding-left: 0.4rem;
+  border-left: 2px solid var(--deep-maroon);
+}
+
+
+/* Show submenu on hover */
+
+.f1-menu:hover .f1-submenu {
+  display: flex;
+}
   </style>
 </head>
 <body>
@@ -435,7 +565,7 @@
         <i class="fas fa-bars"></i>
       </button>
       <div class="logo-center">
-        <a href="#">
+        <a href="index.html">
           <img src="logo.png" alt="XO Variva Logo" class="logo-icon">
         </a>
       </div>
@@ -446,27 +576,28 @@
     </div>
   </header>
 
-  <!-- FLOATING MENU (exactly yours) -->
+  <!-- FLOATING MENU (exactly as original) -->
   <div class="floating-menu" id="floatingMenu">
     <button class="close-menu" id="closeMenu">✕</button>
     <nav class="menu-items">
-  <a href="index.html" class="menu-item">Home</a>
-  <a href="#" class="menu-item">Date Night Games</a>
-  <div class="f1-menu">
-    <span>F1</span>
-    <div class="f1-submenu">
-      <a href="f1page.html">Fridge Magnet</a>
-      <a href="keychain.html">Keychain</a>
-    </div>
+      <a href="index.html" class="menu-item">Home</a>
+      <a href="#" class="menu-item">Date Night Games</a>
+      <div class="f1-menu">
+        <span>F1</span>
+        <div class="f1-submenu">
+          <a href="f1page.html">Fridge Magnet</a>
+          <a href="keychain.html">Keychain</a>
+        </div>
+      </div>
+      <a href="#" class="menu-item">Wall Art</a>
+    </nav>
   </div>
-  <a href="#" class="menu-item">Wall Art</a>
-</nav>
-</div>
+
 
   <!-- OVERLAY (for cart) -->
   <div class="overlay" id="overlay"></div>
 
-  <!-- LUXURY CART PANEL (exactly yours, with both products) -->
+  <!-- LUXURY CART PANEL (exactly yours) -->
   <div class="cart-panel" id="cartPanel">
     <div class="cart-header">
       <h3>Your Selection</h3>
@@ -493,7 +624,7 @@
           </div>
         </div>
       </div>
-      <!-- F1 Magnet will be injected here dynamically -->
+      <!-- F1 items injected dynamically -->
     </div>
     <div class="cart-footer">
       <div class="cart-total">
@@ -507,37 +638,47 @@
     </div>
   </div>
 
-  <!-- MAIN F1 PRODUCT PAGE CONTENT (all sections included) -->
+  <!-- MAIN F1 PRODUCT PAGE CONTENT -->
   <div class="page-wrap">
-    <!-- PRODUCT SHOWCASE -->
+    <!-- DRIVER & PACK SELECTOR (NEW) -->
+    <div class="driver-selector fade-up">
+      <div class="driver-option active-driver" data-driver="Lewis Hamilton"><i class="fas fa-helmet-safety"></i> Lewis Hamilton</div>
+      <div class="driver-option" data-driver="Daniel Ricciardo"><i class="fas fa-helmet-safety"></i> Daniel Ricciardo</div>
+      <div class="driver-option" data-driver="Honey Badger"><i class="fas fa-helmet-safety"></i> Honey Badger</div>
+      <div class="driver-option" data-driver="Charles Leclerc"><i class="fas fa-helmet-safety"></i> Charles Leclerc</div>
+      <div class="driver-option" data-driver="George Russell"><i class="fas fa-helmet-safety"></i> George Russell</div>
+      <div class="driver-option" data-driver="Max Verstappen"><i class="fas fa-helmet-safety"></i> Max Verstappen</div>
+      <div class="driver-option" data-driver="Oscar Piastri"><i class="fas fa-helmet-safety"></i> Oscar Piastri</div>
+      <div class="driver-option" data-driver="Lando Norris"><i class="fas fa-helmet-safety"></i> Lando Norris</div>
+    </div>
+
+    <!-- PRODUCT SHOWCASE (dynamic) -->
     <div class="product-showcase fade-up">
       <div class="gallery-col">
         <div class="gallery-main">
           <div class="main-image-wrap">
-            <img id="mainProductImage" src="https://placehold.co/600x400/f0f2f5/1e1e1e?text=F1+Front" alt="F1 magnet">
+            <img id="mainProductImage" src="https://placehold.co/600x400/f0f2f5/1e1e1e?text=Lewis+Hamilton+1" alt="F1 magnet">
             <div class="arrow arrow-left" id="prevArrow"><i class="fas fa-chevron-left"></i></div>
             <div class="arrow arrow-right" id="nextArrow"><i class="fas fa-chevron-right"></i></div>
           </div>
-          <div class="thumbnail-strip" id="thumbnailStrip">
-            <div class="thumb active-thumb" data-img="https://placehold.co/600x400/f0f2f5/1e1e1e?text=F1+Front"><img src="https://placehold.co/100/f0f2f5/1e1e1e?text=F1+Front" alt="thumb"></div>
-            <div class="thumb" data-img="https://placehold.co/600x400/e0e4ea/1e1e1e?text=Side+View"><img src="https://placehold.co/100/e0e4ea/1e1e1e?text=Side" alt="thumb"></div>
-            <div class="thumb" data-img="https://placehold.co/600x400/d2d8e0/1e1e1e?text=On+fridge"><img src="https://placehold.co/100/d2d8e0/1e1e1e?text=Fridge" alt="thumb"></div>
-            <div class="thumb" data-img="https://placehold.co/600x400/caced8/1e1e1e?text=Packaging"><img src="https://placehold.co/100/caced8/1e1e1e?text=Box" alt="thumb"></div>
-            <div class="thumb" data-img="https://placehold.co/600x400/bec4d0/1e1e1e?text=Close-up"><img src="https://placehold.co/100/bec4d0/1e1e1e?text=Close" alt="thumb"></div>
-          </div>
+          <div class="thumbnail-strip" id="thumbnailStrip"></div>
         </div>
       </div>
       <div class="info-col">
         <div class="label-tag"><i class="fas fa-flag-checkered"></i> Inspired by Formula 1</div>
-        <h1>Variva F1 Racing Car Fridge Magnet</h1>
-        <div class="stock-row">
+        <h1 id="productTitle">Lewis Hamilton F1 tyre fridge magnet</h1>
+        <div class="stock-row" style="justify-content:space-between;">
           <div class="stock-status"><span class="green-dot"></span> In Stock</div>
           <div class="urgency"><i class="fas fa-bolt"></i> Only 15 left</div>
+          <div class="pack-option" style="margin-left:auto;">
+            <button class="pack-btn active-pack" id="packIndividual">1 pc</button>
+            <button class="pack-btn" id="packThree">Pack of 3</button>
+          </div>
         </div>
         <div class="price-block">
-          <span class="old-price">₹799</span>
-          <span class="new-price">₹499</span>
-          <span class="discount-badge">25% OFF</span>
+          <span class="old-price" id="oldPriceSpan">₹799</span>
+          <span class="new-price" id="newPriceSpan">₹449</span>
+          <span class="discount-badge" id="discountBadge">25% OFF</span>
         </div>
         <div class="btn-group">
           <button class="btn-add-cart" id="addF1ToCart"><i class="fas fa-shopping-cart"></i> Add to cart</button>
@@ -545,17 +686,22 @@
           <div class="wishlist-icon" id="wishlistBtn"><i class="far fa-heart"></i></div>
         </div>
         <div class="delivery-info">
-          <i class="fas fa-shipping-fast"></i> <span>Free shipping | 3-5 business days</span>
+          <i class="fas fa-shipping-fast"></i> <span>Free shipping | 3-7 business days</span>
         </div>
-        <!-- OFFER SLIDER (exact as requested) -->
+        <!-- OFFER SLIDER (exact) -->
         <div class="offer-slider" id="offerSlider">
           <span class="offer-item"><i class="fas fa-gift"></i> Free Shipping</span>
-          <span class="offer-item"><i class="fas fa-percent"></i> Buy 2 Get 10% Off</span>
+          <span class="offer-item"><i class="fas fa-percent"></i> No COD </span>
           <span class="offer-item"><i class="fas fa-crown"></i> Festive Offer</span>
           <span class="offer-item"><i class="fas fa-cube"></i> Gift Pack</span>
-          <span class="offer-item"><i class="fas fa-bolt"></i> Flash Sale</span>
+          <span class="offer-item"><i class="fas fa-bolt"></i> Only Prepaid Offer</span>
         </div>
       </div>
+    </div>
+
+    <!-- Description highlight -->
+    <div class="highlight-box fade-up" style="grid-template-columns:1fr;">
+      <p style="font-size:1.2rem; font-family:var(--font-serif);">A miniature race tyre designed for your everyday pit stop. With realistic tread detailing and driver-inspired colours, this magnet adds a subtle Formula 1 touch to your fridge, desk, or workspace. Use it to hold notes, photos, or reminders while showing support for your favourite driver.</p>
     </div>
 
     <!-- TRUST BADGES (exact) -->
@@ -566,35 +712,35 @@
       <div class="trust-item"><i class="fas fa-truck"></i> Free Shipping</div>
     </div>
 
-    <!-- HIGHLIGHTS BOX (exact) -->
+    <!-- HIGHLIGHTS -->
     <div class="highlight-box fade-up">
+      <div class="highlight-item"><strong>Design</strong> <span>F1 tyre–inspired, driver colour accents</span></div>
       <div class="highlight-item"><strong>Material</strong> <span>High-quality ABS + Magnetic Back</span></div>
-      <div class="highlight-item"><strong>Age Group</strong> <span>All Ages</span></div>
-      <div class="highlight-item"><strong>Assembly</strong> <span>Ready to Use</span></div>
-      <div class="highlight-item"><strong>Safety</strong> <span>Non-toxic, Scratch-free</span></div>
-      <div class="highlight-item"><strong>Features</strong> <span>Strong Hold, Waterproof, Gloss Finish</span></div>
-      <div class="highlight-item"><strong>Weight</strong> <span>45g</span></div>
+      <div class="highlight-item"><strong>Magnet</strong> <span>Strong hold, lightweight 45g</span></div>
+      <div class="highlight-item"><strong>Finish</strong> <span>Glossy, durable, waterproof</span></div>
+      <div class="highlight-item"><strong>Pack</strong> <span>Single ₹449 | Pack of 3 ₹1000</span></div>
+      <div class="highlight-item"><strong>Use</strong> <span>Fridge, desk, locker</span></div>
     </div>
 
     <!-- LIVE VIEWERS (exact) -->
     <div class="live-viewer fade-up" id="liveViewer"><i class="fas fa-eye"></i> <span id="liveCount">12</span> people are viewing</div>
 
-    <!-- ACCORDION (exact) -->
+    <!-- ACCORDION -->
     <div class="accordion fade-up" id="accordion">
       <div class="accordion-item open" id="acc1">
         <div class="accordion-header">Description <i class="fas fa-chevron-down"></i></div>
-        <div class="accordion-content">Premium F1-inspired fridge magnet with glossy finish. Precision detailing and strong magnetic back – perfect for car lovers.</div>
+        <div class="accordion-content">A miniature race tyre designed for your everyday pit stop. With realistic tread detailing and driver-inspired colours, this magnet adds a subtle Formula 1 touch. Available for all drivers.</div>
       </div>
       <div class="accordion-item" id="acc2">
         <div class="accordion-header">What’s Included <i class="fas fa-chevron-down"></i></div>
-        <div class="accordion-content">1 Magnet, Gift Box, Warranty Card, Microfiber cleaning cloth.</div>
+        <div class="accordion-content">1 Magnet (or 3 in pack), Gift Box, Warranty Card, Microfiber cloth.</div>
       </div>
       <div class="accordion-item" id="acc3">
-        <div class="accordion-header">Shipping & Handling <i class="fas fa-chevron-down"></i></div>
+        <div class="accordion-header">Shipping <i class="fas fa-chevron-down"></i></div>
         <div class="accordion-content">Dispatched within 24h. Delivery 3–5 working days. Trackable.</div>
       </div>
       <div class="accordion-item" id="acc4">
-        <div class="accordion-header">Care Instructions <i class="fas fa-chevron-down"></i></div>
+        <div class="accordion-header">Care <i class="fas fa-chevron-down"></i></div>
         <div class="accordion-content">Wipe with dry cloth. Avoid direct water. Keep away from extreme heat.</div>
       </div>
     </div>
@@ -603,26 +749,18 @@
     <div class="section-title fade-up">Let Variva Builders Speak <span>★ 4.8 (126 reviews)</span></div>
     <div class="review-carousel fade-up" id="reviewCarousel"></div>
 
-    <!-- COMMUNITY GALLERY (exact) -->
-    <div class="section-title fade-up">Built by You</div>
-    <div class="community-reel fade-up" id="communityReel">
-      <div class="gallery-card" style="background-image: url('https://placehold.co/300x200/ccd2dc/1e1e1e?text=Fridge+1');"><div class="overlay"><span class="play-icon"><i class="fas fa-play"></i></span> 2.1k views</div></div>
-      <div class="gallery-card" style="background-image: url('https://placehold.co/300x200/bec9d3/1e1e1e?text=Fridge+2');"><div class="overlay"><span class="play-icon"><i class="fas fa-play"></i></span> 954 views</div></div>
-      <div class="gallery-card" style="background-image: url('https://placehold.co/300x200/aab7c4/1e1e1e?text=F1+Setup');"><div class="overlay"><span class="play-icon"><i class="fas fa-play"></i></span> 3.4k views</div></div>
-      <div class="gallery-card" style="background-image: url('https://placehold.co/300x200/9eadbe/1e1e1e?text=Collection');"><div class="overlay"><span class="play-icon"><i class="fas fa-play"></i></span> 1.2k views</div></div>
-    </div>
-  </div>
-
   <!-- STICKY BAR -->
   <div class="sticky-bar" id="stickyBar">
     <div class="sticky-left">
       <img src="https://placehold.co/100/f0f2f5/1e1e1e?text=F1" alt="thumb" class="sticky-thumb">
-      <div><div>Variva F1 Magnet</div><span class="sticky-price">₹499</span></div>
+      <div><div>F1 Tyre Magnet</div><span class="sticky-price" id="stickyPrice">₹449</span></div>
     </div>
     <button class="sticky-btn" id="stickyAddF1">Add to Cart</button>
   </div>
 
-      <!-- Footer -->
+  
+
+    <!-- Footer -->
     <footer class="luxury-footer">
         <div class="footer-container">
             <div class="footer-brand">
@@ -661,30 +799,105 @@
             <p>&copy; 2026 XO, Variva. All rights reserved.</p>
         </div>
     </footer>
-    <!-- Sticky Mobile CTA -->
-    <div class="sticky-mobile-cta" id="stickyCta">
-        <button class="mobile-whatsapp-btn" id="mobileWhatsapp">
-            <i class="fab fa-whatsapp"></i>
-            Buy on WhatsApp
-        </button>
-    </div>
 
-    <!-- Scripts -->
-    <script src="js/main.js"></script>
-    <script src="js/cart.js"></script>
-    <script src="js/animations.js"></script>
-    <br><br><br>
+  <!-- Sticky Mobile CTA (hidden) -->
+  <div class="sticky-mobile-cta" id="stickyCta">
+    <button class="mobile-whatsapp-btn" id="mobileWhatsapp">
+      <i class="fab fa-whatsapp"></i> Buy on WhatsApp
+    </button>
+  </div>
+  <br><br><br>
 
   <script>
 (function() {
+  // ===== DRIVER DATA WITH UNIQUE 4-IMAGE SETS FOR EACH =====
+  const drivers = [
+    { 
+      name: 'Lewis Hamilton', 
+      images: [
+        'l1.jpeg',
+        'l2.jpeg',
+        'l3.jpeg',
+        'l4.jpeg'
+      ]
+    },
+    { 
+      name: 'Daniel Ricciardo', 
+      images: [
+        'd1.jpeg',
+        '22.jpeg',
+        'd3.jpeg',
+        'd4.jpeg'
+      ]
+    },
+    { 
+      name: 'Honey Badger', 
+      images: [
+        'h1.jpeg',
+        'h2.jpeg',
+        'h3.jpeg',
+        'h4.jpeg'
+      ]
+    },
+    { 
+      name: 'Charles Leclerc', 
+      images: [
+        'c1.jpeg',
+        'c2.jpeg',
+        'c3.jpeg',
+        'c4.jpeg'
+      ]
+    },
+    { 
+      name: 'George Russell', 
+      images: [
+        'g4.jpeg',
+        'g2.jpeg',
+        'g3.jpeg',
+        'g1.jpeg'
+      ]
+    },
+    { 
+      name: 'Max Verstappen', 
+      images: [
+        'm1.jpeg',
+        'm2.jpeg',
+        'm3.jpeg',
+        'm4.jpeg'
+      ]
+    },
+    { 
+      name: 'Oscar Piastri', 
+      images: [
+        'o1.jpeg',
+        'o2.jpeg',
+        'o3.jpeg',
+        'o4.jpeg'
+      ]
+    },
+    { 
+      name: 'Lando Norris', 
+      images: [
+        'ln2.jpeg',
+        'ln1.jpeg',
+        'ln3.jpeg',
+        'ln4.jpeg'
+      ]
+    }
+  ];
 
-  // ===== CART STATE (shared with index) =====
+  let currentDriver = 'Lewis Hamilton';
+  let packMode = 'single';
+
+  const SINGLE_PRICE = 449;
+  const PACK3_PRICE = 1000;
+  const OLD_PRICE_SINGLE = 799;
+  const OLD_PRICE_PACK = 1499;
+
+  // ===== CART STATE =====
   let cartItems = [];
-
-  // Load from localStorage (FIXED)
   function loadCart() {
     const saved = localStorage.getItem('varivaCart');
-
     if (saved) {
       try {
         const parsed = JSON.parse(saved);
@@ -694,393 +907,246 @@
         }
       } catch(e) {}
     }
-
-    // Fallback: default Issued in Love (only if no storage)
-    cartItems = [
-      {
-        id: 'issued-love',
-        name: 'Issued in Love',
-        description: 'The couples game for intentional romance',
-        price: 1850,
-        quantity: 1,
-        image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80'
-      }
-    ];
-
+    cartItems = [ { id: 'issued-love', name: 'Issued in Love', description: 'The couples game', price: 1850, quantity: 1, image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?ixlib=rb-4.0.3&auto=format&fit=crop&w=100&q=80' } ];
     saveCart();
   }
-
   loadCart();
 
-
-  function saveCart() {
-    localStorage.setItem('varivaCart', JSON.stringify({ items: cartItems }));
-  }
-
-
+  function saveCart() { localStorage.setItem('varivaCart', JSON.stringify({ items: cartItems })); }
   function updateCartUI() {
     const totalItems = cartItems.reduce((sum, i) => sum + i.quantity, 0);
-
     const cartCount = document.querySelector('.cart-count');
-
-    if (cartCount) {
-      cartCount.textContent = totalItems;
-      cartCount.style.display = totalItems ? 'flex' : 'none';
-    }
-
+    if (cartCount) { cartCount.textContent = totalItems; cartCount.style.display = totalItems ? 'flex' : 'none'; }
     cartItems.forEach(item => {
-
-      const qtySpan = document.querySelector(
-        `.quantity[data-product="${item.id}"]`
-      );
-
+      const qtySpan = document.querySelector(`.quantity[data-product="${item.id}"]`);
       if (qtySpan) qtySpan.textContent = item.quantity;
-
-      const priceSpan = document.querySelector(
-        `.item-price[data-product="${item.id}"]`
-      );
-
-      if (priceSpan)
-        priceSpan.textContent = `₹${item.price * item.quantity}`;
+      const priceSpan = document.querySelector(`.item-price[data-product="${item.id}"]`);
+      if (priceSpan) priceSpan.textContent = `₹${item.price * item.quantity}`;
     });
-
-    const total = cartItems.reduce(
-      (sum, i) => sum + i.price * i.quantity, 0
-    );
-
+    const total = cartItems.reduce((sum, i) => sum + i.price * i.quantity, 0);
     const totalSpan = document.getElementById('totalPrice');
-
     if (totalSpan) totalSpan.textContent = `₹${total}`;
-
     saveCart();
   }
 
-
   function renderF1InCart() {
-
     const cartContent = document.getElementById('cartContent');
-
-    const existingF1 = document.querySelector(
-      '.cart-item[data-product-id="f1-magnet"]'
-    );
-
-    const f1Item = cartItems.find(i => i.id === 'f1-magnet');
-
-    if (f1Item && !existingF1) {
-
+    // Remove all existing F1 items from DOM (keep issued-love)
+    document.querySelectorAll('.cart-item[data-product-id^="f1-"]').forEach(el => el.remove());
+    
+    const f1Items = cartItems.filter(i => i.id.startsWith('f1-'));
+    f1Items.forEach(item => {
       const f1Html = `
-        <div class="cart-item" data-product-id="f1-magnet">
-          <div class="cart-item-image">
-            <img src="https://placehold.co/100/f0f2f5/1e1e1e?text=F1" alt="F1 Magnet">
-          </div>
+        <div class="cart-item" data-product-id="${item.id}">
+          <div class="cart-item-image"><img src="https://placehold.co/100/f0f2f5/1e1e1e?text=F1" alt="F1"></div>
           <div class="cart-item-details">
-            <h4>Variva F1 Racing Magnet</h4>
-            <p>Fridge magnet with glossy finish</p>
+            <h4>${item.name}</h4>
+            <p>${item.description}</p>
             <div class="cart-item-controls">
               <div class="quantity-selector">
-                <button class="quantity-btn minus" data-product="f1-magnet">-</button>
-                <span class="quantity" data-product="f1-magnet">${f1Item.quantity}</span>
-                <button class="quantity-btn plus" data-product="f1-magnet">+</button>
+                <button class="quantity-btn minus" data-product="${item.id}">-</button>
+                <span class="quantity" data-product="${item.id}">${item.quantity}</span>
+                <button class="quantity-btn plus" data-product="${item.id}">+</button>
               </div>
-              <span class="item-price" data-product="f1-magnet">₹${f1Item.price * f1Item.quantity}</span>
+              <span class="item-price" data-product="${item.id}">₹${item.price * item.quantity}</span>
             </div>
           </div>
         </div>
       `;
-
       cartContent.insertAdjacentHTML('beforeend', f1Html);
-
-    } else if (!f1Item && existingF1) {
-
-      existingF1.remove();
-    }
-
+    });
     attachQuantityListeners();
   }
 
-
   function attachQuantityListeners() {
-
     document.querySelectorAll('.quantity-btn.minus').forEach(btn => {
       btn.removeEventListener('click', handleMinus);
       btn.addEventListener('click', handleMinus);
     });
-
     document.querySelectorAll('.quantity-btn.plus').forEach(btn => {
       btn.removeEventListener('click', handlePlus);
       btn.addEventListener('click', handlePlus);
     });
   }
 
-
   function handleMinus(e) {
-
     const productId = e.target.dataset.product;
-
     const item = cartItems.find(i => i.id === productId);
-
-    if (item && item.quantity > 1) {
-
-      item.quantity--;
-
-    } else if (item && item.quantity === 1 && productId === 'f1-magnet') {
-
-      const index = cartItems.findIndex(i => i.id === 'f1-magnet');
-
+    if (item && item.quantity > 1) { item.quantity--; } 
+    else if (item && item.quantity === 1 && productId.startsWith('f1-')) {
+      const index = cartItems.findIndex(i => i.id === productId);
       if (index !== -1) cartItems.splice(index, 1);
-
       renderF1InCart();
     }
-
     updateCartUI();
   }
-
-
   function handlePlus(e) {
-
     const productId = e.target.dataset.product;
-
     const item = cartItems.find(i => i.id === productId);
-
-    if (item) {
-
-      item.quantity++;
-
-      updateCartUI();
-    }
+    if (item) { item.quantity++; updateCartUI(); }
   }
 
+  function getCurrentProductId() { return `f1-${currentDriver.replace(/\s+/g,'')}-${packMode}`; }
+  function getCurrentProductName() { return `${currentDriver} F1 tyre ${packMode==='pack3'?'Pack of 3':'fridge magnet'}`; }
+  function getCurrentPrice() { return packMode === 'pack3' ? PACK3_PRICE : SINGLE_PRICE; }
+  function getCurrentOldPrice() { return packMode === 'pack3' ? OLD_PRICE_PACK : OLD_PRICE_SINGLE; }
 
   function addF1ToCart() {
-
-    let f1Item = cartItems.find(i => i.id === 'f1-magnet');
-
-    if (!f1Item) {
-
-      f1Item = {
-        id: 'f1-magnet',
-        name: 'Variva F1 Racing Magnet',
-        description: 'Fridge magnet with glossy finish',
-        price: 499,
+    const productId = getCurrentProductId();
+    let item = cartItems.find(i => i.id === productId);
+    const price = getCurrentPrice();
+    if (!item) {
+      item = {
+        id: productId,
+        name: getCurrentProductName(),
+        description: `${currentDriver} tyre magnet, ${packMode==='pack3'?'3 pcs':'single'}`,
+        price: price,
         quantity: 1,
         image: 'https://placehold.co/100/f0f2f5/1e1e1e?text=F1'
       };
-
-      cartItems.push(f1Item);
-
+      cartItems.push(item);
     } else {
-
-      f1Item.quantity += 1;
+      item.quantity += 1;
     }
-
     renderF1InCart();
     updateCartUI();
     openCartPanel();
   }
 
+  // UI update on driver/pack change
+  function updateProductDisplay() {
+    document.getElementById('productTitle').innerText = getCurrentProductName();
+    const newPrice = getCurrentPrice();
+    const oldPrice = getCurrentOldPrice();
+    document.getElementById('newPriceSpan').innerText = `₹${newPrice}`;
+    document.getElementById('oldPriceSpan').innerText = `₹${oldPrice}`;
+    const discount = Math.round((oldPrice - newPrice)/oldPrice*100);
+    document.getElementById('discountBadge').innerText = `${discount}% OFF`;
+    document.getElementById('stickyPrice').innerText = `₹${newPrice}`;
+
+    // Get current driver's image set
+    const driver = drivers.find(d => d.name === currentDriver);
+    if (driver) {
+      const images = driver.images;
+      document.getElementById('mainProductImage').src = images[0];
+      
+      let thumbHtml = '';
+      images.forEach((img, index) => {
+        thumbHtml += `<div class="thumb ${index===0?'active-thumb':''}" data-img="${img}"><img src="${img.replace('600x400','100')}" alt="thumb"></div>`;
+      });
+      document.getElementById('thumbnailStrip').innerHTML = thumbHtml;
+      attachGallery();
+    }
+  }
+
+  function attachGallery() {
+    const mainImg = document.getElementById('mainProductImage');
+    const thumbs = document.querySelectorAll('.thumb');
+    const prev = document.getElementById('prevArrow');
+    const next = document.getElementById('nextArrow');
+    if (thumbs.length) {
+      let idx = 0;
+      const srcs = Array.from(thumbs).map(t=>t.dataset.img);
+      function update(i) { if(i<0) i=srcs.length-1; if(i>=srcs.length) i=0; mainImg.src = srcs[i]; thumbs.forEach((t,j)=>t.classList.toggle('active-thumb',j===i)); idx=i; }
+      thumbs.forEach((t,i)=>t.addEventListener('click',()=>update(i)));
+      prev.addEventListener('click',()=>update(idx-1));
+      next.addEventListener('click',()=>update(idx+1));
+      update(0);
+    }
+  }
 
   // Cart panel controls
   const cartPanel = document.getElementById('cartPanel');
   const overlay = document.getElementById('overlay');
-
-  function openCartPanel() {
-    cartPanel.classList.add('active');
-    overlay.classList.add('active');
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeCartPanel() {
-    cartPanel.classList.remove('active');
-    overlay.classList.remove('active');
-    document.body.style.overflow = '';
-  }
-
-
+  function openCartPanel() { cartPanel.classList.add('active'); overlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+  function closeCartPanel() { cartPanel.classList.remove('active'); overlay.classList.remove('active'); document.body.style.overflow = ''; }
   document.getElementById('cartToggle').addEventListener('click', openCartPanel);
   document.getElementById('closeCart').addEventListener('click', closeCartPanel);
   overlay.addEventListener('click', closeCartPanel);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeCartPanel(); });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeCartPanel();
+  // Driver selection
+  document.querySelectorAll('.driver-option').forEach(opt => {
+    opt.addEventListener('click', function() {
+      document.querySelectorAll('.driver-option').forEach(o => o.classList.remove('active-driver'));
+      this.classList.add('active-driver');
+      currentDriver = this.dataset.driver;
+      updateProductDisplay();
+    });
   });
 
+  // Pack toggles
+  document.getElementById('packIndividual').addEventListener('click', function() {
+    document.getElementById('packIndividual').classList.add('active-pack');
+    document.getElementById('packThree').classList.remove('active-pack');
+    packMode = 'single';
+    updateProductDisplay();
+  });
+  document.getElementById('packThree').addEventListener('click', function() {
+    document.getElementById('packThree').classList.add('active-pack');
+    document.getElementById('packIndividual').classList.remove('active-pack');
+    packMode = 'pack3';
+    updateProductDisplay();
+  });
 
   document.getElementById('addF1ToCart').addEventListener('click', addF1ToCart);
   document.getElementById('stickyAddF1').addEventListener('click', addF1ToCart);
 
-
   function openWhatsApp(quantity, productName) {
-
     const phone = "8452018403";
-
-    const msg =
-      `Hi Variva, I'd like to purchase '${productName}' (Qty: ${quantity})`;
-
-    window.open(
-      `https://wa.me/${phone}?text=${encodeURIComponent(msg)}`,
-      '_blank'
-    );
+    const msg = `Hi Variva, I'd like to purchase '${productName}' (Qty: ${quantity})`;
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(msg)}`, '_blank');
   }
-
-
   document.getElementById('whatsappBuyF1').addEventListener('click', ()=>{
-
-    const qty =
-      cartItems.find(i => i.id === 'f1-magnet')?.quantity || 1;
-
-    openWhatsApp(qty, 'Variva F1 Racing Magnet');
+    const qty = cartItems.find(i => i.id === getCurrentProductId())?.quantity || 1;
+    openWhatsApp(qty, getCurrentProductName());
   });
-
-
   document.getElementById('whatsappCheckout').addEventListener('click', ()=>{
-
     const item = cartItems[0];
-
     if (item) openWhatsApp(item.quantity, item.name);
   });
 
-
   // Wishlist
   document.getElementById('wishlistBtn').addEventListener('click', function(){
-
     this.classList.toggle('wishlist-active');
-
     const icon = this.querySelector('i');
-
-    icon.classList.toggle('far');
-    icon.classList.toggle('fas');
+    icon.classList.toggle('far'); icon.classList.toggle('fas');
   });
-
-
-  // Gallery
-  const mainImg = document.getElementById('mainProductImage');
-  const thumbs = document.querySelectorAll('.thumb');
-  const prev = document.getElementById('prevArrow');
-  const next = document.getElementById('nextArrow');
-
-  if (thumbs.length) {
-
-    let idx = 0;
-
-    const srcs = Array.from(thumbs).map(t=>t.dataset.img);
-
-    function update(i) {
-
-      if(i<0) i=srcs.length-1;
-      if(i>=srcs.length) i=0;
-
-      mainImg.src = srcs[i];
-
-      thumbs.forEach((t,j)=>t.classList.toggle('active-thumb',j===i));
-
-      idx=i;
-    }
-
-    thumbs.forEach((t,i)=>t.addEventListener('click',()=>update(i)));
-
-    prev.addEventListener('click',()=>update(idx-1));
-    next.addEventListener('click',()=>update(idx+1));
-
-    update(0);
-  }
-
-
-  // Floating menu
-  document.getElementById('menuToggle').addEventListener('click', ()=>{
-
-    document.getElementById('floatingMenu').classList.add('active');
-
-    document.body.style.overflow = 'hidden';
-  });
-
-
-  document.getElementById('closeMenu').addEventListener('click', ()=>{
-
-    document.getElementById('floatingMenu').classList.remove('active');
-
-    document.body.style.overflow = '';
-  });
-
-
-  document.querySelectorAll('.menu-item').forEach(i=>
-
-    i.addEventListener('click', ()=>{
-
-      document.getElementById('floatingMenu').classList.remove('active');
-
-      document.body.style.overflow = '';
-    })
-  );
-
 
   // Sticky bar scroll
   window.addEventListener('scroll', ()=>{
-
-    if (window.scrollY > 400)
-
-      document.getElementById('stickyBar').classList.add('show');
-
-    else
-
-      document.getElementById('stickyBar').classList.remove('show');
+    if (window.scrollY > 400) document.getElementById('stickyBar').classList.add('show');
+    else document.getElementById('stickyBar').classList.remove('show');
   });
-
 
   // Live viewer
-  setInterval(()=>{
-
-    const span = document.getElementById('liveCount');
-
-    if(span)
-
-      span.textContent = Math.floor(Math.random()*8 + 9);
-
-  }, 4500);
-
+  setInterval(()=>{ const span = document.getElementById('liveCount'); if(span) span.textContent = Math.floor(Math.random()*8 + 9); }, 4500);
 
   // Accordion
-  document.querySelectorAll('.accordion-header').forEach(h=>{
-
-    h.addEventListener('click', ()=>{
-
-      const item = h.closest('.accordion-item');
-
-      item.classList.toggle('open');
-    });
-  });
-
+  document.querySelectorAll('.accordion-header').forEach(h=>{ h.addEventListener('click', ()=>{ h.closest('.accordion-item').classList.toggle('open'); }); });
 
   // Intersection faders
   const faders = document.querySelectorAll('.fade-up');
-
-  const obs = new IntersectionObserver((entries)=>{
-
-    entries.forEach(e=>{
-
-      if(e.isIntersecting)
-
-        e.target.classList.add('appear');
-    });
-
-  }, {threshold:0.1});
-
+  const obs = new IntersectionObserver((entries)=> { entries.forEach(e=>{ if(e.isIntersecting) e.target.classList.add('appear'); }); }, {threshold:0.1});
   faders.forEach(f=>obs.observe(f));
-
 
   // Dummy reviews
   const rc = document.getElementById('reviewCarousel');
-
   if(rc) rc.innerHTML = `
-    <div class="review-card"><div class="stars">★★★★★</div><h4>Perfect</h4><p>Amazing detail</p><div class="review-meta">Raj • 2d ago</div></div>
-    <div class="review-card"><div class="stars">★★★★★</div><h4>Strong magnet</h4><p>Looks great on fridge</p><div class="review-meta">Priya • 1d ago</div></div>
-    <div class="review-card"><div class="stars">★★★★☆</div><h4>Nice finish</h4><p>Packaging was premium</p><div class="review-meta">Amit • 3d ago</div></div>
+    <div class="review-card"><div class="stars">★★★★★</div><h4>Perfect</h4><p>Amazing detail</p><div>Raj • 2d ago</div></div>
+    <div class="review-card"><div class="stars">★★★★★</div><h4>Strong magnet</h4><p>Looks great</p><div>Priya • 1d ago</div></div>
+    <div class="review-card"><div class="stars">★★★★☆</div><h4>Nice finish</h4><p>Packaging premium</p><div>Amit • 3d ago</div></div>
   `;
 
+  // Floating menu (original)
+  document.getElementById('menuToggle').addEventListener('click', ()=>{ document.getElementById('floatingMenu').classList.add('active'); document.body.style.overflow = 'hidden'; });
+  document.getElementById('closeMenu').addEventListener('click', ()=>{ document.getElementById('floatingMenu').classList.remove('active'); document.body.style.overflow = ''; });
+  document.querySelectorAll('.menu-item').forEach(i=> i.addEventListener('click', ()=>{ document.getElementById('floatingMenu').classList.remove('active'); document.body.style.overflow = ''; }));
 
-  // Initial render
+  // Initial update
+  updateProductDisplay();
   renderF1InCart();
   updateCartUI();
-
 })();
 </script>
 </body>
