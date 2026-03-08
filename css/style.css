@@ -2170,276 +2170,301 @@ button {
 GLOBAL RESPONSIVE BASE
 ================================ */
 
-img {
-  max-width: 100%;
-  height: auto;
+html{
+  font-size:82%;
 }
 
-.page-wrap {
-  width: 100%;
-  padding: 18px;
+img{
+  max-width:100%;
+  height:auto;
 }
 
-.product-showcase {
-  display: flex;
-  gap: 32px;
+.page-wrap{
+  width:100%;
+  max-width:1020px;
+  margin:auto;
+  padding:14px;
+}
+
+.product-showcase{
+  display:flex;
+  gap:22px;
+}
+
+h1{
+  font-size:1.7rem;
+}
+
+.highlight-box{
+  gap:14px 18px;
+  padding:20px;
+}
+
+.thumb{
+  width:50px;
+  height:50px;
+}
+
+.main-image-wrap img{
+  max-height:240px;
+}
+
+.new-price{
+  font-size:1.5rem;
+}
+
+.btn-add-cart{
+  padding:10px 20px;
+  font-size:0.9rem;
+}
+
+.btn-whatsapp{
+  padding:10px 18px;
+  font-size:0.9rem;
 }
 
 /* ================================
-LARGE DESKTOP (1400px+)
+LARGE DESKTOP
 ================================ */
 
-@media (min-width:1400px) {
+@media (min-width:1400px){
 
-  .page-wrap {
-    max-width: 1180px;
+  .page-wrap{
+    max-width:980px;
   }
 
-  h1 {
-    font-size: 2.3rem;
+  h1{
+    font-size:1.8rem;
   }
 
 }
-
 
 /* ================================
 LAPTOP / MACBOOK
 ================================ */
 
-@media (max-width:1200px) {
+@media (max-width:1200px){
 
-  .product-showcase {
-    gap: 26px;
+  .product-showcase{
+    gap:18px;
   }
 
-  h1 {
-    font-size: 1.85rem;
+  h1{
+    font-size:1.5rem;
   }
 
-  .highlight-box {
-    gap: 18px 26px;
+  .main-image-wrap img{
+    max-height:220px;
   }
 
 }
-
 
 /* ================================
 TABLET / IPAD
 ================================ */
 
-@media (max-width:1024px) {
+@media (max-width:1024px){
 
-  .product-showcase {
-    flex-direction: column;
+  .product-showcase{
+    flex-direction:column;
   }
 
   .gallery-col,
-  .info-col {
-    width: 100%;
+  .info-col{
+    width:100%;
   }
 
-  .main-image-wrap img {
-    max-height: 290px;
+  .main-image-wrap img{
+    max-height:200px;
   }
 
-  .highlight-box {
-    grid-template-columns: 1fr;
+  .highlight-box{
+    grid-template-columns:1fr;
   }
 
-  .driver-selector {
-    gap: 8px;
-    justify-content: flex-start;
-    overflow-x: auto;
+  .driver-selector{
+    gap:6px;
+    justify-content:flex-start;
+    overflow-x:auto;
+    padding:8px;
   }
 
-  .driver-option {
-    flex: 0 0 auto;
+  .driver-option{
+    flex:0 0 auto;
+    font-size:0.8rem;
+    padding:5px 10px;
   }
 
-  .trust-badges {
-    border-radius: 36px;
-    gap: 16px;
+  .trust-badges{
+    border-radius:22px;
+    gap:10px;
   }
 
 }
-
 
 /* ================================
 LARGE MOBILE
 ================================ */
 
-@media (max-width:768px) {
+@media (max-width:768px){
 
-  body {
-    padding-top: 68px;
+  body{
+    padding-top:60px;
   }
 
-  h1 {
-    font-size: 1.55rem;
+  h1{
+    font-size:1.3rem;
   }
 
-  .navbar-inner {
-    height: 68px;
+  .navbar-inner{
+    height:60px;
   }
 
-  .logo-icon {
-    height: 46px;
+  .logo-icon{
+    height:38px;
   }
 
-  .product-showcase {
-    flex-direction: column;
+  .main-image-wrap img{
+    max-height:170px;
   }
 
-  .main-image-wrap img {
-    max-height: 230px;
+  .thumb{
+    width:44px;
+    height:44px;
   }
 
-  .thumb {
-    width: 60px;
-    height: 60px;
-  }
-
-  .btn-group {
-    flex-direction: column;
+  .btn-group{
+    flex-direction:column;
   }
 
   .btn-add-cart,
-  .btn-whatsapp {
-    width: 100%;
+  .btn-whatsapp{
+    width:100%;
   }
 
-  .wishlist-icon {
-    width: 100%;
-    text-align: center;
-    border-radius: 18px;
+  .delivery-info{
+    border-radius:18px;
+    font-size:0.75rem;
   }
 
-  .delivery-info {
-    border-radius: 26px;
-    font-size: 0.85rem;
+  .trust-badges{
+    flex-wrap:wrap;
+    gap:8px;
+    border-radius:18px;
   }
 
-  .trust-badges {
-    flex-wrap: wrap;
-    gap: 12px;
-    border-radius: 26px;
+  .trust-item{
+    width:45%;
   }
 
-  .trust-item {
-    width: 45%;
-  }
-
-  .review-card {
-    min-width: 240px;
+  .review-card{
+    min-width:200px;
   }
 
 }
-
 
 /* ================================
 SMALL MOBILE
 ================================ */
 
-@media (max-width:480px) {
+@media (max-width:480px){
 
-  .page-wrap {
-    padding: 12px;
+  .page-wrap{
+    padding:8px;
   }
 
-  h1 {
-    font-size: 1.35rem;
+  h1{
+    font-size:1.15rem;
   }
 
-  .label-tag {
-    font-size: 0.75rem;
+  .label-tag{
+    font-size:0.65rem;
   }
 
-  .new-price {
-    font-size: 1.6rem;
+  .new-price{
+    font-size:1.3rem;
   }
 
-  .old-price {
-    font-size: 0.85rem;
+  .old-price{
+    font-size:0.75rem;
   }
 
-  .price-block {
-    flex-wrap: wrap;
-    gap: 8px;
+  .price-block{
+    gap:5px;
   }
 
-  .btn-add-cart {
-    font-size: 0.95rem;
-    padding: 12px;
+  .btn-add-cart{
+    font-size:0.85rem;
+    padding:9px;
   }
 
-  .btn-whatsapp {
-    font-size: 0.95rem;
-    padding: 12px;
+  .btn-whatsapp{
+    font-size:0.85rem;
+    padding:9px;
   }
 
-  .offer-slider {
-    border-radius: 26px;
+  .offer-slider{
+    border-radius:16px;
   }
 
-  .driver-selector {
-    padding: 10px;
-    border-radius: 36px;
+  .driver-selector{
+    padding:6px;
+    border-radius:20px;
   }
 
-  .driver-option {
-    font-size: 0.85rem;
-    padding: 5px 12px;
+  .driver-option{
+    font-size:0.7rem;
+    padding:4px 8px;
   }
 
-  .gallery-main {
-    border-radius: 18px;
-    padding: 12px;
+  .gallery-main{
+    border-radius:12px;
+    padding:8px;
   }
 
-  .highlight-box {
-    padding: 18px;
-    border-radius: 22px;
+  .highlight-box{
+    padding:12px;
+    border-radius:14px;
   }
 
-  .accordion-header {
-    padding: 16px;
-    font-size: 1rem;
+  .accordion-header{
+    padding:10px;
+    font-size:0.85rem;
   }
 
-  .sticky-bar {
-    padding: 8px 14px;
+  .sticky-bar{
+    padding:6px 10px;
   }
 
-  .sticky-thumb {
-    width: 40px;
-    height: 40px;
+  .sticky-thumb{
+    width:32px;
+    height:32px;
   }
 
-  .sticky-btn {
-    padding: 10px 18px;
-    font-size: 0.85rem;
+  .sticky-btn{
+    padding:7px 14px;
+    font-size:0.75rem;
   }
 
 }
-
 
 /* ================================
 ULTRA SMALL DEVICES
 ================================ */
 
-@media (max-width:360px) {
+@media (max-width:360px){
 
-  .driver-option {
-    font-size: 0.75rem;
+  .driver-option{
+    font-size:0.65rem;
   }
 
-  .thumb {
-    width: 50px;
-    height: 50px;
+  .thumb{
+    width:40px;
+    height:40px;
   }
 
-  .review-card {
-    min-width: 210px;
+  .review-card{
+    min-width:170px;
   }
 
 }
