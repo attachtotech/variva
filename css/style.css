@@ -2165,28 +2165,6 @@ button {
   transition: all 1.2s cubic-bezier(.19,1,.22,1);
 }
 
-/* =========================
-   MOBILE
-========================= */
-
-@media (max-width: 900px) {
-  .love-editorial {
-    padding: 100px 24px;
-  }
-
-  .editorial-container {
-    grid-template-columns: 1fr;
-    gap: 60px;
-  }
-
-  .video-column video {
-    height: 520px;
-  }
-
-  .image-column img {
-    height: 360px;
-  }
-}
 
 /* ================================
 GLOBAL RESPONSIVE BASE
@@ -2199,12 +2177,12 @@ img {
 
 .page-wrap {
   width: 100%;
-  padding: 20px;
+  padding: 18px;
 }
 
 .product-showcase {
   display: flex;
-  gap: 40px;
+  gap: 32px;
 }
 
 /* ================================
@@ -2214,11 +2192,11 @@ LARGE DESKTOP (1400px+)
 @media (min-width:1400px) {
 
   .page-wrap {
-    max-width: 1280px;
+    max-width: 1180px;
   }
 
   h1 {
-    font-size: 2.6rem;
+    font-size: 2.3rem;
   }
 
 }
@@ -2231,15 +2209,15 @@ LAPTOP / MACBOOK
 @media (max-width:1200px) {
 
   .product-showcase {
-    gap: 30px;
+    gap: 26px;
   }
 
   h1 {
-    font-size: 2rem;
+    font-size: 1.85rem;
   }
 
   .highlight-box {
-    gap: 20px 30px;
+    gap: 18px 26px;
   }
 
 }
@@ -2261,7 +2239,7 @@ TABLET / IPAD
   }
 
   .main-image-wrap img {
-    max-height: 320px;
+    max-height: 290px;
   }
 
   .highlight-box {
@@ -2269,7 +2247,7 @@ TABLET / IPAD
   }
 
   .driver-selector {
-    gap: 10px;
+    gap: 8px;
     justify-content: flex-start;
     overflow-x: auto;
   }
@@ -2279,8 +2257,8 @@ TABLET / IPAD
   }
 
   .trust-badges {
-    border-radius: 40px;
-    gap: 20px;
+    border-radius: 36px;
+    gap: 16px;
   }
 
 }
@@ -2293,19 +2271,19 @@ LARGE MOBILE
 @media (max-width:768px) {
 
   body {
-    padding-top: 70px;
+    padding-top: 68px;
   }
 
   h1 {
-    font-size: 1.7rem;
+    font-size: 1.55rem;
   }
 
   .navbar-inner {
-    height: 70px;
+    height: 68px;
   }
 
   .logo-icon {
-    height: 50px;
+    height: 46px;
   }
 
   .product-showcase {
@@ -2313,12 +2291,12 @@ LARGE MOBILE
   }
 
   .main-image-wrap img {
-    max-height: 260px;
+    max-height: 230px;
   }
 
   .thumb {
-    width: 65px;
-    height: 65px;
+    width: 60px;
+    height: 60px;
   }
 
   .btn-group {
@@ -2333,18 +2311,18 @@ LARGE MOBILE
   .wishlist-icon {
     width: 100%;
     text-align: center;
-    border-radius: 20px;
+    border-radius: 18px;
   }
 
   .delivery-info {
-    border-radius: 30px;
-    font-size: 0.9rem;
+    border-radius: 26px;
+    font-size: 0.85rem;
   }
 
   .trust-badges {
     flex-wrap: wrap;
-    gap: 15px;
-    border-radius: 30px;
+    gap: 12px;
+    border-radius: 26px;
   }
 
   .trust-item {
@@ -2352,7 +2330,7 @@ LARGE MOBILE
   }
 
   .review-card {
-    min-width: 260px;
+    min-width: 240px;
   }
 
 }
@@ -2365,81 +2343,81 @@ SMALL MOBILE
 @media (max-width:480px) {
 
   .page-wrap {
-    padding: 14px;
+    padding: 12px;
   }
 
   h1 {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
   }
 
   .label-tag {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
   .new-price {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .old-price {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
   }
 
   .price-block {
     flex-wrap: wrap;
-    gap: 10px;
+    gap: 8px;
   }
 
   .btn-add-cart {
-    font-size: 1rem;
-    padding: 14px;
+    font-size: 0.95rem;
+    padding: 12px;
   }
 
   .btn-whatsapp {
-    font-size: 1rem;
-    padding: 14px;
+    font-size: 0.95rem;
+    padding: 12px;
   }
 
   .offer-slider {
-    border-radius: 30px;
+    border-radius: 26px;
   }
 
   .driver-selector {
-    padding: 12px;
-    border-radius: 40px;
+    padding: 10px;
+    border-radius: 36px;
   }
 
   .driver-option {
-    font-size: 0.9rem;
-    padding: 6px 14px;
+    font-size: 0.85rem;
+    padding: 5px 12px;
   }
 
   .gallery-main {
-    border-radius: 20px;
-    padding: 15px;
+    border-radius: 18px;
+    padding: 12px;
   }
 
   .highlight-box {
-    padding: 20px;
-    border-radius: 25px;
+    padding: 18px;
+    border-radius: 22px;
   }
 
   .accordion-header {
-    padding: 18px;
-    font-size: 1.1rem;
+    padding: 16px;
+    font-size: 1rem;
   }
 
   .sticky-bar {
-    padding: 10px 16px;
+    padding: 8px 14px;
   }
 
   .sticky-thumb {
-    width: 45px;
-    height: 45px;
+    width: 40px;
+    height: 40px;
   }
 
   .sticky-btn {
-    padding: 12px 22px;
-    font-size: 0.9rem;
+    padding: 10px 18px;
+    font-size: 0.85rem;
   }
 
 }
@@ -2452,16 +2430,16 @@ ULTRA SMALL DEVICES
 @media (max-width:360px) {
 
   .driver-option {
-    font-size: 0.8rem;
+    font-size: 0.75rem;
   }
 
   .thumb {
-    width: 55px;
-    height: 55px;
+    width: 50px;
+    height: 50px;
   }
 
   .review-card {
-    min-width: 230px;
+    min-width: 210px;
   }
 
 }
