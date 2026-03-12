@@ -678,18 +678,69 @@
     }
     .f1-menu:hover .f1-submenu { display: flex; }
 
-    @media (max-width:900px) {
-      .product-grid { grid-template-columns: repeat(3,1fr); }
-    }
-    @media (max-width:600px) {
-      .product-grid { grid-template-columns: repeat(2,1fr); }
-      .btn-group .btn-add-cart, .btn-group .btn-whatsapp {
-        flex: 1 1 100%;
-      }
-    }
-    @media (max-width:400px) {
-      .product-grid { grid-template-columns: 1fr; }
-    }
+ /* ===== RESPONSIVE PRODUCT GRID ===== */
+
+@media (max-width:900px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .product-grid-card {
+    padding: 10px;
+    border-radius: 18px;
+  }
+
+  .grid-image {
+    aspect-ratio: 1/1;
+    margin-bottom: 6px;
+  }
+
+  .grid-driver {
+    font-size: 0.85rem;
+  }
+
+  .grid-price .current {
+    font-size: 0.9rem;
+  }
+
+  .grid-price .old {
+    font-size: 0.75rem;
+  }
+
+  .grid-add-cart {
+    font-size: 0.8rem;
+    padding: 7px;
+  }
+}
+
+@media (max-width:480px) {
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .product-grid-card {
+    padding: 8px;
+  }
+
+  .grid-image {
+    aspect-ratio: 1/1;
+  }
+
+  .grid-driver {
+    font-size: 0.8rem;
+  }
+
+  .grid-price .current {
+    font-size: 0.85rem;
+  }
+
+  .grid-add-cart {
+    padding: 6px;
+    font-size: 0.75rem;
+  }
+}
   </style>
 </head>
 <body>
