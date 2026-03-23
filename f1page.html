@@ -944,6 +944,245 @@
       <button class="sticky-btn" id="stickyAddF1">Add</button>
     </div>
 
+    <!-- ===== VARIVA HAMPER (FINAL POLISHED · FULL) ===== -->
+<section class="hamper-table-v2">
+
+  <!-- HEADING -->
+  <div class="hamper-intro">
+    <h2>Build Your Custom F1 Hamper</h2>
+    <p>Select any 3 driver magnets and unlock a special combo price. No fixed bundles — create your own.</p>
+  </div>
+
+  <div class="wrap">
+
+    <!-- LEFT TABLE -->
+    <div class="table">
+
+      <div class="thead">
+        <span>Product</span>
+        <span>Price</span>
+        <span>Add</span>
+        <span>Subtotal</span>
+      </div>
+
+      <div class="tbody" id="tbody">
+
+        <!-- ROWS -->
+        <div class="row" data-name="Lewis Hamilton">
+          <div class="prod"><img src="l1.jpg"><div><strong>Lewis Hamilton</strong><p>F1 Magnet</p></div></div>
+          <span>₹449</span><button class="add">+</button><span class="sub">₹0</span>
+        </div>
+
+        <div class="row" data-name="Daniel Ricciardo">
+          <div class="prod"><img src="d1.jpg"><div><strong>Daniel Ricciardo</strong><p>F1 Magnet</p></div></div>
+          <span>₹449</span><button class="add">+</button><span class="sub">₹0</span>
+        </div>
+
+        <div class="row" data-name="Honey Badger">
+          <div class="prod"><img src="h1.jpg"><div><strong>Honey Badger</strong><p>F1 Magnet</p></div></div>
+          <span>₹449</span><button class="add">+</button><span class="sub">₹0</span>
+        </div>
+
+        <div class="row" data-name="Charles Leclerc">
+          <div class="prod"><img src="c1.jpg"><div><strong>Charles Leclerc</strong><p>F1 Magnet</p></div></div>
+          <span>₹449</span><button class="add">+</button><span class="sub">₹0</span>
+        </div>
+
+        <div class="row" data-name="George Russell">
+          <div class="prod"><img src="g4.jpg"><div><strong>George Russell</strong><p>F1 Magnet</p></div></div>
+          <span>₹449</span><button class="add">+</button><span class="sub">₹0</span>
+        </div>
+
+        <div class="row" data-name="Max Verstappen">
+          <div class="prod"><img src="m1.jpg"><div><strong>Max Verstappen</strong><p>F1 Magnet</p></div></div>
+          <span>₹449</span><button class="add">+</button><span class="sub">₹0</span>
+        </div>
+
+        <div class="row" data-name="Oscar Piastri">
+          <div class="prod"><img src="o1.jpg"><div><strong>Oscar Piastri</strong><p>F1 Magnet</p></div></div>
+          <span>₹449</span><button class="add">+</button><span class="sub">₹0</span>
+        </div>
+
+        <div class="row" data-name="Lando Norris">
+          <div class="prod"><img src="ln2.jpg"><div><strong>Lando Norris</strong><p>F1 Magnet</p></div></div>
+          <span>₹449</span><button class="add">+</button><span class="sub">₹0</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT SUMMARY -->
+    <aside class="summary">
+
+      <h3>Your Hamper</h3>
+
+      <div class="picked" id="picked"></div>
+
+      <div class="calc">
+        <div class="line"><span>Items</span><span id="count">0</span></div>
+        <div class="line"><span>Subtotal</span><span id="subtotal">₹0</span></div>
+        <div class="line discount"><span>Combo Discount</span><span id="discount">—</span></div>
+      </div>
+
+      <div class="total">
+        <span>Total</span>
+        <strong id="total">₹0</strong>
+      </div>
+
+      <button id="cta" disabled>Unlock Offer</button>
+
+      <div class="hint">Select any 3 to unlock ₹1000 combo</div>
+
+      <div class="celebration" id="celebration"></div>
+
+    </aside>
+
+  </div>
+
+</section>
+
+<style>
+.hamper-table-v2 { margin: 80px 0; }
+
+.hamper-intro { text-align:center; margin-bottom:40px; }
+.hamper-intro h2 { font-size:2.4rem; color:#6B1E2E; }
+.hamper-intro p { font-size:0.95rem; color:#777; max-width:600px; margin:10px auto 0; }
+
+.wrap { display:flex; gap:28px; }
+
+.table { flex:1; background:#fff; border-radius:24px; padding:22px; box-shadow:0 12px 30px rgba(0,0,0,0.06); }
+
+.thead, .row { display:grid; grid-template-columns:2fr 1fr 0.8fr 1fr; align-items:center; gap:10px; }
+.tbody { max-height:420px; overflow-y:auto; }
+
+.row { padding:14px 0; border-bottom:1px solid #f0f0f0; }
+
+.prod { display:flex; gap:10px; align-items:center; }
+.prod img { width:50px; height:50px; border-radius:12px; object-fit:cover; }
+
+.add { background:#f3f3f3; border:none; border-radius:10px; padding:6px 12px; cursor:pointer; }
+.add.active { background:#6B1E2E; color:#fff; transform:scale(1.1); }
+
+.sub { color:#6B1E2E; font-weight:500; }
+
+.summary { width:320px; background:#f8fafd; border-radius:24px; padding:22px; position:relative; }
+.total strong { font-size:1.5rem; color:#6B1E2E; }
+
+#cta { width:100%; padding:12px; border-radius:40px; background:#ddd; border:none; }
+#cta.active { background:#6B1E2E; color:#fff; transform:scale(1.05); }
+
+/* CELEBRATION */
+.celebration div {
+  position:absolute;
+  width:6px;
+  height:6px;
+  border-radius:50%;
+  animation:blast 1s linear forwards;
+}
+
+@keyframes blast {
+  to { transform:translateY(-220px) rotate(360deg); opacity:0; }
+}
+
+@media(max-width:768px){
+  .wrap { flex-direction:column; }
+  .summary { width:100%; }
+}
+</style>
+
+<script>
+const rows = document.querySelectorAll('.row');
+const picked = document.getElementById('picked');
+const countEl = document.getElementById('count');
+const subtotalEl = document.getElementById('subtotal');
+const discountEl = document.getElementById('discount');
+const totalEl = document.getElementById('total');
+const cta = document.getElementById('cta');
+
+let selected = [];
+
+function celebrate(){
+  const box = document.getElementById('celebration');
+  for(let i=0;i<30;i++){
+    const d=document.createElement('div');
+    d.style.left=Math.random()*100+'%';
+    d.style.top=Math.random()*100+'%';
+    d.style.background=['#6B1E2E','#b78c5a','#e6c8a0'][Math.floor(Math.random()*3)];
+    box.appendChild(d);
+    setTimeout(()=>d.remove(),1000);
+  }
+}
+
+function renderPicked(){
+  picked.innerHTML = selected.map(i => `<div>• ${i}</div>`).join('');
+}
+
+function update(){
+  rows.forEach(r => {
+    const name = r.dataset.name;
+    const sub = r.querySelector('.sub');
+    const btn = r.querySelector('.add');
+    if(selected.includes(name)){
+      sub.innerText = '₹449';
+      btn.classList.add('active');
+    } else {
+      sub.innerText = '₹0';
+      btn.classList.remove('active');
+    }
+  });
+
+  const count = selected.length;
+  const subtotal = count * 449;
+
+  countEl.innerText = count;
+  subtotalEl.innerText = `₹${subtotal}`;
+
+  if(count === 3){
+    discountEl.innerText = '-₹347';
+    totalEl.innerText = '₹1000';
+    cta.disabled = false;
+    cta.classList.add('active');
+    cta.innerText = 'Continue to WhatsApp';
+    celebrate();
+  } else {
+    discountEl.innerText = '—';
+    totalEl.innerText = `₹${subtotal}`;
+    cta.disabled = true;
+    cta.classList.remove('active');
+    cta.innerText = `Select ${3 - count}`;
+  }
+
+  renderPicked();
+}
+
+rows.forEach(r => {
+  const btn = r.querySelector('.add');
+  btn.addEventListener('click', () => {
+    const name = r.dataset.name;
+
+    if(selected.includes(name)){
+      selected = selected.filter(i => i !== name);
+    } else {
+      if(selected.length >= 3){
+        const removed = selected.shift();
+        document.querySelector(`.row[data-name="${removed}"] .add`).classList.remove('active');
+      }
+      selected.push(name);
+    }
+
+    update();
+  });
+});
+
+cta.addEventListener('click', () => {
+  if(selected.length !== 3) return;
+  const text = selected.map((i,n)=>`${n+1}. ${i}`).join('%0A');
+  window.open(`https://wa.me/918452018403?text=Hi I want F1 hamper%0A${text}%0ATotal ₹1000`,'_blank');
+});
+
+update();
+</script>
 
     <!-- Footer -->
     <footer class="luxury-footer">
@@ -988,6 +1227,9 @@
     <br><br>
   </div>
 
+
+
+  
   <script>
 (function() {
   // ----- DRIVER DATA -----
@@ -1316,3 +1558,4 @@
 </script>
 </body>
 </html>
+
